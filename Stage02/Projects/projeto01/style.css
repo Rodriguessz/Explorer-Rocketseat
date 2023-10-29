@@ -1,0 +1,80 @@
+
+
+body{
+    font-family: 'Open Sans', 'Arial';
+    text-align: center;
+    margin: 0; /* Zerar o espaçamento padrão do navegador */ 
+    
+}
+
+#hero{
+    width: 592px;
+
+    /* Agrupamento das 4 propriedades - TOP  | RIGTH | BOTTOM | LEFT */
+    margin: 0 auto 72px ;  
+
+}
+
+#hero img{
+   margin-bottom: 72px;
+
+}
+
+
+/* Adicionando fontes */
+
+h1{
+    font-family: 'Inter', 'Arial';
+    color: #000000;
+    font-size: 49px;
+    line-height: 56px;
+    font-weight: normal;
+    margin-bottom: 32px;
+}
+
+h1 span {
+    font-weight: bold;
+}
+
+
+/* Adicionando cores */
+span{
+    color: #FF9900
+}
+
+a{
+    color: #FF9900;
+}
+
+p, #footer{
+    color: #7D7987;
+    font-size: 14px;
+    line-height: 28px
+}
+
+#footer #line{
+    width: 568px;
+    height: 0;
+    margin: 0 auto 8px;
+    border: 1px solid #ECEFF2;
+}
+
+/* #footer{
+    border-top: #ECEFF2 1px solid;
+    width: 568px;
+    margin: 0 auto 8px;
+} */
+
+
+/* a + a seleciona o a que tem como elemento anterior um <a> */
+#footer a + a{ 
+    margin-left: 28px;
+}
+
+#balls-decoration{
+    position:absolute;
+    right: 0;
+    bottom: 0;
+}
+
+

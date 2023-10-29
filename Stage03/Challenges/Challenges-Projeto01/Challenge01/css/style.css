@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", "Arial";
+}
+
+body{
+    background: #E5E5E5;
+}
+
+body::before{
+    content: '';
+    display: block;
+
+    background: #535971;
+    
+    height: 436px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0; 
+    
+}
+
+div#page{
+    width: 750px;
+    margin: 0 auto;
+}
+
+
+div#page header{
+    width: 417px;
+
+    margin: 140px 0 0;
+
+    
+    
+}
+
+div#page header h1{
+    color: #fff;
+    font-size: 48px;
+    font-family: 'Staatliches', "Poppins";
+    font-weight: normal;
+    
+}
+
+div#page header p{
+    margin: 18px 0 0;
+
+    font-size: 20px;
+    color: #fff;
+    
+}
+
+div#page form{
+    
+    margin: 58px 0 0 ;
+    padding: 64px;
+
+    min-height: 400px;
+
+    background: #FFFFFF;
+    border-radius: 8px 8px 0 0;  
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    
+}
+
+div#page form fieldset{
+    border: none;
+}
+
+form div.fieldset-wrapper{
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
+}
+
+form  legend{
+    font-family: 'Staatliches', "Poppins";
+    font-size: 24px;
+    line-height: 34px;
+    color: #535971;
+
+    padding: 0 0 16px;
+    border-bottom: 1px solid #E6E6F0;
+    width: 100%;
+    margin-bottom: 32px;
+    
+}
+
+div.user-infos{
+    display: flex;
+    gap: 20px;
+}
+
+
+div.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+}
+
+div.input-wrapper label{
+    
+    font-size: 14px;
+    line-height: 24px;
+    color: #4E4958;
+    
+}
+
+div.input-wrapper label span{
+    
+    font-family: "Poppins", "Arial";
+    font-size: 12px;
+    line-height: 20px;
+
+    margin-left: 5px;
+
+    color: #C1BCCC;
+    
+}
+
+div.input-wrapper label span:hover{
+    
+
+    color: #97959b;
+    
+}
+
+div.input-wrapper input, 
+.user-input{
+    
+   height: 56px;
+
+   border-radius: 8px;
+   border: 1px solid #E6E6F0;
+
+   background: #FAFAFC;
+
+   padding: 24px;
+    
+}
+
+input.user-input{
+    width: 300px;
+}
+
+div.col-03{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+div.col-03 div.title h3{
+   font-size: 20px;
+   font-weight: normal;
+   line-height: 34px;
+   font-family: 'Staatliches', "Poppins";
+
+   color: #535971;
+}
+
+div.input-dates{
+    display: flex;
+    gap: 32px;
+}
+
+div.input-dates > div:nth-child(1){
+    width: 100%;
+}
+
+footer{
+    height: 160px;
+    width: 100%;
+    background: #535971;
+    border-radius: 0 0 8px 8px;
+    padding: 50px 70px;
+    margin: 0 0 300px;
+}
+
+footer button{
+   padding: 15px 0;
+   width: 100%;
+
+   border-radius: 20px;
+   border: none;
+
+   background:#FF5374;
+   color: #fff;
+
+   font-family: 'Staatliches', "Poppins";
+   font-size: 20px;
+   line-height: 26px;
+}
+
+

@@ -1,0 +1,103 @@
+body{
+    margin: 0;
+    font-family: "Open Sans";
+}
+
+
+.page{
+    margin: 65px auto 30px;
+    width: 1000px;
+        
+}
+
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 58px;
+}
+
+nav ul {
+    display: flex;
+    gap: 48px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Mulish","Arial";
+    
+}
+
+
+nav ul li a{
+ 
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: normal;
+    color: #1F1534;
+    
+    
+}
+
+nav ul li a:hover{
+  
+    font-weight: bold;
+    
+}
+
+section#hero{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+div.hero-text h1{
+    margin:0 0 39px 0;
+    font-family:'Mulish', 'Arial';
+    font-weight: normal;
+    font-size:49px ;
+    line-height: 56px;
+    color: #1F1534;
+    
+    
+}
+
+div.hero-text h1 span{
+  color: #89C5CC;
+  font-weight: bold;
+}
+
+div.hero-text p{
+    line-height: 28px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: #7D7987;
+}
+
+button{
+    font-family: "Open Sans", "Arial";
+    text-transform: uppercase;
+    
+}
+
+
+footer , a {
+   font-size: 14px;
+   line-height: 28px;
+
+}
+
+
+footer a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #1F1534;
+    font-size: 14px;
+ 
+ }
+
+
+
+
+
