@@ -1,0 +1,38 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  /* Font-size 62.5% de 16 == 10 */
+
+  /* 1rem ( Root EM ) === 10px */
+  font-size: 62.5%;
+}
+
+
+body{
+  min-height: 100vh;
+  padding: 6.0rem 2.3rem;
+
+  font-size: 1.6rem; /* Equivale a 16px*/
+
+  background: #ECE9FD;
+
+  
+
+}
+
+
+main h1{
+  font-family: "Epilogue" , "Poppins";
+  font-weight: 800;
+  font-size: 4.0rem; /* Equivale a 40px*/
+  line-height: 4.8rem; /* Equivale a 48px*/
+}
+
+
+main ul {
+  list-style: none;
+}
