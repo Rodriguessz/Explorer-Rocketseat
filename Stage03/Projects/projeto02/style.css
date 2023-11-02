@@ -13,26 +13,75 @@
 
 
 body{
+  
+
   min-height: 100vh;
+
   padding: 6.0rem 2.3rem;
 
+  font-family: "Epilogue" , "Poppins";
+  font-weight: normal;
   font-size: 1.6rem; /* Equivale a 16px*/
 
   background: #ECE9FD;
 
+}
+
+main div.main-info p:first-child{
+
+    font-size: 1.6rem; /* Equivale a 16px*/
+    line-height: 3.2rem; /* Equivale a 32px*/
+    letter-spacing: 0.3rem; /* Equivale a 3px*/
+    text-transform: uppercase;
+
+    color: #7158EF;
+
+    margin: 0 0 1.7rem
+
+}
+main div.main-info  h1{
+
+  font-weight: 800;
+  font-size: 4.0rem; /* Equivale a 40px*/
+  line-height: 4.8rem; /* Equivale a 48px*/
+
+  color: #090039;
+
+  margin: 0 0 1.1rem /*Equivale a 11px */;
+
+
+}
+
+main div.main-info p:nth-child(3){
+
+  line-height: 3.2rem;
+  color: rgba(10, 0, 57, 0.64);
+  
+  margin: 0 0 3.6rem;
+ 
+}
+
+main div.main-info a{
+  text-decoration: none;
+
+  color: #090039;
+  
+  line-height: 3.2rem;
+
+}
+
+
+main div.main-info a:hover{
+
+ font-weight: bold;
   
 
 }
 
 
-main h1{
-  font-family: "Epilogue" , "Poppins";
-  font-weight: 800;
-  font-size: 4.0rem; /* Equivale a 40px*/
-  line-height: 4.8rem; /* Equivale a 48px*/
+main div.list-infos{
+  margin: 7.7rem 0 0 ;
 }
-
-
-main ul {
+main div.list-infos ul {
   list-style: none;
 }
