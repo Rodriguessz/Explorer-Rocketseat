@@ -101,7 +101,7 @@ main div.list-infos ul {
 
 main div.list-infos li{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 3.8rem;
 
   letter-spacing: -2px;
@@ -110,7 +110,7 @@ main div.list-infos li{
   font-weight: bold;
   color: #090039;
 
-  max-width: 25.7rem;
+  max-width: 25.7rem; /*Define uma largura maxima em que a li pode chegar*/
 
 }
 
@@ -128,3 +128,27 @@ main div.list-infos li span{
   
 }
 
+/* Media queries */
+
+@media(min-width: 700px){
+  body{
+    padding: 8rem;
+  }
+
+  main{
+    /* Utilizarei px pois estou definindo um limite e não uma largura fixa */
+    max-width: 1024px; 
+    display: flex;
+    gap: 10rem;
+  }
+
+  main div.main-info{
+    max-width: 485px;
+  }
+
+  main div.list-infos ul li{
+    max-width: 450px;
+    gap: 6.6rem;
+  }
+
+}
