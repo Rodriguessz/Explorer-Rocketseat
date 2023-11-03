@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Vendor prefixes para suavizar as fontes do projeto */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root{
+    font-family: "Source Serif 4";
+    /* Valor relativo a 16px | 1REM == 10px */
+    font-size: 62.5%;
+}
+
+
+body{
+    min-height: 100vh;
+
+    font-size: 1.6rem;
+
+    color: #A54328 ;
+
+    padding: 5.4rem 3.8rem;
+    
+    
+}
+
+
+main {
+    max-width: 320px;
+    margin-inline: auto;
+    border: 1px solid red;
+}
+
+main div.cheesecake img{
+    width: 100%;
+}
+
+
+main div.cheesecake h1 , div.recipe h2{
+    font-size: 2.8rem;
+    font-weight: bold;
+    line-height: 3.6rem;
+}
+
+
+main p,
+li, h3{
+    font-size: 1.4rem;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+button{
+
+    padding: 0.8rem 1.2rem;
+    margin-top: 1.8rem;
+
+    border: none;
+    border-radius: 0.6rem;
+
+    background: #A54328;
+    cursor: pointer;
+    
+    color: #FFFFFF;
+}
