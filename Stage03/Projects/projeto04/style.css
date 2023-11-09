@@ -3,3 +3,84 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root{
+  /* 1rem === 10px*/
+  font-size: 62.5%;
+  font-family: "Mulish", "sans-serif";
+  
+}
+
+body{
+  background-color: #1E1E1E;
+  height: 100vh;
+}
+
+
+main{
+  display: grid;
+  grid-template-columns: repeat(3, 36.6rem);
+ 
+  gap: 6rem;
+
+  place-content: center;
+}
+
+
+/* Estilizando os cards do nosso container */
+
+main.container div.galaxies-card{
+
+
+  font-weight: 600;
+  font-size: 1.8rem;
+
+  color: #C4C4CC;
+
+  background: #202024;
+
+  border: 2px solid #323238;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+
+
+
+}
+
+main.container div.galaxies-card img{
+
+  width: 100%;
+  border-radius: 0.8rem 0.8rem 0 0;
+
+}
+
+div.galaxies-card > div.description{
+
+  padding: 0 2.2rem 3.8rem;
+  
+}
+
+
+
+ div.galaxies-card > div.description h2{
+
+  
+  color: #E1E1E6;
+
+  font-weight: 900;
+  font-size: 3.6rem;
+  margin-bottom: 2.4rem;
+  
+
+}
+
+
+
+
+
+
+
+
