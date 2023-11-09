@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Vendor prefixes para suavização das fontes na tela  */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+/* Root element */
+:root{
+    /* 1rem === 10px */
+    font-size: 62.5%;
+
+}
+
+body{
+    /* Back body font-size to standard */
+    font-size: 1.6rem;
+}
