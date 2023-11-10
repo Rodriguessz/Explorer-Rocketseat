@@ -20,3 +20,30 @@ body{
     /* Back body font-size to standard */
     font-size: 1.6rem;
 }
+
+
+div#app{
+    height: 100vh;
+    grid-template-rows: max-content 1fr max-content;
+    display: grid;
+    
+}
+
+
+
+div#app > *{
+    border: 1px solid red;
+    
+}
+
+.container{
+    padding: 1.6rem 3.2rem;
+    width: min(112rem ,100%);
+    margin: 0 auto;
+ 
+    
+}
+
+main{
+    background-color: aqua;
+}
