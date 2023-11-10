@@ -13,6 +13,8 @@
 :root{
     /* 1rem === 10px */
     font-size: 62.5%;
+    --main-color: #f231a5;
+    --color-dark-gray: #808080;
 
 }
 
@@ -26,6 +28,7 @@ div#app{
     height: 100vh;
     grid-template-rows: max-content 1fr max-content;
     display: grid;
+    background: var(--main-color);
     
 }
 
@@ -46,4 +49,6 @@ div#app > *{
 
 main{
     background-color: aqua;
+    /* Controla o trasbordamento de conteúdo no eixo vertical */
+    overflow-y: scroll;
 }
