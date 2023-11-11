@@ -12,18 +12,22 @@
 /* Root element */
 :root{
      /* Variaveis CSS */
+
+     --header-nav-font-color: #8D8D99
+     --header-input-font-color: #3d3d3d;
+     --header-input-back-color: #EEEEEE;
     
      --main-back-color: #F5F5F5;
      --main-font-color: #202024; 
+
      --footer-font-color: #323238;
-     --header-input-font-color: #3d3d3d;
-     --header-input-back-color: #EEEEEE;
 
     /* 1rem === 10px */
     font-size: 62.5%;
+    font-family: "Mulish", "Arial";
     color: var(--main-font-color);
 
-   
+    
 
 }
 
@@ -37,8 +41,7 @@ div#app{
     height: 100vh;
     grid-template-rows: max-content 1fr max-content;
     display: grid;
-    
-    
+   
 }
 
 
@@ -47,6 +50,28 @@ div#app > *{
     border: 1px solid red;
     
 }
+
+div#app header, nav , nav ul{
+    display: flex;
+    align-items: center;
+    gap: 7.2rem;
+}
+
+div#app header form{
+    flex: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .container{
     padding: 1.6rem 3.2rem;
