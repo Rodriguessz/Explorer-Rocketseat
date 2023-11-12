@@ -51,10 +51,13 @@ div#app > *{
     
 }
 
-div#app header, nav , nav ul{
+div#app header, 
+nav, 
+nav ul{
     display: flex;
     align-items: center;
     gap: 7.2rem;
+    list-style: none;
 }
 
 div#app header form{
