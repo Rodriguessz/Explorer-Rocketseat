@@ -145,10 +145,12 @@ div#app header img.avatar{
     padding: 1.6rem 3.2rem;
     width: min(112rem ,100%);
     margin: 0 auto;
- 
     
 }
 
+
+
+/* Galery */
 main{
     /* Chamando a nossa variável CSS */
     background-color: var(--main-back-color);
@@ -158,6 +160,58 @@ main{
 
     
 }
+
+main div.container h1{
+    font-size: 2.4rem;
+    padding: 1.6rem 0 0;
+    
+}
+
+
+div.container section.galery-container{
+
+    margin-top: 3.6rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    
+
+}
+
+ figure{
+    width:100%;
+ }
+  
+  
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 footer p{
