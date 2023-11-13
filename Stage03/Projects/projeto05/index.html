@@ -17,15 +17,21 @@
 
                     <ul>
                         <li>Home</li>
-                        <li>Camera</li>
+                        <li class="active">Camera</li>
                     </ul>
                 </nav>
                
 
-                <form action="">Search</form>
+                <form action="">
+                    
+                    <div class="input-wrapper">
+                        <label for="search">Pesquise por imagens e coleções</label>
+                        <input type="text" id="search" placeholder="Pesquise por imagens e coleções">
+                    </div>
+                </form>
 
                 <!-- Utilizando a API que retorna a imagem -->
-                <img src="https://randomuser.me/api/portraits/women/19.jpg" alt="Icone de usuário">
+                <img class="avatar" src="https://randomuser.me/api/portraits/men/19.jpg" alt="Icone de usuário">
         </header>
         <main>
 
@@ -36,7 +42,10 @@
         
         </main>
         
-        <footer class="container">Footer<footer>
+        <footer class="container">
+            
+          <p>  © 2023 - Rocketseat Explorer</p>
+        <footer>
         
     </div>
 </body>

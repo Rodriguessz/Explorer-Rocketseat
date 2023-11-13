@@ -13,7 +13,7 @@
 :root{
      /* Variaveis CSS */
 
-     --header-nav-font-color: #8D8D99
+     --header-nav-font-color: #8D8D99;
      --header-input-font-color: #3d3d3d;
      --header-input-back-color: #EEEEEE;
     
@@ -58,7 +58,18 @@ nav ul{
     align-items: center;
     gap: 7.2rem;
     list-style: none;
+
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 160%;
+    color: var(--header-nav-font-color);
 }
+
+
+div#app nav ul li.active{
+    color: var(--main-font-color);
+}
+
 
 div#app header form{
     flex: 1;
@@ -66,13 +77,67 @@ div#app header form{
 
 
 
+div#app header form div.input-wrapper label{
+    position: absolute; 
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+}
+
+
+div#app header form div.input-wrapper input{
+    min-width: 100%;
+
+    padding: 1.6rem;
+
+    font-family: "Mulish", "Arial";
+
+    
+    border: none;
+    border-radius: 0.6rem;
+
+    background-color: var(--header-input-back-color);
 
 
 
+}
+
+div#app header form div.input-wrapper input::placeholder{
+    
+    font-family: "Mulish", "Arial";
+    font-weight: 600;
+    font-size: 1.6rem;
+
+    color: var(--header-input-font-color);
+
+    opacity: 0.56;
 
 
 
+}
 
+div#app header img.avatar{
+    width: 4.2rem;
+    height: 4.2rem;            
+}
+
+
+
+div#app header img.avatar{
+    width: 4.2rem;
+    height: 4.2rem;
+
+    /* Caso a imagem fique esticada */
+
+    object-fit: cover; /* A imagem vai cobrir todo o espaço do elemento */
+    border-radius: 50%; /* Deixa a imagem redonda */
+
+
+    /* Caso a imagem fique esticada */
+
+    object-fit: cover; /* A imagem vai cobrir todo o espaço do elemento */
+    border-radius: 50%; /* Deixa a imagem redonda */
+}
 
 
 
@@ -92,4 +157,12 @@ main{
     overflow-y: scroll;
 
     
+}
+
+
+footer p{
+    text-align: center;
+    padding: 1.6rem;
+
+    font-weight: 600;
 }
