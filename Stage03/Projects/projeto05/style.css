@@ -34,7 +34,8 @@
 
 body{
     /* Back body font-size to standard */
-    font-size: 1.6rem;
+    font-size: 1.6rem;  
+    height: 100vh;
 }
 
 
@@ -158,6 +159,7 @@ main{
 
     /* Controla o trasbordamento de conteúdo no eixo vertical */
     overflow-y: scroll;
+    
 
     
 }
@@ -185,14 +187,29 @@ figure.galery-item{
     background-color: var(--main-back-color);
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  
 }
+
+
 
  figure.galery-item img{
     width:100%;
-    height: 19.4rem;
+    aspect-ratio: 16/9; /*Mexe com a proporção do elemento*/
     object-fit: cover;
+    transition: 0.5s;
 
  }
+
+ figure.galery-item img:hover{
+    filter: hue-rotate(10deg) contrast(101%) saturate(200%);
+    
+  
+
+ }
+
+
+
+
 
 
  figure.galery-item figcaption.description{
@@ -209,8 +226,11 @@ figure.galery-item{
 
  figure.galery-item figcaption.description span{
     font-size: 1.2rem;
+    padding: .8rem;
+    background-color: var(--header-input-back-color);
+    border-radius: .6rem;
  }
-  
+
 
    
 
