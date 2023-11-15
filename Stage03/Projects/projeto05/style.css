@@ -118,12 +118,6 @@ div#app header form div.input-wrapper input::placeholder{
 
 }
 
-div#app header img.avatar{
-    width: 4.2rem;
-    height: 4.2rem;            
-}
-
-
 
 div#app header img.avatar{
     width: 4.2rem;
@@ -139,7 +133,19 @@ div#app header img.avatar{
 
     object-fit: cover; /* A imagem vai cobrir todo o espaço do elemento */
     border-radius: 50%; /* Deixa a imagem redonda */
+    transition: 0.5s;
+    cursor: pointer;
+    
 }
+
+
+div#app header img.avatar:hover{
+
+    filter: brightness(50%); /* Deixa a imagem com 50% de brilho */
+
+}
+
+
 
 
 
@@ -187,8 +193,14 @@ figure.galery-item{
     background-color: var(--main-back-color);
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    /* transition: transform 0.5s ease-in-out 0s; Propriedade | duração | forma de transição ( velocidade ) | delay */
   
 }
+
+/* figure.galery-item:hover{
+    
+    transform: scale(1.03);
+} */
 
 
 
@@ -196,20 +208,26 @@ figure.galery-item{
     width:100%;
     aspect-ratio: 16/9; /*Mexe com a proporção do elemento*/
     object-fit: cover;
-    transition: 0.5s;
+    
+    /* transition-property: filter, transform; Propriedades que serão inclusas na transição */
+    /* transition-duration: 0.200s; Duração da transição */
+    /* transition-delay: 0; Tempo de espera para que a transição comece */
+    /* transition-timing-function: ease-out; Função que controla a velocidade da transição baseada na curva de bezier */
+
+    transition: filter, transform 0.200s ease-out 0s; 
+
+    
+ 
 
  }
 
  figure.galery-item img:hover{
-    filter: hue-rotate(10deg) contrast(101%) saturate(200%);
+    filter:  hue-rotate(10deg) /*Gira a cor da imagem*/ contrast(101%) /*Aumenta o contraste da imagem*/ saturate(200%); /*Aumenta a saturação da imagem*/
+
+    transform: scale(1.03) rotate(-1deg);
+
     
-  
-
  }
-
-
-
-
 
 
  figure.galery-item figcaption.description{
@@ -217,6 +235,8 @@ figure.galery-item{
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    position: relative;
+    z-index: 1;
  }
   
  figure.galery-item figcaption.description h2{
