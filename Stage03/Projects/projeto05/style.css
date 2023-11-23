@@ -13,15 +13,17 @@
 :root{
      /* Variaveis CSS */
 
-     --header-nav-font-color: #8D8D99;
-     --header-input-font-color: #3d3d3d;
-     --header-input-back-color: #EEEEEE;
-    
-     --main-back-color: #F5F5F5;
-     --main-font-color: #202024; 
-     --main-bc-color: #FFFFFF;
+     --hue-base: 240;
 
-     --footer-font-color: #323238;
+     --header-nav-font-color: hsl(var(--hue-base), 6%, 58%);
+     --header-input-font-color: hsl(0, 0%, 24%);
+     --header-input-back-color: hsl(0, 0%, 93%);
+    
+     --main-back-color: hsl(0, 0%, 96%);
+     --main-font-color: hsl(var(--hue-base), 6%, 13%); 
+     --main-bc-color: hsl(0, 0%, 100%);
+
+     --footer-font-color: hsl(var(--hue-base), 6%, 21%);
 
     /* 1rem === 10px */
     font-size: 62.5%;
@@ -261,7 +263,7 @@ footer p{
 
 header{
     --startY: -100%;
-    animation: move 1s ease-in-out;
+    animation: move .5s ease-in-out;
    
 }
 
@@ -277,7 +279,7 @@ figure.galery-item{
 
 footer{
     --startY: 100%;
-    animation: move 1s ease-in-out;
+    animation: move .5s ease-in-out;
     
 }
 
