@@ -48,10 +48,7 @@ div#app{
 
 
 
-div#app > *{
-    border: 1px solid red;
-    
-}
+
 
 div#app header, 
 nav, 
@@ -194,6 +191,8 @@ figure.galery-item{
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     /* transition: transform 0.5s ease-in-out 0s; Propriedade | duração | forma de transição ( velocidade ) | delay */
+
+
   
 }
 
@@ -208,6 +207,7 @@ figure.galery-item{
     width:100%;
     aspect-ratio: 16/9; /*Mexe com a proporção do elemento*/
     object-fit: cover;
+    display: block;
     
     /* transition-property: filter, transform; Propriedades que serão inclusas na transição */
     /* transition-duration: 0.200s; Duração da transição */
@@ -224,7 +224,7 @@ figure.galery-item{
  figure.galery-item img:hover{
     filter:  hue-rotate(10deg) /*Gira a cor da imagem*/ contrast(101%) /*Aumenta o contraste da imagem*/ saturate(200%); /*Aumenta a saturação da imagem*/
 
-    transform: scale(1.03) rotate(-1deg);
+    transform: scale(1.03) rotate(-0.3deg);
 
     
  }
@@ -251,41 +251,58 @@ figure.galery-item{
     border-radius: .6rem;
  }
 
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 footer p{
     text-align: center;
     padding: 1.6rem;
-
     font-weight: 600;
 }
+
+
+
+header{
+    --startY: -100%;
+    animation: move 1s ease-in-out;
+   
+}
+
+
+figure.galery-item{
+    --delay: 0.2s;
+    animation-name: appear;
+    animation-duration: 1s;
+    animation-delay: var(--delay);
+    animation-fill-mode: backwards;
+    
+}
+
+footer{
+    --startY: 100%;
+    animation: move 1s ease-in-out;
+    
+}
+
+
+@keyframes move {
+    from{
+        transform: translateY(var(--startY));
+    }
+}
+
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    50%{
+        opacity: .5;
+        transform: scale(1.05);
+
+    }
+
+   
+}
+
+/* 
+Se você estiver usando transformações, valores negativos em translateY movem o elemento para cima e valores positivos movem o elemento para baixo. */
