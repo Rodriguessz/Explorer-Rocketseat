@@ -1,0 +1,273 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+
+:root{
+  font-size: 62.5%;
+  font-family: "Mulish", "Roboto", "Roboto Condensed";
+
+
+  /* Variaveis de cor */
+
+  --color-base-foot-head: hsl(195, 91%, 25%);
+  
+  --color-base-bc-input: rgb(255, 255, 255 , .2);
+  --color-base-input: hsl(0, 0%, 100%);
+
+  --color-base-h1: hsl(240, 6%, 13%);
+
+  --color-base-font: hsl(240, 5%, 7%);
+  
+}
+
+
+body{
+  font-size: 1.6rem;
+  color: var(--color-base-font);
+}
+
+div#app{
+  display: grid;
+  grid-template-rows: max-content  1fr max-content;
+
+  max-width: 102.4rem;
+
+  margin: 0 auto;
+  box-sizing: content-box;
+
+}
+
+div#app header{
+
+  display: flex;
+  align-items: center;
+  gap: 2.4rem ;
+
+  padding: 1.6rem 2.8rem;
+
+  background-color: var(--color-base-foot-head);
+
+  --startY: -100%;
+  animation: move 1s ease-in-out;
+
+}
+
+header form{
+  flex: 1;
+}
+
+header form div.input-wrapper label{
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+header form div.input-wrapper input{
+  min-width: 100%;
+
+  padding: 1.2rem 1.4rem;
+
+  border-radius: .4rem;
+  border: none;
+
+  font-family: "Mulish" , "Mulish Condensed" ;
+  font-weight: 600;
+
+  background-color: var(--color-base-bc-input);
+
+  color: var(--color-base-input);
+  
+
+}
+
+header form div.input-wrapper input::placeholder{
+
+  color: var(--color-base-input) ;
+  
+
+}
+
+header figure.avatar img{
+
+  width: 4.2rem;
+  height: 4.2rem;
+
+  border-radius: 50%;
+
+  transition-property: filter , transform;
+  transition-duration: 0.3s , 0.5s;
+
+  cursor: pointer;
+
+}
+
+header figure.avatar img:hover{
+
+  filter: grayscale(50%);
+  transform: scale(1.03);
+
+}
+
+figure.landscape img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  cursor: pointer;
+
+  transition-property: filter,hue-rotate, contrast;
+  transition-duration: 0.5s , 0.5s , 0.5s;
+}
+
+figure.landscape img:hover{
+  
+  filter: saturate(130%) hue-rotate(10deg) contrast(101%)
+}
+
+main{
+  padding: 0 2.2rem;
+}
+
+main section.main-article{
+
+  margin-top: 3.1rem ;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+ 
+}
+
+section.main-article div.title{
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+
+  
+}
+
+section.main-article div.title h1{
+  
+  color: var(--color-base-h1);
+
+  
+}
+
+div.title div.icons-like-dislike{
+  display: flex;
+  gap: 1.2rem;
+}
+
+div.title div.icons-like-dislike img{
+  cursor: pointer;
+  transition: filter 0.5s ease-in, transform 0.5s ease-in-out;
+}
+
+div.title div.icons-like-dislike img:hover{
+  filter: brightness(150%);
+  transform: scale(1.08);
+}
+
+section.main-article p{
+
+  line-height: 160%;
+  
+}
+
+section.related-articles{
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin-top: 3.4rem;
+}
+
+section.related-articles h2{
+  font-size: 2.4rem;
+  color: var(--color-base-h1);
+}
+
+section.related-articles div.article{
+  display: flex;
+  gap: 1.6rem;
+
+  --delay: 0.2s;
+  animation-name: appearArticles;
+  animation-duration: 1s;
+  animation-delay: var(--delay) ;
+  animation-fill-mode: backwards;
+}
+
+div.article img{
+  width: 15.2rem;
+  height: 8.4rem;
+  object-fit: cover;
+
+  cursor: pointer;
+
+  transition: filter 0.8s ease-in;
+}
+
+div.article img:hover{
+  
+  filter: contrast(110%) saturate(101%);
+}
+
+div.article div.article-description p{
+  font-size: 1.2rem;
+  line-height: 160%;
+}
+
+div.article div.article-description h3{
+  font-size: 1.8rem;
+  font-weight: 700;
+  
+}
+
+footer{
+  background-color: var(--color-base-foot-head);
+
+  color: var(--color-base-input) ;
+
+  font-weight: 500;
+  
+  padding: 2.6rem 1.6rem;
+
+  text-align: center;
+
+  margin-top: 3.8rem;
+
+  --startY: 100%;
+  animation: move 1s ease-in-out;
+}
+
+
+
+
+
+/* Animações */
+
+@keyframes move{
+  0%{
+    transform: translateY(var(--startY));
+  }
+}
+
+
+@keyframes appearArticles {
+  0%{
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  50%{
+    opacity: 1;
+    transform: scale(1.1);
+
+  }
+}
+
+
