@@ -39,10 +39,10 @@
 
 //Encontrar a posição de um elemento no array
 
-const teams = ["Palmeiras", "Fluminse", "São Paulo", "Botafogo"]
-const indexPalmeiras = teams.indexOf("Palmeiras") //Retorna o index do item "Palmeiras no array"
+// const teams = ["Palmeiras", "Fluminse", "São Paulo", "Botafogo"]
+// const indexPalmeiras = teams.indexOf("Palmeiras") //Retorna o index do item "Palmeiras no array"
 
-console.log(teams[indexPalmeiras])
+// console.log(teams[indexPalmeiras])
 
 
 
