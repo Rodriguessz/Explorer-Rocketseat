@@ -13,6 +13,7 @@
     --color-titles: #B52184;
     --color-p: #312D64;
     --bg-card: #fff;
+    --gradient-bg: linear-gradient(to right, #343193, #333087, #322f7b, #312d6f, #302c63);
 
 }
 
@@ -24,24 +25,36 @@ body {
 }
 
 div#page{
-    max-width: 72rem;
+    
     min-height: 100vh;
     margin: 0 auto;
     
-    
-    background-color: rgb(187, 218, 208);
+/*     
+    background-color: rgb(187, 218, 208); */
 }
 
 main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 3.2rem;
+    padding: 0 3.2rem 8.8rem;
 }
 
-main img{
+main img#astronauta{
     width: 100%;
 }
+
+main section.main-elements{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.4rem;
+}
+
+
+
+
 
 main section.main-title{
     display: flex;
@@ -54,15 +67,18 @@ main section.main-title{
 
 main section.main-title h1{
     color: var(--color-titles);
-    font-size: 3.2rem;
+    font-size: clamp(3.2rem, 2vw + 2.5rem , 5.8rem);
+    /* font-size:3.2rem; */
     font-weight: black;
+    text-align: center;
 }
 
 main section.main-title p{
     color: var(--color-p);
-    font-size: 2rem;
+    font-size: clamp(2rem, 1vw + 1.8rem, 3.2rem);
     font-weight: 600;
-    margin-bottom: 3.4rem;
+    /* margin-bottom: 3.4rem; */
+    text-align: center;
  
 }
 
@@ -80,7 +96,7 @@ section.cards{
     gap: 4.8rem;
 
 
-    background: var(--color-p);
+    background: var(--gradient-bg);
     padding: 5.2rem 3.2rem;
     
 }
@@ -95,7 +111,22 @@ section.cards div.card{
     
     padding: 2.6rem 5.6rem 2.6rem 2.6rem;
 
-    border-radius: 0.8rem;
+    border-radius: 2.4rem;
+    
+
+}
+
+section.cards div.card{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    background: var(--bg-card) ;
+
+    width: 100%;
+    
+    padding: 2.6rem 5.6rem 2.6rem 2.6rem;
+
+    border-radius: 2.4rem;
     
 
 }
@@ -141,7 +172,7 @@ section.contact form fieldset{
 
  div.fieldset-wrapper legend {
     
-    font-size: 3rem;
+    font-size: clamp(3rem, 2vw + 1rem ,4.2rem);
     color: var(--color-titles);
     font-weight: 900;
 
@@ -199,16 +230,143 @@ div.input-wrapper textarea{
 }
 
 
-button{
+form button{
     padding: 1rem 1.6rem;
     height: 4.4rem;
-    background-image: linear-gradient(to right, #343193, #333087, #322f7b, #312d6f, #302c63);
+    background-image: var(--gradient-bg);
     border: none;
     border-radius: 1.6rem;
     color: var(--bg-card);
     font-weight: bold;
     font-size: 1.4rem;
     margin-top: 3.4rem;
+
+}
+
+img#stars{
+    display: none;
+}
+
+
+footer{
+    
+    display: flex;
+    justify-content: center;
+
+    padding: 3.2rem 1.6rem;
+
+    background-image: var(--gradient-bg);
+
+    font-weight: 600;
+    color: var(--bg-card);
+}
+
+/* Resposivity*/
+
+@media(min-width: 880px){
+
+
+    main{
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+       
+        
+    }
+
+
+     main section.main-elements{
+        align-items: flex-start;
+        margin-top: 4rem;
+        gap: 10rem;
+
+       
+    } 
+    main section.main-title{
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0;
+        
+    }
+
+    main section.main-title h1{
+       text-align: start;
+    }
+    
+    main section.main-title p{
+        /* font-size: 3.2rem; */
+        margin-bottom: 0;
+        text-align:start
+    
+    } 
+
+
+    
+
+    
+
+
+
+
+    
+}
+
+@media(min-width:1000px){
+    section.cards{
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    section.cards div.card{
+        max-width: 36.6rem;
+        height: 44rem;
+        padding: 3.2rem 3.2rem 7.2rem 3.2rem;
+    }
+
+
+
+    /* Contacts */
+
+    section.contact{
+        display: flex;
+        padding: 0;
+        justify-content: space-between;
+    }   
+    
+
+  
+    
+
+    form{
+        padding: 9rem 10rem;
+        width: 59.5rem;
+        box-sizing: content-box;
+    }
+
+    
+
+    div.fieldset-wrapper legend {
+    
+        /* font-size: 4.2rem; */
+        color: var(--color-titles);
+        
+        
+    }
+
+
+    div.input-wrapper textarea{
+   
+        height: 12.6rem;
+     }
+
+    img#stars{
+        display: block;
+        min-height: 100%;
+        max-width: 100%;
+    }
+
 
 }
 
