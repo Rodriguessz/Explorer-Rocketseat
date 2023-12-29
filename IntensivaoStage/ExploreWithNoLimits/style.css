@@ -1,0 +1,214 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    font-size: 62.5%;
+    font-family: 'Mulish' , 'Roboto', 'Arial';
+    font-weight: 600;
+
+    /*Declarando vars*/
+    --color-titles: #B52184;
+    --color-p: #312D64;
+    --bg-card: #fff;
+
+}
+
+body {
+
+    font-size: 1.6rem;
+    min-height: 100vh;
+
+}
+
+div#page{
+    max-width: 72rem;
+    min-height: 100vh;
+    margin: 0 auto;
+    
+    
+    background-color: rgb(187, 218, 208);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 3.2rem;
+}
+
+main img{
+    width: 100%;
+}
+
+main section.main-title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    
+    margin: 1.8rem 0 0;
+}
+
+main section.main-title h1{
+    color: var(--color-titles);
+    font-size: 3.2rem;
+    font-weight: black;
+}
+
+main section.main-title p{
+    color: var(--color-p);
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 3.4rem;
+ 
+}
+
+main section.main-title figure{
+    
+    margin: 0 0 9.2rem;
+ 
+}
+
+
+section.cards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.8rem;
+
+
+    background: var(--color-p);
+    padding: 5.2rem 3.2rem;
+    
+}
+
+section.cards div.card{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    background: var(--bg-card) ;
+
+    width: 100%;
+    
+    padding: 2.6rem 5.6rem 2.6rem 2.6rem;
+
+    border-radius: 0.8rem;
+    
+
+}
+
+section.cards div.card img{
+    max-width: 8rem;
+
+}
+
+section.cards div.card div.text h2{
+    
+    color: var(--color-titles);
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 1.8rem;
+
+}
+
+section.cards div.card div.text p{
+    
+    color: var(--color-p);
+    font-size: 1.6rem;
+    font-weight: 900;
+
+    
+
+}
+
+section.contact{
+    padding: 7.5rem 4rem;
+}
+
+section.contact form{
+    width: 100%;
+}
+
+section.contact form fieldset{
+    border: none;
+    
+
+    
+}
+
+ div.fieldset-wrapper legend {
+    
+    font-size: 3rem;
+    color: var(--color-titles);
+    font-weight: 900;
+
+    margin-bottom: 4rem;
+    
+}
+
+
+div.input-wrapper{
+    
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
+    max-width: 100%;
+    
+}
+div.input-wrapper label{
+
+    display: none;
+   
+}
+
+div.input-wrapper input#name{
+    background-image: url(./images/person.png);
+    background-repeat: no-repeat;
+    background-position: left 14px center;
+}
+
+div.input-wrapper input#email{
+    background-image: url(./images/at.png);
+    background-repeat: no-repeat;
+    background-position: left 14px center;
+}
+
+div.input-wrapper input, textarea{
+    
+    border-radius: 1.6rem;
+    border: 2px solid var(--color-p);
+    padding: 1.6rem 0 1.6rem 5rem;
+    
+   
+}
+
+div.input-wrapper input::placeholder, textarea::placeholder{
+    
+    color: var(--color-p);
+    font-weight: 600;
+   
+}
+
+div.input-wrapper textarea{
+   
+   padding: 1.6rem;
+   line-height: 140%;
+}
+
+
+button{
+    padding: 1rem 1.6rem;
+    height: 4.4rem;
+    background-image: linear-gradient(to right, #343193, #333087, #322f7b, #312d6f, #302c63);
+    border: none;
+    border-radius: 1.6rem;
+    color: var(--bg-card);
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-top: 3.4rem;
+
+}
+
