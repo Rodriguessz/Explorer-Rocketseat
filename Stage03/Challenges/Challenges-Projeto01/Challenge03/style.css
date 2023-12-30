@@ -132,9 +132,9 @@ figure.landscape img:hover{
   filter: saturate(130%) hue-rotate(10deg) contrast(101%)
 }
 
-/* main{
-  padding: 0 2.2rem;
-} */
+main{
+  overflow-y: scroll  ;
+}
 
 main section.main-article figure{
 
@@ -272,12 +272,15 @@ footer{
 
   div#app header{
     padding: 1.6rem 11.2rem;
+    
+
   }
 
   main{
     display: flex;
     padding: 4rem 11rem;
     gap: 3.6rem;
+    
     
   }
 

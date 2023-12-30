@@ -127,6 +127,8 @@ section.cards div.card{
     padding: 2.6rem 5.6rem 2.6rem 2.6rem;
 
     border-radius: 2.4rem;
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     
 
 }
@@ -240,8 +242,20 @@ form button{
     font-weight: bold;
     font-size: 1.4rem;
     margin-top: 3.4rem;
+    transition-property: filter, transform;
+    transition-timing-function: ease-in;
+    transition-duration: 0.5s;
+    
+    
 
 }
+
+form button:hover{
+    filter: brightness(80%);
+    cursor: pointer;
+    transform: scale(1.08);
+}
+
 
 img#stars{
     display: none;
