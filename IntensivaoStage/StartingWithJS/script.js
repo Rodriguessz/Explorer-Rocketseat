@@ -1,9 +1,9 @@
 
 // 1. Crie um script que exiba a mensagem "Hello World!" em um alerta no navegador.
  
-let message = "Hello world!"
+// let message = "Hello world!"
 
-window.alert(message)
+// window.alert(message)
 
 // 2. Crie um script que declare duas variáveis e exiba o resultado da soma entre elas.
 
@@ -25,10 +25,35 @@ console.log(isNumber)
 let string = "Eu sou uma string"
 let isString = (typeof string === "string") ? "É uma String " : "Não é uma String"
 console.log(isString)
-  78
+
 // 5. Crie um script que declare uma variável e verifique se o seu valor é um booleano. Se for, exiba a mensagem "É um booleano", caso contrário, exiba a mensagem "Não é um booleano".
+
+let boolean = true
+let isBoolean = (typeof boolean === "boolean") ? "É um booleano " : "Não é um booleano"
+console.log(isBoolean)
+
 // 6. Crie um script que declare duas variáveis e exiba o resultado da subtração entre elas.
+
+let sub = n1 - n2
+console.log(sub)
+
 // 7. Crie um script que declare duas variáveis e exiba o resultado da multiplicação entre elas.
+
+let mult = n1 * n2
+console.log(mult)
 // 8. Crie um script que declare duas variáveis e exiba o resultado da divisão entre elas.
+
+let div = n1 / n2
+console.log(div)
+
 // 9. Crie um script que declare uma variável e verifique se o seu valor é um número par. Se for, exiba a mensagem "É um número par", caso contrário, exiba a mensagem "Não é um número par".
+
+
 // 10. Crie um script que declare uma variável e verifique se o seu valor é um número ímpar. Se for, exiba a mensagem "É um número ímpar", caso contrário, exiba a mensagem "Não é um número ímpar".
+
+const EvenOdd = 10
+
+const isEvenOrOdd = (EvenOdd % 2 === 0) ? "É um número par" : "É um número impar"
+
+
+
