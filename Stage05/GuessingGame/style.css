@@ -1,0 +1,206 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+:root{
+    font-size: 62.5%;
+    font-family: 'Montserrat', 'sans-serif';
+
+    /* Variveis CSS */
+    --main-bg-color: linear-gradient(to right, #00ddfb, #00c1e7, #00a5d0, #008ab8, #00709f);
+    --main-card-bg: #ffffff;
+    --main-font-color: #34355B;
+    --main-bg-input-color: #DCE2E9;
+    --main-bg-btn-color: #7879F1;
+    --main-bg-hv-btn-color:#6c6cd4;
+    --main-btn-font-color: #ffffff;
+
+
+}
+
+
+body{
+    font-size: 1.6rem;
+    min-height: 100vh;
+    background-image: var(--main-bg-color);
+
+
+
+}
+
+div#page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hide{
+    display: none !important;
+}
+
+p.error-message {
+    color: #b00540!important;
+    text-align: center;
+    opacity: 50%;
+}
+
+main{
+
+    /* Quando a largura da tela disponivel for menor que 42.8rem, nossa main ocupara 90% da largura */
+    width: min(42.8rem, 90%); 
+    min-height: 28rem;
+
+    border-radius: 0.6rem;
+
+    padding: 4.8rem  6.4rem 6.4rem;
+
+    background-color: var(--main-card-bg);
+
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+}
+
+
+/* screen 01 */
+div.screen1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.8rem;
+}
+
+section.main-title{
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+main div.screen1 section.main-title h1{
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: var(--main-font-color);
+}
+
+main  div.screen1 section.main-title p{
+
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--main-font-color);
+}
+
+div.screen1 section.form-input form fieldset{
+    border: none;
+    display: flex;
+    position: relative;
+}
+
+div.screen1 section.form-input form fieldset label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1px;
+    opacity: 0;
+}
+div.screen1 section.form-input form fieldset input{
+    height: 5.3rem;
+    width: 5rem;
+
+    background-color: var(--main-bg-input-color);
+
+    border-radius: 0.4rem 0 0 0.4rem;
+    border: 1px solid #DCE2E9;
+
+    font-family: 'DM Sans';
+    
+    padding: 1rem;
+}
+
+div.screen1  section.form-input form fieldset input:placeholder-shown{
+    font-family:'DM Sans' ;
+    padding: 1.8rem;
+    
+}
+
+div.screen1 section.form-input form fieldset button{
+    height: 5.3rem;
+    /* width: 8.2rem; */
+
+    border: none;
+    border-radius: 0 0.4rem 0.4rem 0;
+
+    background-color: var(--main-bg-btn-color);
+
+    font-family: 'Dm Sans', 'Arial';
+    font-weight: 600;
+    color: var(--main-btn-font-color);
+
+    cursor: pointer;
+    padding: 1.6rem;
+
+
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    
+}
+div.screen1 section.form-input form fieldset button:hover{
+   
+
+    background-color: var(--main-bg-hv-btn-color);
+    transform: scale(1.02);
+
+
+}
+
+
+/* Screen 2 */
+div.screen2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4.8rem;
+
+    
+}
+
+div.screen2 h2{
+    font-size: 2.4rem;
+    font-weight: 400;
+    color: var(--main-font-color);
+
+}
+
+div.screen2 button{
+    
+    border: none;
+    border-radius: 0.6rem;
+
+    padding: 1.6rem;
+
+    font-family: 'DM Sans', 'Arial';
+    font-weight: 600;
+    font-size: 1.6rem;
+    color: var(--main-btn-font-color);
+
+    background-color: var(--main-bg-btn-color);
+
+    cursor: pointer;
+
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    
+
+
+}
+
+div.screen2 button:hover{
+   
+    background-color: var(--main-bg-btn-color);
+    transform: scale(1.02);
+    
+
+}
