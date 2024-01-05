@@ -1,0 +1,229 @@
+/* Global configs */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+
+    /* Controling the root font*/
+    font-size: 62.5%;
+    font-family: "Montserrat", "DM Sans", "Arial";
+
+    /* Css variables */
+    --main-bg-color: linear-gradient(to right top, #190361, #3d0888, #630db0, #8d0dd8, #bb00ff);
+    --main-font-color: #34355B;
+    --main-bg-msg-color: #E4EDF1;
+    --main-msg-font-color: #000;
+    --main-btn-bg: #FF9500;
+    
+}
+
+body{
+    min-height: 100vh;
+
+    background-image: var(--main-bg-color);
+
+    font-size: 1.6rem;
+
+    animation: gradient 10s ease infinite;
+    background-size: 200% 200%;
+
+}
+
+
+/* Page configs */
+div#page{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100vh;
+}
+
+main{
+
+    width: min(42.8rem, 90%);
+    padding: 4.8rem 6.4rem 6.4rem;
+
+    background-color: #ffff;
+
+    border-radius: .5rem;
+
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+
+.hidden{
+    display: none !important;
+}
+
+
+/* Controls the screen1 */
+
+section.screen1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    
+    text-align: center;
+}
+
+section.screen1 div.infos h1{
+    color: var(--main-font-color);
+    font-size: 2.4rem;
+
+}
+
+section.screen1 div.infos p{
+
+    color: var(--main-font-color);
+
+    font-size: 1.5rem;
+    font-family: "DM Sans";
+    font-weight: 400;
+
+    margin-top: 1.4rem;
+
+}
+
+section.screen1 figure img{
+    
+    width: 100%;
+    cursor: pointer;
+    transition: filter 1s;
+
+}
+
+section.screen1 figure img:hover{
+    animation-name: openCookie;
+    animation-duration: 0.25s;
+    animation-iteration-count: infinite;
+
+    filter:  saturate(150%);
+    
+}
+
+/* Controls de screen2 */
+
+section.screen2{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    text-align: center;
+
+}
+
+section.screen2 div.message h2{
+    color: var(--main-font-color);
+    font-size: 2.4rem;
+}
+
+section.screen2 div.luck-message{
+    
+    background-color: var(--main-bg-msg-color);
+
+    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+
+    padding: 1rem;
+
+
+    margin-top: 1.8rem;
+
+    animation-name: openedCookie;
+    animation-duration: 1s;
+    animation-fill-mode: both; /*NOTE: The element will receive the style of 0% before the animation starts and will get the final state.*/
+    animation-timing-function: ease-in-out
+    ;
+}
+
+section.screen2 div.luck-message p{
+    
+    font-size: 2.4rem;
+    font-family: "Dancing Script";
+}
+
+section.screen2 figure{
+    
+   margin-top: 4rem;
+   margin-bottom: 2rem;
+}
+
+section.screen2 button{
+
+    width: 17.4rem;
+
+    padding: 1.6rem;
+
+    border: none;
+    border-radius: .5rem;
+
+    background-color: var(--main-btn-bg);
+
+    font-family: "DM Sans";
+    color: var(--main-bg-msg-color);
+    
+    cursor: pointer;
+
+}
+
+
+/* CSS animations */
+
+@keyframes openCookie{
+    0%{
+       transform: translateX(0rem) rotate(-1deg);
+         
+    }
+
+    50%{
+        transform: translateX(1rem) rotate(5deg);
+        
+    }
+
+    75%{
+        
+        transform: translateX(0.5rem) rotate(1deg);
+    }
+    
+    100%{   
+        
+        transform: translateX(0.2rem) translateY(0.2rem) rotate(0deg);
+
+    }
+   
+}
+
+@keyframes openedCookie {
+    0%{
+        transform:  translateY(140%) scale(0.1);
+    }
+
+    100%{
+        transform: translateY(0%) scale(1); 
+    }
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+
+  
+ 
+  
