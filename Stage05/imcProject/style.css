@@ -1,0 +1,178 @@
+
+/* Global estilization */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Vendor prefixes  */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Root estilization */
+
+:root{
+
+    /* Font padronization */
+    font-size: 62.5%;
+    font-family: "Roboto", "Arial";
+    
+
+    /* CSS variables */
+    --main-bg-color: linear-gradient(to left bottom, #00ddfb, #00c1e7, #00a5d0, #008ab8, #00709f);
+    --card-bg-color: #fff;
+    --main-font-color: #0C3440;
+    --main-label-font-color: #043646;
+    --main-bg-input: #DCE2E9;
+    --main-input-stroke: #495057;
+    --main-bg-btn: #02799D;
+    --main-bg-btn-hover: #0b6884;
+
+}
+
+
+
+/* Project estilization */
+
+.hidden{
+    display: none;
+}
+
+
+body{
+
+    font-size: 1.6rem;
+
+    min-height: 100vh;
+    
+    background-image: var(--main-bg-color);
+    
+}
+
+
+div#page{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+main{
+    width: min(42.8rem , 90%);
+
+    background-color: var(--card-bg-color);
+
+    border-radius: .6rem;
+
+    padding: 4.8rem 6.4rem 6.4rem;
+
+
+}
+
+main form{
+
+}
+
+main form fieldset{
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+fieldset div.fieldset-wrapper legend{
+
+    font-weight: bold;
+    font-size: 3.2rem;
+    line-height: 4rem;
+
+    color: var(--main-font-color) ;
+
+    margin-bottom: 1.6rem;
+
+
+}
+
+fieldset div.input-wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+
+fieldset div.input-wrapper label{
+    
+    color: var(--main-label-font-color) ;
+    
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+}
+
+fieldset div.input-wrapper input{
+
+    padding: 1.6rem;
+
+    border-radius: .6rem;
+    border: 1px solid var(--main-input-stroke) ;
+
+    background-color: var(--main-bg-input);
+
+    font-family: "Roboto";
+    
+}
+
+fieldset div.input-wrapper input:focus{
+
+    border: 1px solid var(--main-bg-btn) ;
+    outline: 1px solid var(--main-bg-btn);
+}
+
+fieldset div.input-wrapper input:placeholder{
+
+        color: var(--main-input-stroke);
+        font-family: "Roboto";    
+}
+
+button{
+
+    margin-top: 1.6rem;
+    padding: 1.6rem;
+    font-family: "Roboto";
+    font-weight: bold;
+
+
+    color: var(--card-bg-color);
+
+    background-color: var(--main-bg-btn);
+
+    border: none;
+    border-radius: 0.6rem;
+
+    cursor: pointer;
+
+    transition-property: transform , background-color;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in;
+    
+
+
+}
+
+button:hover{
+
+    background-color: var(--main-bg-btn-hover);
+    transform: scale(1.01);
+    
+
+}
+
+
+
+
+
+
+
+
+
+
