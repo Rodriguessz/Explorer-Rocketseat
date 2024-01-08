@@ -71,10 +71,6 @@ main{
 
 }
 
-main form{
-
-}
-
 main form fieldset{
     border: none;
     display: flex;
