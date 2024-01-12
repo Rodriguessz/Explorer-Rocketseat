@@ -8,11 +8,19 @@
     <title>IMC Calculator - Rocketseat</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="./myWayToSolve.js" defer></script>
+    <!-- <script src="./rocketseatWay.js" defer></script> -->
+
 </head>
 <body>
 
 
     <div id="page">
+
+        <section class="error-message hidden">
+            <p id="errorMessage">Digite somente números</p>
+        </section>
+
         <main>
 
             <form action="">
@@ -29,7 +37,7 @@
                     <!-- Weight input -->
                     <div class="input-wrapper">
                         <label for="weight">Peso (Kg)</label>
-                        <input type="text" name="weight" id="weight" placeholder="72"/>
+                        <input type="text" name="weight" id="weight" placeholder="72.00" required/>
                     </div>
 
 
@@ -37,11 +45,13 @@
 
                     <div class="input-wrapper">
                         <label for="height">Altura (Cm)</label>
-                        <input type="text" name="height" id="height" placeholder="178"/>
+                        <input type="text" name="height" id="height" placeholder="178" maxlength="3" required/>
                         
                     </div>
 
 
+
+                    
                     <button id="imcButton">Calcular IMC ⇨</button> 
 
                 </fieldset>
@@ -52,24 +62,30 @@
             </form>
 
 
-            <section class="modal-popup hidden">
-                <figure>
-                    <img src="./assets/images/" alt="Imagem de um X indicando o fechamento da aba">
-                </figure>
-
-                <p>
-                    mensagem do IMC
-                </p>
-
-
-            </section>
 
         </main>
 
+        <section class="modal-popup hidden ">
+
+
+            <div class="modal">
+
+                <button id="close">
+                    <img src="./assets/images/close.svg" alt="Imagem de um X indicando o fechamento da aba">
+                </button>
+
+                <p id="imcMessage">
+                   Seu IMC é de 28  
+                </p>
+
+
+            </div>
+           
+
+        </section>
 
     </div>
-    
 
-    <script src="./main.js"></script>
+    
 </body>
 </html>

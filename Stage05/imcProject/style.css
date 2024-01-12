@@ -28,15 +28,38 @@
     --main-input-stroke: #495057;
     --main-bg-btn: #02799D;
     --main-bg-btn-hover: #0b6884;
+    --error-message-color: #F03E3E;
 
 }
 
+/* Rotation classes */
+.hidden{
+    display: none !important;
+}
 
 
 /* Project estilization */
 
-.hidden{
-    display: none;
+section.error-message{
+
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+
+    padding: 1rem;
+
+    background-color: var(--error-message-color);
+    
+    text-align: center;
+
+    font-weight: bold;
+    color: var(--card-bg-color);
+
+    animation-name:dropError;
+    animation-duration: 1s;
+    
+  
 }
 
 
@@ -59,6 +82,7 @@ div#page{
     
 }
 
+
 main{
     width: min(42.8rem , 90%);
 
@@ -68,10 +92,6 @@ main{
 
     padding: 4.8rem 6.4rem 6.4rem;
 
-
-}
-
-main form{
 
 }
 
@@ -102,6 +122,7 @@ fieldset div.input-wrapper{
 }
 
 fieldset div.input-wrapper label{
+    width: 100%;
     
     color: var(--main-label-font-color) ;
     
@@ -111,6 +132,7 @@ fieldset div.input-wrapper label{
 
 fieldset div.input-wrapper input{
 
+    width: 100%;
     padding: 1.6rem;
 
     border-radius: .6rem;
@@ -134,7 +156,7 @@ fieldset div.input-wrapper input:placeholder{
         font-family: "Roboto";    
 }
 
-button{
+form button{
 
     margin-top: 1.6rem;
     padding: 1.6rem;
@@ -168,11 +190,137 @@ button:hover{
 }
 
 
+section.modal-popup{
+   
+    inset: 0; /* TOP 0 | BOTTOM 0 | LEFT 0 | RIGHT 0 */
+
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.9); 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: appearingModalDiv;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    
+
+    
+}
+
+section.modal-popup div.modal{
+    position: relative;
+
+    min-width: 36.2rem;
+
+
+    padding: 6.4rem;
+    background-color: var(--card-bg-color);
+
+    border-radius: .6rem;
+
+    animation-name: popUpCard;
+    animation-duration: 1s;
+    
+   
+
+}
+
+
+section.modal-popup div.modal button#close{
+
+    background: none;
+    border: none;
+
+    position: absolute;
+
+    top: 16px;
+    right: 16px;
+
+    cursor: pointer;
+
+    transition: 0.5s;
+
+  
+}
+
+section.modal-popup div.modal button#close:hover{
+    transform: scale(1.1);
+}
+
+section.modal-popup div.modal p{
+   
+    color: var(--main-font-color);
+
+    font-weight: bold;
+    font-size: 3.2rem;
+    line-height: 4rem;
+}
 
 
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS animations */
+
+@keyframes dropError {
+    
+    0%{
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateY(0%);
+    }
+}       
+
+@keyframes popUpCard {
+    0%{
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    100%{
+        opacity: 1;
+        transform: scale(1);    
+    }
+}
+
+@keyframes appearingModalDiv{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+
+/* Media querys */
+
+@media (max-width: 380px){
+
+    fieldset div.fieldset-wrapper legend{
+
+        text-align: center;
+    
+    }
+}
 
 
