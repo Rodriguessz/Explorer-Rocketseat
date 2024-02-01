@@ -3,7 +3,8 @@ import { Error} from "./error.js"
 
 //Object input - Related to the inputs elements
 const Input = {
-    
+    inputs: document.querySelectorAll("input"),
+
     inputWeigth : document.querySelector("#weight"),
 
     inputHeigth : document.querySelector("#height"),
@@ -32,15 +33,33 @@ const Input = {
         input.value = ""
     },
 
-   
-   
-   
+    inputHeigthFilled(){
+       
+    },
 
+    inputWeigthFilled(){
+       
+    },
 
+    checkInputFilled(){
+        const allinputFilled = Array.from(Input.inputs).every(input => input.value.trim() !== "");
 
+        console.log(allinputFilled)
     
+        if(allinputFilled){
+            Error.close()
+        }
+    }
 
 }
+
+Input.inputs.forEach((input)=>{
+    input.addEventListener("input", Input.checkInputFilled)
+})
+
+
+
+
 
 
 export {Input}
