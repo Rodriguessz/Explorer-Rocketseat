@@ -28,6 +28,8 @@ const Modal = {
     // Add an animation to the close card action
     closeCard(){
 
+        
+
         Modal.modalCard.animate({
             transform: ["scale(1)", "scale(0)"],
         }, {
@@ -54,6 +56,15 @@ const Modal = {
     
 
 }
+//Close the card when Enter key is Clicked.
+window.addEventListener("keydown", (e)=>{
+    
+   if(e.key === 'Escape' && !Modal.modalPopUp.classList.contains("hidden")){
+        // e.preventDefault() - If the key was Enter, it would be necessary.
+        
+        Modal.closeCard()
+   }
+})
 
 
 export {Modal}

@@ -1,7 +1,9 @@
-import './modules/modal.js'
+
 import './modules/button.js'
-import './modules/error.js'
-import './modules/input.js'
+
+
+
+
 
 // Calculate the IMC
 export default function imcCalc(altura, peso){
