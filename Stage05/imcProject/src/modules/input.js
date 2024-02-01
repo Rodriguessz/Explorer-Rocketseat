@@ -1,6 +1,7 @@
+import { Error} from "./error.js"
+
 
 //Object input - Related to the inputs elements
-
 const Input = {
     
     inputWeigth : document.querySelector("#weight"),
@@ -29,7 +30,14 @@ const Input = {
 
     clearInput(input){
         input.value = ""
-    }
+    },
+
+   
+   
+   
+
+
+
     
 
 }

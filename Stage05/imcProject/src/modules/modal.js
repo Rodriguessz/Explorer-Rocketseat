@@ -61,10 +61,10 @@ window.addEventListener("keydown", (e)=>{
     
    if(e.key === 'Escape' && !Modal.modalPopUp.classList.contains("hidden")){
         // e.preventDefault() - If the key was Enter, it would be necessary.
-        
+
         Modal.closeCard()
    }
-})
+})  
 
 
 export {Modal}

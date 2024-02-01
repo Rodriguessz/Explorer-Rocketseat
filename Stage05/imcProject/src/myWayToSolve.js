@@ -1,6 +1,8 @@
 
 import './modules/button.js'
 
+import {Input} from './modules/input.js'
+
 
 
 
@@ -18,6 +20,9 @@ export default function imcCalc(altura, peso){
 
     
 }
+
+
+Input.inputValueFilled()
 
 
 
