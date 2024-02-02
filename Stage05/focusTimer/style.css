@@ -82,14 +82,35 @@ main section.controls{
   gap: 1rem;
 }
 
-main section.controls button{
+section.controls button{
 
   border: none;
   background: none;
 
-  font-size: 3.4rem;
+  font-size: clamp(3.4rem, 2.2rem + 2vw, 6.4rem);
+  color: var(--primary-color);
+}
+
+section.controls button.secondary{
   color: var(--font-color);
 }
+
+
+/* Controls */
+
+.running button.ph-play-circle, .running button.ph-timer, .music-on button.ph-speaker-none,
+html:not(.running) button.ph-pause-circle, html:not(.running) button.ph-stop-circle,
+html:not(.music-on) button.ph-speaker-high{
+  display: none;
+}
+
+
+
+
+
+
+
+
 
 
 
