@@ -117,17 +117,19 @@ section.controls button{
 
   font-size: clamp(3.4rem, 2.2rem + 2vw, 6.4rem);
   color: var(--primary-color);
+  cursor: pointer;
 }
 
 section.controls button.secondary{
   color: var(--secondery-color);
+ 
 }
 
 
 /* Controls */
 
 /* CSS NOT - Se não houver a classe X, então adicione essa estilização*/
-.running button.ph-play-circle, .running button.ph-timer, .music-on button.ph-speaker-none,.light i.ph-sun,
+.running button.ph-play-circle, .running button.ph-timer, .music-on button.ph-speaker-none, .light i.ph-sun,
 html:not(.running) button.ph-pause-circle, html:not(.running) button.ph-stop-circle,
 html:not(.music-on) button.ph-speaker-high, html:not(.light) i.ph-moon{
   display: none;
