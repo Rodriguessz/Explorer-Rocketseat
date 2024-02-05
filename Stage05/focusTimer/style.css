@@ -15,17 +15,31 @@
   --font-color:hsl(var(--hue), 40%, 98%);
   --primary-color:hsl(var(--hue), 100%, 63%);
   --controls-bg-color:hsl(var(--hue), 0%, 14%);
+  --secondery-color:hsl(var(--hue), 40%, 98%);
 
+ 
+
+
+}
+
+html.light{
+  
+  --bg-color:hsl(var(--hue), 40%, 98%) !important;
+  --font-color: hsl(var(--hue), 5%, 7%) !important;
+
+  
 }
 
 
 
 
 body{
+  /* Adiciona uma transição nas propriedades */
+  transition: background-color 0.5s ease, color 0.5s ease; 
+
   background-color: var(--bg-color);
   color: var(--font-color);
   min-height: 100vh;
- 
 }
 
 div#app{ 
@@ -54,7 +68,21 @@ div#app button#toggle-mode{
   font-size: 3rem;
 
   color: var(--font-color);
+  cursor: pointer;
 
+}
+
+/* Somente quando a opção screen reader tiver ativa */
+div#app  span.sr-only{
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  margin:-1px;
+  padding: 0;
+  appearance: none;
+ 
 }
 
 main{
@@ -92,17 +120,23 @@ section.controls button{
 }
 
 section.controls button.secondary{
-  color: var(--font-color);
+  color: var(--secondery-color);
 }
 
 
 /* Controls */
 
-.running button.ph-play-circle, .running button.ph-timer, .music-on button.ph-speaker-none,
+/* CSS NOT - Se não houver a classe X, então adicione essa estilização*/
+.running button.ph-play-circle, .running button.ph-timer, .music-on button.ph-speaker-none,.light i.ph-sun,
 html:not(.running) button.ph-pause-circle, html:not(.running) button.ph-stop-circle,
-html:not(.music-on) button.ph-speaker-high{
+html:not(.music-on) button.ph-speaker-high, html:not(.light) i.ph-moon{
   display: none;
 }
+
+/* Todos os P's que não conterem essa classe, aplique essa classe  */
+/* p:not(.destaque, .teste){
+  display: none;
+} */
 
 
 
