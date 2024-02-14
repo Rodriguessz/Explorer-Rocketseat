@@ -22,6 +22,7 @@
 
 }
 
+
 html.light{
   
   --bg-color:hsl(var(--hue), 40%, 98%) !important;
@@ -29,9 +30,6 @@ html.light{
 
   
 }
-
-
-
 
 body{
   /* Adiciona uma transição nas propriedades */
@@ -118,6 +116,8 @@ section.controls button{
   font-size: clamp(3.4rem, 2.2rem + 2vw, 6.4rem);
   color: var(--primary-color);
   cursor: pointer;
+
+
 }
 
 section.controls button.secondary{
@@ -133,12 +133,10 @@ section.controls button.secondary{
 html:not(.running) button.ph-pause-circle, html:not(.running) button.ph-stop-circle,
 html:not(.music-on) button.ph-speaker-high, html:not(.light) i.ph-moon{
   display: none;
+  
 }
 
-/* Todos os P's que não conterem essa classe, aplique essa classe  */
-/* p:not(.destaque, .teste){
-  display: none;
-} */
+
 
 
 

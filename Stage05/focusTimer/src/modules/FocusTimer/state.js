@@ -1,4 +1,4 @@
-//Arquivo que define o estado padrão para o meu Focus Timer
+//Arquivo que define o estado do Focus Timer
 
 export default {
   minutes: 25,
@@ -6,3 +6,4 @@ export default {
   isRunning: false,
   isMute: true,
 }
+
