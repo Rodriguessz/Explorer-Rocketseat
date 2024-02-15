@@ -1,9 +1,10 @@
 //Arquivo que define o estado do Focus Timer
 
 export default {
-  minutes: 25,
-  seconds: 0,
+  minutes: 0,
+  seconds: 10,
   isRunning: false,
   isMute: true,
+  countDownId: null,
 }
 

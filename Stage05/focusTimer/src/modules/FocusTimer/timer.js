@@ -2,6 +2,7 @@
 import state from "./state.js"
 import * as element from "./elements.js" 
 import { reset } from "./actions.js"
+import { kitchenTimer } from "./sounds.js"
 
 
 export function updateDisplay(minutes, seconds){
@@ -31,6 +32,8 @@ export function updateDisplay(minutes, seconds){
 
 
 export function countDown(){
+    //Limpa o timeout
+    clearTimeout(state.countDownId)
 
     //Retorna o conteúdo de cada span, transformado-os em Number.
     let minutes = Number(element.clockMinutes.textContent)
@@ -58,8 +61,11 @@ export function countDown(){
     //Verifica se os minutos do meu timer são inferiores a 0
 
     if(minutes < 0){
+
+         kitchenTimer.play()
         //Funcção reset importada do modulo actions.js (Atualiza o display para o estado inicial)
         reset()
+        
         return 
     }
 
@@ -67,8 +73,12 @@ export function countDown(){
     //Atualiza o display com base nos segundos e minutos atualizados dentro da nossa recursão;
     updateDisplay(minutes, seconds)
 
-    //Adiciona um delayu de 1000ms e chama a funcção countdown() recursivamente
-    setTimeout(()=>{countDown()}, 100)
+    /* 
+   Para evitar a acumulação de timeouts a cada clique nos botões de play e pause, é importante limpar
+   o timeout existente antes de configurar um novo. Isso garante que apenas um timeout esteja em execução
+   a cada momento, prevenindo comportamentos indesejados.
+*/
+    state.countDownId = setTimeout(()=>{countDown()}, 1000)
 
   
-}   
+}    

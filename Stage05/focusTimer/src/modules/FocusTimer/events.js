@@ -3,6 +3,7 @@ import * as actions from "./actions.js"
 import * as element from "./elements.js"
 import state from "./state.js";
 import { updateDisplay } from "./timer.js";
+import * as sounds from "./sounds.js"
 
 //Função que registra qual controle foi acionado e qual ação deve ser executada
 export function registerControls (){
@@ -64,6 +65,16 @@ export function setMinutes(){
 
     })
     
+}
+
+export function loopingMusic(){
+  //Se o som acabar, verifque
+  sounds.bgMusic.addEventListener('ended', function() {
+    if (element.clockMinutes.textContent > 0 && element.clockSeconds.textContent > 0) {
+        this.play(); // Reinicia a reprodução da música
+    }
+});
+
 }
 
 
