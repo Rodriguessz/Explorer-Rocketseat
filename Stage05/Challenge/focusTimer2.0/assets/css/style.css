@@ -32,9 +32,11 @@
 
 }
 
-html.running button.ph-play-circle, html:not(.running) button.ph-pause-circle, html:not(.light) i.ph-moon, html.light i.ph-sun {
+html.running button.ph-play-circle, html:not(.running) button.ph-pause-circle, html:not(.dark) i.ph-sun, html.dark i.ph-moon {
     display: none;
 }
+
+
 
 body{
     display: grid;
@@ -42,6 +44,10 @@ body{
 
     height: 100vh;
     font-size: 1.6rem;
+
+    overflow-y: hidden;
+
+    transition: 0.5s;
 }
 
 
