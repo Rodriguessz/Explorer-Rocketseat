@@ -54,7 +54,6 @@ body{
 
     padding: 2rem;
 
-    position: relative;
 
     /* background-color: bisque; */
 
@@ -64,8 +63,8 @@ body{
 
 button.toggle-mode{
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 3rem;
+    right: 3rem;
 
     border: none;
     background: none;
@@ -103,7 +102,7 @@ div.clock{
 
 div.clock span{
     flex-direction: column;
-    font-size: clamp(2rem, 1vw + 8rem, 12rem);
+    font-size: clamp(2.4rem, 2vw + 10rem, 12rem);
     color: var(--main-color);
     font-weight: 500;
 }
@@ -121,7 +120,7 @@ div.controls button{
     background: none;
     color: var(--main-color);
 
-    font-size: clamp(3.2rem, 2vw + 2rem, 4.2rem);
+    font-size: clamp(4rem, 2vw + 2rem, 4.8em);
 
     cursor: pointer;
 }
@@ -129,7 +128,7 @@ div.controls button{
 
 section.btn-sound{
     display: flex;
-    gap: 2rem;
+    gap: 4rem;
     flex-wrap: wrap;
     justify-content: center;
     
@@ -160,5 +159,47 @@ section.btn-sound div:hover{
 section.btn-sound div.active{
     background-color: var(--main-bg-act-sound);
     color: var(--main-color-act);
+}
+
+
+
+
+
+
+@media (min-width: 768px) {
+    
+   main{
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: none;
+    height: 100vh;
+    align-items: center;
+    gap: 16rem;
+   }
+
+   div.controls{
+    gap: 3.2rem;
+    
+}
+
+
+   section.btn-sound{
+    
+   
+    gap: 3.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+
+    
+
+    
+}
+
+section.btn-sound div{
+
+       height: 14rem;
+    
+    
+
+}
 }
 
