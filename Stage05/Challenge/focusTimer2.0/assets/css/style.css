@@ -37,7 +37,7 @@
 }
 
 
-html.running button.ph-play-circle, html:not(.running) button.ph-pause-circle, html:not(.dark) i.ph-sun, html.dark i.ph-moon {
+html.running button.ph-play-circle, html.running button.ph-timer, html:not(.running) button.ph-pause-circle, html:not(.running) button.ph-plus-circle, html:not(.running) button.ph-minus-circle, html:not(.dark) i.ph-sun, html.dark i.ph-moon {
     display: none;
 }
 

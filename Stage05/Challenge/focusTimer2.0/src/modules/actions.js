@@ -18,6 +18,12 @@ export function toggleTimer(){
 }
 
 
+export function setTime(){
+  clockMinutes.setAttribute("contenteditable", true)
+  clockMinutes.focus()
+}
+
+
 export function resetTimer(){
   updateDisplay()
   state.isRunning = false;

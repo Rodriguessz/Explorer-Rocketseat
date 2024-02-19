@@ -4,4 +4,5 @@ import * as timer from "./timer.js"
 export function start(){
   event.registerControls()
   timer.updateDisplay()
+  event.setTime()
 }
