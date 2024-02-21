@@ -1,7 +1,8 @@
 
 import state from "./stateTimer.js"
 import { timerCountDown, updateDisplay } from "./timer.js"
-import { clockMinutes, clockSeconds, error , toggleMode, sounds} from "./elements.js"
+import { clockMinutes, clockSeconds, error , toggleMode} from "./elements.js"
+import * as sounds from "./sound.js"
 
 
 
@@ -11,7 +12,7 @@ export function toggleTimer(){
   state.isRunning = document.documentElement.classList.toggle("running")
 
   timerCountDown()
-
+  sounds.btnPressSound.play()
   console.log(sounds)
 
 

@@ -8,11 +8,24 @@ export const arrayBgSounds = [
 
 
   {
-    sound : new Audio("./assets/button-press.wav"),
-    name: "Teste"
+    sound : new Audio(""),
+    name: ""
+  }, 
+
+  {
+    sound : new Audio(""),
+    name: ""
+  },
+
+  {
+    sound : new Audio(""),
+    name: ""
   }
   
 ]
+
+export const btnPressSound = new Audio("./assets/button-press.wav")
+
 
 
 
