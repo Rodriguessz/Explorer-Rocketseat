@@ -8,3 +8,7 @@ export const clockSeconds = document.getElementById("timerSeconds")
 
 
 export const error = document.querySelector(".error-message")
+
+export const sounds = document.querySelector(".btn-sound")
+
+export const arraySounds = sounds.querySelectorAll("div")

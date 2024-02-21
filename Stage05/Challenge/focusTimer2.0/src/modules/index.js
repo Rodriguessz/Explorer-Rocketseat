@@ -5,4 +5,5 @@ export function start(){
   event.registerControls()
   timer.updateDisplay()
   event.setTime()
+  event.registerControlsSounds()
 }

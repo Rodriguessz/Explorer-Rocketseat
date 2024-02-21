@@ -1,7 +1,8 @@
-import {controls, clockMinutes} from "./elements.js"
+import {controls, clockMinutes, sounds, arraySounds} from "./elements.js"
 import state from "./stateTimer.js"
 import * as actions from "./actions.js"
 import { updateDisplay } from "./timer.js"
+import * as soundsBg from "./sound.js"
 
 
 
@@ -55,5 +56,62 @@ export function setTime(){
     updateDisplay()
     clockMinutes.removeAttribute("contenteditable")
 
+  })
+}
+
+export function registerControlsSounds(){
+  sounds.addEventListener("click" , (e)=>{
+    
+    const sounds = Array.from(arraySounds)
+    const clickedElement = e.target
+    const action = clickedElement.dataset.action
+    const bgSounds = soundsBg.arrayBgSounds
+   
+    bgSounds.forEach(sound =>{
+      sound.sound.currentTime = 0;
+      sound.sound.pause()
+    })
+
+   
+
+    sounds.map(sound =>{
+
+      if(sound.classList.contains("active")){
+        sound.classList.remove("active")
+      }
+
+     
+
+    })
+
+    clickedElement.classList.add("active")
+
+ 
+    
+    
+    switch (action){
+      case "sound1":
+        soundsBg.arrayBgSounds[0].sound.play()
+        break
+
+      case "sound2":
+        soundsBg.arrayBgSounds[1].sound.play()
+        break
+
+      case "sound3":
+        soundsBg.arrayBgSounds[2].sound.play()
+        break
+      case "sound4":
+        soundsBg.arrayBgSounds[3].sound.play()
+        break
+
+      
+    
+    }
+
+
+    
+    
+  
   })
 }

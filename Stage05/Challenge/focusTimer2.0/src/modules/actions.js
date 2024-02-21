@@ -1,7 +1,7 @@
 
 import state from "./stateTimer.js"
 import { timerCountDown, updateDisplay } from "./timer.js"
-import { clockMinutes, clockSeconds, error , toggleMode} from "./elements.js"
+import { clockMinutes, clockSeconds, error , toggleMode, sounds} from "./elements.js"
 
 
 
@@ -12,6 +12,8 @@ export function toggleTimer(){
 
   timerCountDown()
 
+  console.log(sounds)
+
 
 
 
@@ -21,6 +23,8 @@ export function toggleTimer(){
 export function setTime(){
   clockMinutes.setAttribute("contenteditable", true)
   clockMinutes.focus()
+
+  
 }
 
 
@@ -72,4 +76,11 @@ export function minusTime(){
 
   updateDisplay(minutes, seconds)
 }
+
+
+
+
+
+
+
 
