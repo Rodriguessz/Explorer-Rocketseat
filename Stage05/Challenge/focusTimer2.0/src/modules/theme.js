@@ -8,7 +8,7 @@ element.toggleMode.addEventListener("click", (event)=>{
     element.html.classList.toggle("dark")
     event.currentTarget.querySelector("span").textContent = `Ativar ${mode} mode!`
 
-    console.log(event.currentTarget.querySelector("span").textContent)
+    event.currentTarget.querySelector("span").textContent
 
     lightMode = !lightMode
 })

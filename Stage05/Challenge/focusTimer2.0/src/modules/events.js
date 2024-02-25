@@ -1,4 +1,4 @@
-import {controls, clockMinutes, sounds, arraySounds} from "./elements.js"
+import {controls, clockMinutes, sectionSound, sounds} from "./elements.js"
 import state from "./stateTimer.js"
 import * as actions from "./actions.js"
 import { updateDisplay } from "./timer.js"
@@ -12,6 +12,8 @@ export function registerControls(){
   controls.addEventListener("click", (event)=>{
     
     const action = event.target.dataset.action
+
+  
     
     if(typeof actions[action] != "function"){
       return "Not a function"
@@ -60,58 +62,40 @@ export function setTime(){
 }
 
 export function registerControlsSounds(){
-  sounds.addEventListener("click" , (e)=>{
-    
-    const sounds = Array.from(arraySounds)
-    const clickedElement = e.target
-    const action = clickedElement.dataset.action
-    const bgSounds = soundsBg.arrayBgSounds
+  sectionSound.addEventListener("click" , (e)=>{
+
+    const action = e.target.dataset.action
+  
    
-    bgSounds.forEach(sound =>{
-      sound.sound.currentTime = 0;
-      sound.sound.pause()
+    sounds.forEach((sound)=>{
+
+      if(sound != e.target){
+        sound.classList.remove("active")
+  
+      }
+
+      if(e.target == sound){
+
+       state.isMute = !(sound.classList.toggle("active"))
+       
+       
+      }
+
     })
 
-   
-
-    sounds.map(sound =>{
-
-      if(sound.classList.contains("active")){
-        sound.classList.remove("active")
+  
+      if(!state.isMute && action == "sound1"){
+        actions.stopSound()
+        soundsBg.arrayBgSounds[0].sound.play()
+      }else if(!state.isMute && action == "sound2"){
+        actions.stopSound()
+        soundsBg.arrayBgSounds[1].sound.play()
+      }else{
+        console.log("Pausa")
+        actions.stopSound();
       }
 
      
-
-    })
-
-    clickedElement.classList.add("active")
-
- 
-    
-    
-    switch (action){
-      case "sound1":
-        soundsBg.arrayBgSounds[0].sound.play()
-        break
-
-      case "sound2":
-        soundsBg.arrayBgSounds[1].sound.play()
-        break
-
-      case "sound3":
-        soundsBg.arrayBgSounds[2].sound.play()
-        break
-      case "sound4":
-        soundsBg.arrayBgSounds[3].sound.play()
-        break
-
-      
-    
-    }
-
-
-    
-    
-  
-  })
+   
+})
 }

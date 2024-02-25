@@ -2,8 +2,7 @@
 import state from "./stateTimer.js"
 import { timerCountDown, updateDisplay } from "./timer.js"
 import { clockMinutes, clockSeconds, error , toggleMode} from "./elements.js"
-import * as sounds from "./sound.js"
-
+import * as soundsBg from "./sound.js"
 
 
 
@@ -12,12 +11,8 @@ export function toggleTimer(){
   state.isRunning = document.documentElement.classList.toggle("running")
 
   timerCountDown()
-  sounds.btnPressSound.play()
-  console.log(sounds)
-
-
-
-
+  soundsBg.btnPressSound.play()
+  
 }
 
 
@@ -38,6 +33,8 @@ export function resetTimer(){
 
 
 export function plusTime(){
+  soundsBg.plusAndMinusSound.play()
+
   let minutes = Number(clockMinutes.textContent)
   let seconds = Number(clockSeconds.textContent)
 
@@ -55,6 +52,8 @@ export function plusTime(){
 }
 
 export function minusTime(){
+  soundsBg.plusAndMinusSound.play()
+
   let minutes = Number(clockMinutes.textContent)
   let seconds = Number(clockSeconds.textContent)
 
@@ -78,6 +77,14 @@ export function minusTime(){
   updateDisplay(minutes, seconds)
 }
 
+export function stopSound(){
+  const bgSounds = soundsBg.arrayBgSounds
+  bgSounds.forEach(music => {
+    music.sound.pause()
+    music.sound.currentTime = 0
+    
+  })
+}
 
 
 

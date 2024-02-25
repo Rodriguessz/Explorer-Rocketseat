@@ -203,6 +203,14 @@ section.btn-sound div{
 
 section.btn-sound div:hover{
     transform: scale(1.1);
+    background-color: var(--main-bg-act-sound);
+    color: var(--main-color-act);
+}
+
+html.dark section.btn-sound div:hover{
+    transform: scale(1.1);
+    background-color: var(--second-bg-act-sound);
+    color: var(--main-color-act);
 }
 
 section.btn-sound div.active{

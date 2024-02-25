@@ -2,6 +2,7 @@
 import state from "./stateTimer.js"
 import { clockMinutes, clockSeconds} from "./elements.js"
 import { resetTimer } from "./actions.js"
+import { alert } from "./sound.js"
 
 
 
@@ -25,6 +26,7 @@ export function timerCountDown(){
    }
 
    if(currentMinute < 0){
+        alert.play()
         resetTimer()
         return
    }
