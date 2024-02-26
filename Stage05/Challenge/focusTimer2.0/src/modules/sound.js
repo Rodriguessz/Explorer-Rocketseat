@@ -8,18 +8,18 @@ export const arrayBgSounds = [
 
 
   {
-    sound : new Audio("./assets/button-press.wav"),
-    name: "Testando"
+    sound : new Audio("./assets/Oppenheimer.wav"),
+    name: "Oppenheimer Soundtrack"
   }, 
 
   {
-    sound : new Audio(""),
-    name: ""
+    sound : new Audio("./assets/lofi.mp3"),
+    name: "Lofi for study soundtrack"
   },
 
   {
-    sound : new Audio(""),
-    name: ""
+    sound : new Audio("./assets/Chuva.wav"),
+    name: "Rain sound"
   }
 
 ]

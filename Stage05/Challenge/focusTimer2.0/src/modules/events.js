@@ -90,12 +90,16 @@ export function registerControlsSounds(){
       }else if(!state.isMute && action == "sound2"){
         actions.stopSound()
         soundsBg.arrayBgSounds[1].sound.play()
+      }else if(!state.isMute && action == "sound3"){
+        actions.stopSound()
+        soundsBg.arrayBgSounds[2].sound.play()
+      }else if(!state.isMute && action == "sound4"){
+        actions.stopSound()
+        soundsBg.arrayBgSounds[3].sound.play()
       }else{
         console.log("Pausa")
         actions.stopSound();
       }
 
-     
-   
 })
 }
