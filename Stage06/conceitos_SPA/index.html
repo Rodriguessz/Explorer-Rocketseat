@@ -24,10 +24,10 @@
 
         const routes = {
         //Chave comea com / e por isso definimos ela como uma string - routes["/"]
-            "/": "pages/home.html",
-            "/about": "pages/about.html",
-            "/contact": "pages/contact.html",
-            404: "pages/404.html",
+            "/": "Stage06/conceitos_SPA/pages/home.html", 
+            "/about": "Stage06/conceitos_SPA/pages/about.html",
+            "/contact": "Stage06/conceitos_SPA/pages/contact.html",
+            404: "Stage06/conceitos_SPA/pages/404.html",
         }
         
 
@@ -59,9 +59,28 @@
             minha constante apenas o valor de pathname*/
             const {pathname}= window.location
 
-           
+
+            const route = routes[pathname] || routes[404]
+
+            
+          
+            //fetch() é uma API moderna para fazer solicitações de rede 
+            //(como HTTP) no navegador e em ambientes JavaScript.
+
+            //Busca route e após concluir a busca (then) traz a resposta
+            fetch(route)
+            //Transforma o que vier do fetch em texto
+            .then(data => data.text())
+            .then(html => {
+                const divApp = document.querySelector("#app")
+                divApp.innerHTML = html
+            })
+
                
         }
+
+        handle()
+    
     </script>
 </body>
 </html>
