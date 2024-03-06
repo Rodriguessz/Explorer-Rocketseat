@@ -4,83 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conceitos de SPA</title>
+    <script type="module" defer src="./js/index.js"></script>
 </head>
 <body>
     <nav>
-        <a href="/"onclick="route()">Home</a>
-        <a href="/about"onclick="route()">About</a>
-        <a href="/contact" onclick="route()">Contact</a>
-        <a href="/404"onclick="route()">404</a>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact" >Contact</a>
+        <a href="/404">404</a>
 
     </nav>
 
     <div id="app">
 
     </div>
-
-    <script>
-
-  
-
-        const routes = {
-        //Chave comea com / e por isso definimos ela como uma string - routes["/"]
-            "/": "Stage06/conceitos_SPA/pages/home.html", 
-            "/about": "Stage06/conceitos_SPA/pages/about.html",
-            "/contact": "Stage06/conceitos_SPA/pages/contact.html",
-            404: "Stage06/conceitos_SPA/pages/404.html",
-        }
-        
-
-        function route(event){
-
-            
-
-            event = event ?? window.event
-            event.preventDefault()
-
-            //Adiciona ao historico de navageção a url passada no terceiro arg.
-            //Não redireciona para tal, apenas add no historico e no final da url atual
-            window.history.pushState({}, "", event.target.href)
-
-
-            
-           
-
-            
-
-            
-            
-            //Manipule o caminho das rotas
-            handle()
-        }
-
-        function handle(){
-            /*Desconstrução de objeto - Acesse location e traga para 
-            minha constante apenas o valor de pathname*/
-            const {pathname}= window.location
-
-
-            const route = routes[pathname] || routes[404]
-
-            
-          
-            //fetch() é uma API moderna para fazer solicitações de rede 
-            //(como HTTP) no navegador e em ambientes JavaScript.
-
-            //Busca route e após concluir a busca (then) traz a resposta
-            fetch(route)
-            //Transforma o que vier do fetch em texto
-            .then(data => data.text())
-            .then(html => {
-                const divApp = document.querySelector("#app")
-                divApp.innerHTML = html
-            })
-
-               
-        }
-
-        handle()
-    
-    </script>
 </body>
 </html>
