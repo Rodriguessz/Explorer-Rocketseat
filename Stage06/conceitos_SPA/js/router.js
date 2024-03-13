@@ -2,12 +2,13 @@ export class Router
 {
   routes = {}
 
+  //Cria o nosso objeto routes
   add(routeKey, link){
     this.routes[routeKey] = link
   }
 
 
-  route(event){
+  route(event){ 
     event = event ?? window.event
 
     //Previnir a ação padrão!
@@ -21,8 +22,8 @@ export class Router
   }
 
 
-
-  replaceState = window.history.replaceState({}, "", "/")
+  //Apenas utilizar quando rodar com o live-server
+  replaceState = ()=> {window.history.replaceState({}, "", "/")}
 
   handle(){
 
@@ -35,7 +36,7 @@ export class Router
     fetch(route)
     .then(data => data.text())
     .then(html => {
-      const divApp = document.querySelector("#app").innerHTML = html
+      document.querySelector("#app").innerHTML = html
     })
     
   }
