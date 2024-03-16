@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+
+}
+
+:root{
+
+    font-size: 62.5%;
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    
+    --main-nav-color: #fff;
+
+
+}
+
+body{
+    font-size: 1.6rem;
+    
+}
+
+div#app{
+    max-width: 40rem;
+    min-height: 100vh;
+    margin: 0 auto;
+    background: linear-gradient(to bottom, #000000 0%, #0a0a0a 25%, #121212 50%, #0a0a0a 75%, #000000 100%);
+    
+
+}
+
+div#app nav ul{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+i.ph-list{
+    font-size: 3.2rem;
+    color: var(--main-nav-color);
+
+    cursor: pointer;
+}
