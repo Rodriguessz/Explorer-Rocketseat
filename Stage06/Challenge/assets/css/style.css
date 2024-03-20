@@ -11,7 +11,7 @@
     font-size: 62.5%;
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     
-    --main-nav-color: #fff;
+    --main-font-color: #fff;
 
 
 }
@@ -22,12 +22,12 @@ body{
 }
 
 div#app{
-    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    /* max-width: 40rem; */
     min-height: 100vh;
     margin: 0 auto;
-    background: linear-gradient(to bottom, #000000 0%, #0a0a0a 25%, #121212 50%, #0a0a0a 75%, #000000 100%);
-    
-
+    background: linear-gradient(to bottom, #001F3F, #000000); /* Cores: azul escuro, preto */
 }
 
 div#app nav ul{
@@ -39,8 +39,81 @@ div#app nav ul{
 }
 
 i.ph-list{
-    font-size: 3.2rem;
-    color: var(--main-nav-color);
+    font-size: clamp(3.2rem, 1vw + 2rem, 4.8rem);
+    color: var(--main-font-color);
 
     cursor: pointer;
+}
+
+section.content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+}
+
+section.content h1{
+    font-size: clamp(3rem, 1.5vw + 1rem, 4.8rem);
+    color: var(--main-font-color);
+  }
+
+
+
+section.content:not(.description) {
+    gap: 10rem;
+}
+
+section.content.description {
+    gap: 4rem;
+}
+
+
+
+
+/* Home Page */
+section.content button.more-info{
+
+
+    padding: 1.2rem 3.2rem;
+
+    line-height: 2.4rem;
+    font-size: clamp(1.2rem , 1vw + .5rem , 1.8rem);
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: var(--main-font-color);
+
+    border-radius: .6rem;
+    border: 1px solid white;
+    background: transparent;
+
+    cursor: pointer;
+
+}
+
+/* Universe Page && Exploration Page */
+
+section.content div.description{
+    color: var(--main-font-color);
+    text-align: justify;
+
+    font-size: clamp(1.2rem, 1vw + 1rem, 1.8rem);
+    line-height: 160%;
+    
+}
+
+/* Desktop layout */
+
+@media(min-width:770px){
+    div#app{
+        background-image: url(../img/home-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    div#app.teste{
+        background-image: url(../img/universo-bg.png);
+    }
+
 }
