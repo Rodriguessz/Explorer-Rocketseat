@@ -12,6 +12,7 @@
     font-family: "Roboto", Arial, Helvetica, sans-serif;
     
     --main-font-color: #fff;
+    --main-hover-color: #678be5;
 
 
 }
@@ -45,6 +46,10 @@ i.ph-list{
     cursor: pointer;
 }
 
+div.menu-desktop{
+    display: none;
+}
+
 section.content {
     display: flex;
     flex-direction: column;
@@ -55,7 +60,7 @@ section.content {
 }
 
 section.content h1{
-    font-size: clamp(3rem, 1.5vw + 1rem, 4.8rem);
+    font-size: clamp(3rem, 2vw + 2rem, 4.8rem);
     color: var(--main-font-color);
   }
 
@@ -112,8 +117,59 @@ section.content div.description{
         background-size: cover;
     }
 
-    div#app.teste{
+    div#app.universe{
+
         background-image: url(../img/universo-bg.png);
+    }
+
+    .mobile{
+        display: none;
+    }
+
+    div.menu-desktop{
+        display: flex;
+        gap: 3.2rem;
+
+        list-style: none;
+        
+
+    }
+
+    div#app nav ul{
+        justify-content: flex-start;
+        gap: 3.2rem;
+    }
+
+    div.menu-desktop a{
+        text-decoration: none;
+        font-size: clamp(1.8rem, 1vw + 1rem, 2.2rem);
+        color: var(--main-font-color);
+
+        transition: 0.5s ease-in-out;
+    }
+
+    div.menu-desktop a:hover{
+        color: var(--main-hover-color) ;
+    }
+
+
+    /* Home page Desktop */
+
+    section.content button.more-info{
+        margin-bottom: 10rem;
+    }
+
+    section.content.desktop{
+
+        padding: 10rem;
+
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    
+    section.content.desktop div.description{
+
+        width: 50%;
     }
 
 }
