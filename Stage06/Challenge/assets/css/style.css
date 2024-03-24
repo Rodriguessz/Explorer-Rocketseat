@@ -119,8 +119,14 @@ section.content div.description{
 
     div#app.universe{
 
-        background-image: url(../img/universo-bg.png);
+        background-image: url(../img/universo-bg.png) !important;
     }
+
+    div#app.exploration{
+
+        background-image: url(../img/explore-bg.png) !important;
+    }
+
 
     .mobile{
         display: none;
