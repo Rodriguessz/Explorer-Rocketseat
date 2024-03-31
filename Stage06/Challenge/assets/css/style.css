@@ -50,6 +50,10 @@ div.menu-desktop{
     display: none;
 }
 
+div.menu-desktop a.active{
+    color: var(--main-hover-color)
+}
+
 section.content {
     display: flex;
     flex-direction: column;

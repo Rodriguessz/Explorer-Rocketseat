@@ -49,7 +49,23 @@ class Router {
 
                 const divApp = elements.getElement("app", "#")
                 const sectionContent = elements.getElement("content", ".")
+                const menu = elements.getElement("menu-desktop", ".")
+                
+                //Adicionando ativo ao link clicado
+                menu.addEventListener("click", (event)=>{
+                    //Verifica se o meu elemento clicado é um a
+                    if(event.target.matches("a")){
+                        //seleciona todos dentro do menu e remove a classe active
+                        menu.querySelectorAll("a").forEach(item =>{
+                            item.classList.remove("active")
+                        })
+                    }
 
+                    //Adiciona a classe active no elemento clicado
+
+                    event.target.classList.add("active")
+                })
+                
                 divApp.classList.remove("universe", "exploration")
                 sectionContent.classList.remove("desktop")
 

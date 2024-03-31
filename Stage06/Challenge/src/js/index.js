@@ -11,7 +11,7 @@ router.addRoute("/exploration", "/src/pages/exploration.html")
 
 
 // router.replaceState()
-router.handleRoute()
+router.handleRoute(event)
 
 
 
