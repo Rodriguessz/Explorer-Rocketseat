@@ -7,24 +7,58 @@
 
 :root{
     font-size: 62.5%;
+	
+	--ff-primary: "Poppins", sans-serif;
+	--text-color: #303030;
+
+	--hue:194;
+	--primary-color: hsl(var(--hue), 100% , 63%)
+
 }
 
-
-.sr-only {
-	border: 0 !important;
-	clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
-	-webkit-clip-path: inset(50%) !important;
-		clip-path: inset(50%) !important;  /* 2 */
-	height: 1px !important;
-	margin: -1px !important;
-	overflow: hidden !important;
-	padding: 0 !important;
-	position: absolute !important;
-	width: 1px !important;
-	white-space: nowrap !important;            /* 3 */
-}
-
-body{
+body {
     font-size: 1.6rem;
+	color: var(--text-color);
 }
+
+body *{
+	font-family: var(--ff-primary);
+}
+
+
+.sr-only{
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	/* Não deixa transbordar */
+	overflow: hidden;
+	/* Zera a largura das bordas, caso o elemento tenha */
+	border-width: 0;
+	/* Não permite a quebra de linha */
+	white-space: nowrap;
+	/* Força a criação de uma caixa com as medias 0,0,0,0 */
+	clip: rect(0,0,0,0);
+
+}
+
+div#app{
+	max-width: 60rem;
+	margin: 0 auto;
+	padding: 2rem;
+	height: 100vh;
+}
+
+div#app header{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	gap: 2rem;
+}
+
+button{
+	background-color: var(--primary-color);
+}
+
 

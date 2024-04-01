@@ -1,52 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Github Favorites</title>
 </head>
 <body>
-   <header>
-        <h1>Github Favorites</h1>
-
-        <div class="search-input">
-            <label for="search" class="sr-only">Github User</label>
-            <input type="text" id="search" name="search" placeholder="Gihub User"/>
-            <button>&plus;</button>
-        </div>
-   </header>
-
-
-   <table>
-    <thead>
-        <tr>
-            <th>User</th>
-            <th>Repositories</th>
-            <th>Followers</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td class="user">
-                <img src="https://github.com/rodriguessz.png" width="25px" alt="Imagem de perfil do gihub">
-                 <a href="https://github.com/rodriguessz" target="_blank">
-                    
-                    <p>Enzo Rodrigues</p>
-                    <span>rodriguessz</span>
-
-                </a>
-            </td>
-
-            <td class="repositories">
-               07
-            </td>
-
-            <td class="followers">
-               12
-            </td>
-        </tr>
-    </tbody>
-   </table>
+    <div id="app">
+        <header>
+            <h1>Github Favorites</h1>
+    
+            <div class="search-input">
+                <label for="search" class="sr-only">Github User</label>
+                <input type="text" id="search" name="search" placeholder="Gihub User"/>
+                <button>&plus;</button>
+            </div>
+       </header>
+    
+    
+       <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Repositories</th>
+                <th>Followers</th>
+                <th></th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="user">
+                    <img src="https://github.com/rodriguessz.png" width="25px" alt="Imagem de perfil do gihub">
+                     <a href="https://github.com/rodriguessz" target="_blank">
+                        
+                        <p>Enzo Rodrigues</p>
+                        <span>rodriguessz</span>
+    
+                    </a>
+                </td>
+    
+                <td class="repositories">
+                   07
+                </td>
+    
+                <td class="followers">
+                   12
+                </td>
+    
+                <td>
+                    <button>
+                        &times;
+                    </button>
+                   
+                 </td>
+            </tr>
+        </tbody>
+       </table>
+    </div>
+  
 </body>
 </html>
