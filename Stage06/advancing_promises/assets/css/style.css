@@ -43,7 +43,7 @@ body *{
 }
 
 div#app{
-	max-width: 60rem;
+	max-width: 50rem;
 	margin: 0 auto;
 	padding: 2rem;
 	height: 100vh;
@@ -53,12 +53,113 @@ div#app header{
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-
 	gap: 2rem;
+
+	margin: 2.5rem 0;
+
+
+}
+div#app header h1{
+
+	font-size: 2rem;
+	text-transform: uppercase;
 }
 
-button{
+header div.search-input{
+	display: flex;
+	align-items: center;
+}
+
+div.search-input input{
+	height: 3.2rem;
+	border: 1px solid #ccc;
+	border-radius: .4rem 0 0 .4rem;
+
+	padding: 0 .8rem;
+}
+
+div.search-input button{
+	height: 3.2rem;
+
+	padding: 0 1rem;
+
 	background-color: var(--primary-color);
+
+	border-radius: 0 0.4rem .4rem 0;
+	border: none;
+
+	cursor: pointer;
+
+	transition: 0.5s ease;
+
+
+}
+
+div.search-input button:hover{
+	filter: brightness(.9);
+}
+
+table{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table *{
+	font-size: 1.4rem;
+	color: var(--text-color);
+}
+
+table th{
+	background-color: var(--primary-color);
+	text-align: left;
+	font-weight: normal;
+	padding: 1.5rem;
+	
+}
+
+table th:first-child{
+	
+	border-top-left-radius: .8rem;
+	
+}
+
+table th:last-child{
+
+	border-top-right-radius: .8rem;
+
+}
+
+table tr{
+	background-color: #eee;
+}
+
+table tr:nth-child(odd){
+	background-color: #ddd;
+}
+
+table td {
+	padding: 1.5rem;
+	text-align: left;
+}
+
+table td.user {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+table td.user {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+td.user img{
+	width: 5rem;
+	height: 5rem;
+
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 
