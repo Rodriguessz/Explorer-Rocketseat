@@ -43,11 +43,12 @@ body *{
 }
 
 div#app{
-	max-width: 50rem;
+	max-width: 52rem;
 	margin: 0 auto;
 	padding: 2rem;
 	height: 100vh;
 }
+
 
 div#app header{
 	display: flex;
@@ -102,6 +103,9 @@ div.search-input button:hover{
 table{
 	width: 100%;
 	border-collapse: collapse;
+
+	/* Eixo X - Eixo Y - Blur da sombra - Espalhamento - Cor  */
+	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
 }
 
 table *{
@@ -112,7 +116,7 @@ table *{
 table th{
 	background-color: var(--primary-color);
 	text-align: left;
-	font-weight: normal;
+	font-weight: 500;
 	padding: 1.5rem;
 	
 }
@@ -129,10 +133,12 @@ table th:last-child{
 
 }
 
+/* Aplica para todas as linhas da tabela */
 table tr{
 	background-color: #eee;
 }
 
+/* Aplica somente para linhas pares */
 table tr:nth-child(odd){
 	background-color: #ddd;
 }
@@ -161,5 +167,35 @@ td.user img{
 	border-radius: 50%;
 	object-fit: cover;
 }
+
+td.user a{
+	text-decoration: none;
+}
+
+
+
+td.user p{
+	font-weight: bold;
+}
+
+td.user p:hover{
+	color: #000000;
+}
+
+td.remove button{
+	background: none;
+	border: none;
+	color: red;
+
+	font-size: 1.8rem;
+	
+	cursor: pointer;
+
+	transition: 0.5s ease;
+}
+
+
+
+
 
 
