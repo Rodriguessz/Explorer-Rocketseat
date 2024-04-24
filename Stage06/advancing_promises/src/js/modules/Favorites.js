@@ -36,6 +36,13 @@ export class Favorites{
                 "name": "Mayk Brito",
                 "public_repos": 15,
                 "followers": 120
+            },
+
+            {
+                "login": "ThiagoAraujot",
+                "name": "Thiago Araujo",
+                "public_repos": 15,
+                "followers": 120
             }
         ]
     }   
@@ -48,6 +55,7 @@ export class FavoritesView extends Favorites{
         super(root)
 
         this.updateDisplay()
+        this.deleteRow(0)
     }
 
     updateDisplay(){
@@ -56,7 +64,7 @@ export class FavoritesView extends Favorites{
     }
 
     //Cria a linha da tabela, de acordo com as infos do usuário
-    createRowElement(userLogin, userName , repos , followers){
+    createRowElement(userLogin, userName , repos , followers, id){
         const tr = document.createElement("tr")
 
         tr.innerHTML = `
@@ -79,12 +87,14 @@ export class FavoritesView extends Favorites{
                 </td>
     
                 <td class="remove">
-                    <button>
+                    <button id="user_${id}">
                         &times;
                     </button>
                    
                  </td>
         `
+
+        tr.id = `rowuser_${id}`
 
         return tr
     
@@ -92,9 +102,9 @@ export class FavoritesView extends Favorites{
 
     //Seta a linha na tabela, de acordo com o usuário retornado
     setUserRow(){
-        this.entries.forEach((user)=>{
-           const userTr =  this.createRowElement(user.login, user.name, user.public_repos, user.followers)
-            
+        console.log(this.entries)
+        this.entries.forEach((user, index)=>{
+           const userTr =  this.createRowElement(user.login, user.name, user.public_repos, user.followers, index)
             this.tbody.appendChild(userTr)
             
         })
@@ -108,5 +118,51 @@ export class FavoritesView extends Favorites{
         .forEach(tr =>{
             tr.remove()
         })
+    }
+
+    deleteRow(){
+        const userRows = Array.from(this.root.querySelectorAll("tr"))
+        userRows.shift()
+        const deleteButtons = Array.from(document.querySelectorAll("button"))
+        deleteButtons.shift()
+
+        deleteButtons.forEach((button)=>{
+            button.addEventListener("click", event =>{
+                let  rowUserId = button.id.replace("user_", "")
+                console.log(this.entries)
+                this.entries.splice(Number(rowUserId), 1)
+                console.log(this.entries)
+                const userRow = document.getElementById(`row${button.id}`)
+                userRow.remove()
+
+                //Remove o um indice de todos os ids, indicando a remoção do anterior no array this.entries
+                deleteButtons.forEach((row)=> {
+                    if(Number(row.id.replace("user_", "") - 1 < 0)){
+                        row.id = `user_0`
+                    }else{
+                        row.id = `user_${Number(row.id.replace("user_", "") - 1)}`
+                        console.log(row.id)
+                    }
+                    
+                
+            })
+
+
+            userRows.forEach((row)=> {
+                    if(Number(row.id.replace("rowuser_", "") - 1 < 0)){
+                        row.id = `rowuser_0`
+                    }else{
+                        row.id = `rowuser_${Number(row.id.replace("rowuser_", "") - 1)}`
+                        console.log(row.id)
+                    }
+                
+            })
+
+            })    
+
+            
+        })
+
+       
     }
 }
