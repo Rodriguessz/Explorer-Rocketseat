@@ -135,28 +135,22 @@ export class FavoritesView extends Favorites{
                 const userRow = document.getElementById(`row${button.id}`)
                 userRow.remove()
 
+
                 //Remove o um indice de todos os ids, indicando a remoção do anterior no array this.entries
-                deleteButtons.forEach((row)=> {
-                    if(Number(row.id.replace("user_", "") - 1 < 0)){
-                        row.id = `user_0`
-                    }else{
-                        row.id = `user_${Number(row.id.replace("user_", "") - 1)}`
-                        console.log(row.id)
+            for (let index = deleteButtons.length - 1; index >=0; index--){
+                //Id referente ao btn atual no for
+                 const rowId = deleteButtons[index].id.replace("user_", "");
+    
+                 if(Number(rowId) > Number(rowUserId)){
+                     if (Number(rowId) - 1 > 0) {
+                        deleteButtons[index].id = `user_${Number(rowId) - 1}`;
+                        userRows[index].id = `rowuser_${Number(rowId) - 1}`;
+                    } else {
+                        deleteButtons[index].id = `user_0`;
+                        userRows[index].id = `rowuser_0`;
                     }
-                    
-                
-            })
-
-
-            userRows.forEach((row)=> {
-                    if(Number(row.id.replace("rowuser_", "") - 1 < 0)){
-                        row.id = `rowuser_0`
-                    }else{
-                        row.id = `rowuser_${Number(row.id.replace("rowuser_", "") - 1)}`
-                        console.log(row.id)
-                    }
-                
-            })
+                 }
+            }
 
             })    
 
