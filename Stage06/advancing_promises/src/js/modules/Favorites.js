@@ -1,10 +1,11 @@
 export class Favorites{
     constructor(root){
         //Procura o elemento raiz do nosso projeto
-        this.root = document.querySelector(root)
-        this.tbody = this.root.querySelector("tbody")
+        this.root         = document.querySelector(root)
+        this.tbody        = this.root.querySelector("tbody")
 
         this.loadData()
+
     } 
 
 
@@ -39,6 +40,16 @@ export class Favorites{
             }
         ]
     }   
+
+    delete(user){
+       
+      //Se retornar true, adiciona no array, caso cocntrario ele remove - Filter retorna um array filtrado
+       const filteredData = this.entries.filter((data)=> user.login !== data.login)     
+
+       console.log(this.entries)
+       console.log(filteredData)
+
+    }
 }
 
 
@@ -52,7 +63,7 @@ export class FavoritesView extends Favorites{
 
     updateDisplay(){
         this.removeAllTr()
-        this.setUserRow()
+        this.setUserRow()   
     }
 
     //Cria a linha da tabela, de acordo com as infos do usuário
@@ -78,8 +89,8 @@ export class FavoritesView extends Favorites{
                     ${followers}
                 </td>
     
-                <td class="remove">
-                    <button>
+                <td>
+                    <button class="remove">
                         &times;
                     </button>
                    
@@ -94,7 +105,14 @@ export class FavoritesView extends Favorites{
     setUserRow(){
         this.entries.forEach((user)=>{
            const userTr =  this.createRowElement(user.login, user.name, user.public_repos, user.followers)
-            
+           userTr.querySelector(".remove").onclick = () => {
+            const isOk = confirm("Deseja deltar o perfil da tabela?")
+            if(isOk){
+                console.log("Entrou")
+                this.delete(user)
+            }
+           }
+
             this.tbody.appendChild(userTr)
             
         })
