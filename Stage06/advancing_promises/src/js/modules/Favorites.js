@@ -1,5 +1,38 @@
 export class GithubFavorites{
-    
+    static searchUser(login){
+        const endpoint = `https://api.github.com/users/${login}`
+
+        return  fetch(endpoint)
+        .then( res => res.json())
+        .then(userData => {
+             //Desestruturação do objeto retornado da promise
+            const {login , name , public_repos, followers, avatar_url} = userData
+
+            //Retorna um objeto com as informações recuperadas.
+            return {
+                login,
+                name, 
+                public_repos, 
+                followers,
+                avatar_url,
+            }
+        }
+        
+        )
+        .catch(err => {
+            console.log("Error:", err)
+        })
+
+        //Desestruruação avançada - Desetrutura o objeto 
+        //já nos agrumentos da arrow function e utiliza um operador de grupo para retornar o objeto com as informaçes ({})
+
+        // .then( ({login , name , public_repos , followers}) => ({
+        //     login,
+        //     name,
+        //     public_repos, 
+        //     followers
+        // }))
+    }
 }
 export class Favorites{
     constructor(root){
@@ -45,9 +78,16 @@ export class Favorites{
         
         this.entries = []
 
-        const entries = localStorage.getItem("@githubFavorites:") || [];
+        const storageData = localStorage.getItem("@githubFavorites:")
+
+        const entries = storageData ? JSON.parse(storageData) : [];
+
+
+        //Retorna uma promise com o objeto referente ao usuário do github
+        GithubFavorites.searchUser("rodriguessz").then( user => {
+            
+        })
         
-        console.log(entries)
     }   
 
 }
