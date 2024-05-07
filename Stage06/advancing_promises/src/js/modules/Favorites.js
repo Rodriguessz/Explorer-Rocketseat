@@ -1,3 +1,6 @@
+export class GithubFavorites{
+    
+}
 export class Favorites{
     constructor(root){
         //Procura o elemento raiz do nosso projeto
@@ -10,49 +13,44 @@ export class Favorites{
 
 
     loadData(){
-        this.entries =[
-            {
-                login: "rodriguessz",
-                name: "Enzo Rodrigues",
-                public_repos: "08",
-                followers: "06"
-            },
+        // this.entries =[
+        //     {
+        //         login: "rodriguessz",
+        //         name: "Enzo Rodrigues",
+        //         public_repos: "08",
+        //         followers: "06"
+        //     },
 
-            {
-                login: "rafafaaa",
-                name: "Rafael Cristofali",
-                public_repos: "08",
-                followers: "06"
-            },
+        //     {
+        //         login: "rafafaaa",
+        //         name: "Rafael Cristofali",
+        //         public_repos: "08",
+        //         followers: "06"
+        //     },
 
-            {
-                "login": "diego3g",
-                "name": "Diego fernandes",
-                "public_repos": 15,
-                "followers": 120
-            },
+        //     {
+        //         "login": "diego3g",
+        //         "name": "Diego fernandes",
+        //         "public_repos": 15,
+        //         "followers": 120
+        //     },
             
-            {
-                "login": "maykbrito",
-                "name": "Mayk Brito",
-                "public_repos": 15,
-                "followers": 120
-            }
-        ]
+        //     {
+        //         "login": "maykbrito",
+        //         "name": "Mayk Brito",
+        //         "public_repos": 15,
+        //         "followers": 120
+        //     }
+        // ]
+        
+        this.entries = []
+
+        const entries = localStorage.getItem("@githubFavorites:") || [];
+        
+        console.log(entries)
     }   
 
-    delete(user){
-       
-      //Se retornar true, adiciona no array, caso cocntrario ele remove - Filter retorna um array filtrado
-       const filteredData = this.entries.filter((data)=> user.login !== data.login)     
-
-       console.log(this.entries)
-       console.log(filteredData)
-
-    }
 }
-
-
 export class FavoritesView extends Favorites{
     constructor(root){
         //Construtor super chama o construtor do classe pai 
