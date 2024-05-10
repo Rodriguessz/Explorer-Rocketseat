@@ -44,9 +44,8 @@ export class Favorites{
 
     } 
 
-
     loadData(){
-        // this.entries =[
+        // this.entries = [
         //     {
         //         login: "rodriguessz",
         //         name: "Enzo Rodrigues",
@@ -90,6 +89,18 @@ export class Favorites{
         
     }   
 
+    deleteData(user){
+       const filteredData  =  this.entries.filter( data => user.login !== data.login)
+        this.entries = filteredData
+        this.updateDisplay()
+    }
+
+    async addData(user){
+        const githubUser = await GithubFavorites.searchUser(user) 
+        console.log(githubUser)
+    }
+    
+
 }
 export class FavoritesView extends Favorites{
     constructor(root){
@@ -97,6 +108,7 @@ export class FavoritesView extends Favorites{
         super(root)
 
         this.updateDisplay()
+        this.onAddInputSearch()
     }
 
     updateDisplay(){
@@ -147,7 +159,7 @@ export class FavoritesView extends Favorites{
             const isOk = confirm("Deseja deltar o perfil da tabela?")
             if(isOk){
                 console.log("Entrou")
-                this.delete(user)
+                this.deleteData(user)
             }
            }
 
@@ -164,5 +176,16 @@ export class FavoritesView extends Favorites{
         .forEach(tr =>{
             tr.remove()
         })
+    }
+
+
+    //Eventos do DOM
+    onAddInputSearch(){
+        const searchButton = this.root.querySelector("#searchButton")
+        searchButton.onclick = () =>{
+            const {value} =  this.root.querySelector("#search")
+            this.addData(value)
+            
+        }
     }
 }
