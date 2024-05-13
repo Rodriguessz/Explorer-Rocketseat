@@ -96,6 +96,8 @@ export class Favorites{
     }
 
     async addData(user){
+
+        //Precisamos utilizar o await pois ainda sim a função SearchUser é uma promise a ser resolvida
         const githubUser = await GithubFavorites.searchUser(user) 
         console.log(githubUser)
     }
@@ -171,7 +173,6 @@ export class FavoritesView extends Favorites{
     //Remove todos as linhas da tabela
     removeAllTr(){
         const tbody = this.root.querySelector("tbody")
-
         tbody.querySelectorAll("tr")
         .forEach(tr =>{
             tr.remove()
