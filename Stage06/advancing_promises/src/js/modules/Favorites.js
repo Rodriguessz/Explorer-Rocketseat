@@ -45,63 +45,82 @@ export class Favorites{
     } 
 
     loadData(){
-        // this.entries = [
-        //     {
-        //         login: "rodriguessz",
-        //         name: "Enzo Rodrigues",
-        //         public_repos: "08",
-        //         followers: "06"
-        //     },
-
-        //     {
-        //         login: "rafafaaa",
-        //         name: "Rafael Cristofali",
-        //         public_repos: "08",
-        //         followers: "06"
-        //     },
-
-        //     {
-        //         "login": "diego3g",
-        //         "name": "Diego fernandes",
-        //         "public_repos": 15,
-        //         "followers": 120
-        //     },
-            
-        //     {
-        //         "login": "maykbrito",
-        //         "name": "Mayk Brito",
-        //         "public_repos": 15,
-        //         "followers": 120
-        //     }
-        // ]
         
-        this.entries = []
-
         const storageData = localStorage.getItem("@githubFavorites:")
 
-        const entries = storageData ? JSON.parse(storageData) : [];
-
-
-        //Retorna uma promise com o objeto referente ao usuário do github
-        GithubFavorites.searchUser("rodriguessz").then( user => {
-            
-        })
+        //Utilizando o JSON.parse() para transformar o JSON vindo em um objeto manuseavel
+        this.entries = storageData ? JSON.parse(storageData) : [];
+        console.log(this.entries)
         
     }   
+
+    saveUserInLocalStorage(){
+
+        //Utilizamos o JSON.stringfy() para transformar um objeto, array em JSON para que seja possivel adicionalos no localStorage
+        localStorage.setItem("@githubFavorites:", JSON.stringify(this.entries))
+    }
+    
+    async addUserInTable(user){
+
+        try{
+
+            //O método find retorna o dado caso a condição retorne true, no nosso caso retorna o objeto referente ao usuario
+            const userExists = this.entries.find( entry => {
+                if((entry.login).toLowerCase() === user){
+                    return true
+                }
+            })
+
+            //Verifica se existe
+            if(userExists) {
+                throw new Error("Usuário já cadastrado na tabela!")
+            }
+
+             //Precisamos utilizar o await pois a função SearchUser é uma promise a ser resolvida
+            const githubUser = await GithubFavorites.searchUser(user)
+
+
+            //Faz a verificação para ver se o usuário existe.Caso usuário não seja encontrado, retorna erro.
+            if(githubUser.login === undefined){
+                throw new Error("Não foi possivel encontrar o usuário")
+            }
+
+            
+            
+
+
+            // this.entries.forEach((user) => {
+            //     if(githubUser.login === user.login) throw new Error("Usuário Já cadastrado na tabela!")
+            // })
+
+            //Adicionando o usuário encontrado em nosso array de dados utilizando o spread Operator
+
+            //Spread operator -> Operador usado para desmembrar elementos de um objeto iteravel
+
+            //Meu array irá receber o meu usuário pesquisado mais os que já tinham, spread operator irá espalhar os elementos que já haviam sido adicionados
+            //e acrescentar no meu array.
+
+            this.entries = [githubUser, ...this.entries]
+            this.updateDisplay()
+            
+            //Salvando nossos usuários já inseridos no localStorage para persistirem em nossa sessão
+            this.saveUserInLocalStorage()
+            
+        }catch(error){
+            alert(error)
+        }
+
+       
+    }
 
     deleteData(user){
        const filteredData  =  this.entries.filter( data => user.login !== data.login)
         this.entries = filteredData
         this.updateDisplay()
-    }
 
-    async addData(user){
-
-        //Precisamos utilizar o await pois ainda sim a função SearchUser é uma promise a ser resolvida
-        const githubUser = await GithubFavorites.searchUser(user) 
-        console.log(githubUser)
+        //Chamando a função para salvar no localStorage para que o nosso dado filtrado seja atualizado de forma correta.
+        this.saveUserInLocalStorage()
     }
-    
 
 }
 export class FavoritesView extends Favorites{
@@ -158,9 +177,8 @@ export class FavoritesView extends Favorites{
         this.entries.forEach((user)=>{
            const userTr =  this.createRowElement(user.login, user.name, user.public_repos, user.followers)
            userTr.querySelector(".remove").onclick = () => {
-            const isOk = confirm("Deseja deltar o perfil da tabela?")
+            const isOk = confirm("Deseja deletar o perfil da tabela?")
             if(isOk){
-                console.log("Entrou")
                 this.deleteData(user)
             }
            }
@@ -185,7 +203,7 @@ export class FavoritesView extends Favorites{
         const searchButton = this.root.querySelector("#searchButton")
         searchButton.onclick = () =>{
             const {value} =  this.root.querySelector("#search")
-            this.addData(value)
+            this.addUserInTable(value)
             
         }
     }
