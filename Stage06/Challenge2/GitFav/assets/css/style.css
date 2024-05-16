@@ -10,13 +10,16 @@
     /* Css Variables */
     --root-font-size       : 62.5%;
 
-    /* 0000000 */
-    --root-bg-color        : #2F2F33;
+    --root-bg-color        : #000000;
     --root-bg-color-input  : #06181C;
     --root-btn-bg-color    : #065E7C;
+    --root-th-bg-color     : #092D38;
+    --root-odd-bg-color    : #06161B;
+    --root-even-bg-color   : #4A808C;
     
     --root-constrast-color : #ffff;
-}
+    --root-no-fav-color    : #4E5455;
+} 
 
 :root{
     font-size: var(--root-font-size);
@@ -49,7 +52,7 @@ div#app{
     display: flex;
     justify-content: center;
 
-    padding: 16rem;
+    padding: 16rem 16rem 0 16rem;
 
 
     background-color: var(--root-bg-color);
@@ -57,6 +60,10 @@ div#app{
 
 section.main{
     width: 112rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 9.2rem;
 }
 
 header{
@@ -131,6 +138,77 @@ header div.main-input button:hover{
     color: var(--root-btn-bg-color);
     background-color: var(--root-constrast-color);
 }
+
+
+section.git-table table {
+    
+    width: 100%;
+    
+    border-collapse: collapse;
+
+}
+
+section.git-table table *{
+    line-height: 160%;
+    font-size: 2rem;
+    color: var(--root-constrast-color);
+}
+
+section.git-table thead{
+    background-color: var(--root-th-bg-color);
+}
+
+section.git-table table thead th{
+    
+    padding: 1.6rem 4rem;
+    text-align: left;
+    
+}
+
+
+section.git-table table thead th:first-child{
+    border-top-left-radius: 1.2rem;
+    width: 30%;
+}
+
+section.git-table table thead th:last-child{
+    border-top-right-radius: 1.2rem;
+}
+
+
+/* No user add to Favorites */
+
+section.git-table table tbody td div.no-fav-user{
+
+    min-height: 52.4rem;
+    background-color: var(--root-odd-bg-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section.git-table table tbody td div.no-user{
+    display: flex;
+    align-items: center;
+    gap: 6rem;
+}
+
+section.git-table table tbody td div.no-user h2{
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: 2.4rem;
+    color: var(--root-no-fav-color);
+
+    margin-top: 2.2rem;
+}
+
+
+
+
+
+
 
 
 
