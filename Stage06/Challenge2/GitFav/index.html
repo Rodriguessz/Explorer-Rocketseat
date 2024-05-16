@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <script type="module" src="./js/modules/main.js"></script>
+    <title>GitFav - RocketSeat</title>
+</head>
+<body>
+    <div id="app">
+    
+        <section class="main">
+
+            <header>
+                <div class="main-icon">
+                    <img src="./assets/svg/gitFav.svg" alt="Icone do GitFav">
+                    <span>GitFav</span>
+                </div>
+
+                <div class="main-input">
+                    <label for="inputSearch" class="sr-only">Github user</label>
+                    <input type="text" id="inputSearch" placeholder="Type the github user..." />
+
+                    <button id="searchButton"> 
+                        <i class="ph ph-star"></i>
+                        <span>favoritar</span>
+                    </button>
+                </div>
+            </header>
+
+
+                <section class="git-table">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+
+                            <th>User</th>
+                            <th>Repositories</th>
+                            <th>Followers</th>
+                            <th>Action</th>
+                            
+                            </tr>
+                        </thead>
+
+
+                        <tbody>
+                            <tr>
+                                <th colspan="100%">
+
+                                    <div class="no-user">
+                                    
+                                        <img src="#" alt="Estrelinha do gitFav">
+
+                                        <h2>No Favorites yet!</h2>
+                                    </div>
+                                
+                                </th>          
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+
+                    
+                
+                </section>
+        
+        </section>
+
+    </div>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</body>
+</html>

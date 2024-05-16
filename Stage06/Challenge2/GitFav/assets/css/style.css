@@ -1,0 +1,136 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* Vendor prefixes - Beatiful Fonts */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Css Variables */
+    --root-font-size       : 62.5%;
+
+    /* 0000000 */
+    --root-bg-color        : #2F2F33;
+    --root-bg-color-input  : #06181C;
+    --root-btn-bg-color    : #065E7C;
+    
+    --root-constrast-color : #ffff;
+}
+
+:root{
+    font-size: var(--root-font-size);
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+body *{
+    font-size: 1.6rem;
+}
+
+.sr-only{
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    /* Zera a largura das bordas, caso o elemento tenha */
+	border-width: 0;
+	/* Não permite a quebra de linha */
+	white-space: nowrap;
+	/* Força a criação de uma caixa com as medias 0,0,0,0 */
+	clip: rect(0,0,0,0);
+}
+
+div#app{
+
+    width: 100vw;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 16rem;
+
+
+    background-color: var(--root-bg-color);
+}
+
+section.main{
+    width: 112rem;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header div.main-icon{
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+header div.main-icon span{
+
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 3.2rem;
+    line-height: 2.4rem;
+    color: var(--root-constrast-color);
+
+}
+
+header div.main-input {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    
+}
+
+header div.main-input input{
+
+    min-width: 46.2rem;
+    padding: 1.6rem;
+    
+    border: none;
+    border-radius: .6rem;
+
+    background-color: var(--root-bg-color-input);
+}
+
+
+header div.main-input button{
+        
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    padding: 1.2rem 3.2rem;
+
+    background-color: var(--root-btn-bg-color);
+
+    border-radius: .6rem;
+    border: none;
+
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--root-constrast-color);
+
+    cursor: pointer;
+
+    transition: 0.5s ease-in;
+}
+
+header div.main-input button i.ph-star{
+    font-size: 2.4rem;
+}
+
+header div.main-input button:hover{
+    color: var(--root-btn-bg-color);
+    background-color: var(--root-constrast-color);
+}
+
+
+
