@@ -30,7 +30,7 @@
 
 body *{
     font-size: 1.6rem;
-}
+} 
 
 .sr-only{
     display: block;
@@ -141,16 +141,40 @@ header div.main-input button:hover{
     background-color: var(--root-constrast-color);
 }
 
+
+
+/* Table github user */
+
 section.git-table{
-    border-radius: 1.2rem;
+    border-radius: .8rem;
     border: 1px solid var(--root-tb-color);
     overflow: hidden;
     overflow-y: auto !important;
+    position: relative; /* Garante que o contêiner mantenha o scroll dentro de seus limites */
+
 
     max-height: 42.5rem;
+    
+    
+    
+}
+
+section.git-table::-webkit-scrollbar {
+    width: 6px;  
+  }
+  
+  section.git-table::-webkit-scrollbar-thumb {
+    border-radius: 1rem;
+    background: var(--root-tb-color);
+    
+  }
 
 
-
+section.git-table table *{
+    line-height: 160%;
+    font-size: 2rem;
+    color: var(--root-constrast-color);
+    font-weight: bold;
 }
 
 section.git-table table {
@@ -161,12 +185,6 @@ section.git-table table {
 
 }
 
-section.git-table table *{
-    line-height: 160%;
-    font-size: 2rem;
-    color: var(--root-constrast-color);
-    font-weight: bold;
-}
 
 section.git-table thead{
     background-color: var(--root-th-bg-color);
@@ -174,8 +192,6 @@ section.git-table thead{
     top: 0;
     z-index: 1;
 }
-
-
 
 section.git-table table thead th{
     
@@ -186,12 +202,26 @@ section.git-table table thead th{
     
 }
 
+section.git-table table tbody tr{
+    cursor: pointer;
+
+    transition: 0.2s ease-in ;
+}
+
 section.git-table table tbody tr:nth-child(odd){
     background-color: var(--root-odd-bg-color);
 }
 
+section.git-table table tbody tr:nth-child(odd):hover{
+  background-color  : hsl(194, 76%, 3%);
+}
+
 section.git-table table tbody tr:nth-child(even){
     background-color: var(--root-even-bg-color);
+}
+
+section.git-table table tbody tr:nth-child(even):hover{
+    background-color: #020b0e;
 }
 
 
@@ -199,10 +229,11 @@ section.git-table table tbody td{
     padding: 2.4rem 4rem;
 	text-align: left;
 }
-
+ 
 section.git-table table tbody td.github-user{
     display: flex;
     gap: 2rem;
+    column-span: 40%;
 }
 
 section.git-table table tbody td img{
