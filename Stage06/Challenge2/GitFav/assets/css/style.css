@@ -14,11 +14,13 @@
     --root-bg-color-input  : #06181C;
     --root-btn-bg-color    : #065E7C;
     --root-th-bg-color     : #092D38;
-    --root-odd-bg-color    : #06161B;
-    --root-even-bg-color   : #4A808C;
+    --root-odd-bg-color    : hsl(194, 64%, 6%);
+    --root-even-bg-color   : #06181C;
     
     --root-constrast-color : #ffff;
     --root-no-fav-color    : #4E5455;
+    --root-tb-color        : #4A808C;
+    --root-btn-del-color   : #F75A68;
 } 
 
 :root{
@@ -52,13 +54,13 @@ div#app{
     display: flex;
     justify-content: center;
 
-    padding: 16rem 16rem 0 16rem;
-
+    padding: 10rem 16rem 0 16rem;
 
     background-color: var(--root-bg-color);
 }
 
 section.main{
+
     width: 112rem;
 
     display: flex;
@@ -139,6 +141,17 @@ header div.main-input button:hover{
     background-color: var(--root-constrast-color);
 }
 
+section.git-table{
+    border-radius: 1.2rem;
+    border: 1px solid var(--root-tb-color);
+    overflow: hidden;
+    overflow-y: auto !important;
+
+    max-height: 42.5rem;
+
+
+
+}
 
 section.git-table table {
     
@@ -152,35 +165,93 @@ section.git-table table *{
     line-height: 160%;
     font-size: 2rem;
     color: var(--root-constrast-color);
+    font-weight: bold;
 }
 
 section.git-table thead{
     background-color: var(--root-th-bg-color);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
+
+
 
 section.git-table table thead th{
     
     padding: 1.6rem 4rem;
     text-align: left;
     
+
+    
+}
+
+section.git-table table tbody tr:nth-child(odd){
+    background-color: var(--root-odd-bg-color);
+}
+
+section.git-table table tbody tr:nth-child(even){
+    background-color: var(--root-even-bg-color);
 }
 
 
-section.git-table table thead th:first-child{
-    border-top-left-radius: 1.2rem;
-    width: 30%;
+section.git-table table tbody td{
+    padding: 2.4rem 4rem;
+	text-align: left;
 }
 
-section.git-table table thead th:last-child{
-    border-top-right-radius: 1.2rem;
+section.git-table table tbody td.github-user{
+    display: flex;
+    gap: 2rem;
 }
+
+section.git-table table tbody td img{
+    width: 5.6rem;
+	height: 5.6rem;
+
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+section.git-table table tbody td a {
+    text-decoration: none;
+}
+
+section.git-table table tbody td a p {
+    font-family: 'Roboto Mono', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 160%;
+}
+section.git-table table tbody td a span {
+
+    font-size: 2rem;
+    line-height: 160%;
+    font-weight: normal;
+}
+
+section.git-table table tbody td button#deleteButton {
+
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+section.git-table table tbody td button#deleteButton span {
+    color: var(--root-btn-del-color);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+
+
 
 
 /* No user add to Favorites */
 
 section.git-table table tbody td div.no-fav-user{
 
-    min-height: 52.4rem;
+    height: 42.4rem;
     background-color: var(--root-odd-bg-color);
 
     display: flex;
