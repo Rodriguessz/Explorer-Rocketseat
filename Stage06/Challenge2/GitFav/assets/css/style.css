@@ -152,6 +152,7 @@ section.git-table{
     
     /* Deixar com que as bordas da tab não vazem */
     overflow: hidden;
+    position: sticky;
 
 }
 
@@ -160,6 +161,7 @@ section.git-table table{
     border-collapse: collapse;
 
 }
+
 
 section.git-table table thead th {
     padding: 1.6rem 2.4rem 1.6rem 4rem;
@@ -172,6 +174,7 @@ thead th.github-user{
     width: 45%;
 }
 
+
 tbody tr:nth-child(odd){
     background-color: var(--root-odd-bg-color);
 }
@@ -183,10 +186,35 @@ tbody tr td{
     padding: 1.6rem 2.4rem 1.6rem 4rem;
 }
 
+tbody{
+    display: block;
+    overflow-y: auto;
+    max-height: 42rem;
+    width: 100%;
+}
+
+th{
+    table-layout: fixed;
+    width: 100%;
+    width: 35%;
+}
+
+td{
+    width: 35%;
+    display: flex;
+    align-items: center;
+}
+
+tr{
+    display: flex;
+}
+
+
 tbody tr td.user{
     display: flex;
     align-items: center;
     gap: 2rem;
+    width: 45%;
 }
 tbody tr td.user img{
 
