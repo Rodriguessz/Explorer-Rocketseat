@@ -21,6 +21,7 @@
     
     --root-constrast-color : #ffff;
     --root-no-fav-color    : #4E5455;
+    --root-plc-hold-color  : #7C7C8A;
     --root-tb-color        : #4A808C;
     --root-btn-del-color   : #F75A68;
 } 
@@ -108,6 +109,19 @@ header div.main-input input{
     border-radius: .6rem;
 
     background-color: var(--root-bg-color-input);
+
+    color: var(--root-plc-hold-color);
+
+    
+}
+
+header div.main-input input:focus{
+    outline: 1px solid var(--root-tb-color);
+}
+
+header div.main-input input::placeholder{
+
+    color: var(--root-plc-hold-color);
 }
 
 
