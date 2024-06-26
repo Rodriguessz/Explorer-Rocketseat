@@ -1,10 +1,17 @@
-//Responsável por manipular as requests relacionadas ao recurso de usuários
+//Criando o controller de usuários
+
 class UserController {
-  // [GET] Index - Listar todos os registros
-  // [GET] Show - Mostrar um registro espeficio
-  // [POST] Create - Criar um novo registro
-  // [PUT]  Update - Atualizar um registro existente
-  // [DELETE] Delete - Deletar um registro existente
+  //Criar Usuário
+
+  create(request, response) {
+    //Extraindo informações do corpo da request
+    const { login, password } = request.body;
+
+    //Retornando uma resposta em Json
+    response.json({ login, password });
+  }
 }
+
+//Exportando o controller
 
 module.exports = UserController;
