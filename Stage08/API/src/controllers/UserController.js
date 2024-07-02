@@ -5,10 +5,11 @@ class UserController {
 
   create(request, response) {
     //Extraindo informações do corpo da request
-    const { login, password } = request.body;
+    const { login, password, isAdm } = request.body;
 
     //Retornando uma resposta em Json e manipulando o status code
-    response.status(201).json({ login, password });
+    console.log("Passou pelos middlewares e criou o usuário com sucesso!");
+    response.status(201).json({ login, password, isAdm });
   }
 }
 //Exportando o controller
