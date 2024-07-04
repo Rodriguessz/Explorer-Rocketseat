@@ -1,15 +1,16 @@
+const AppError = require("../utils/appError");
+
 //Criando o controller de usuários
-
 class UserController {
-  //Criar Usuário
-
+  //Método Create - POST
   create(request, response) {
     //Extraindo informações do corpo da request
-    const { login, password, isAdm } = request.body;
+    const { login, password } = request.boiceta;
+
+    if (!login) throw new AppError("Login obrigatório!");
 
     //Retornando uma resposta em Json e manipulando o status code
-    console.log("Passou pelos middlewares e criou o usuário com sucesso!");
-    response.status(201).json({ login, password, isAdm });
+    response.status(201).json({ login: login, password });
   }
 }
 //Exportando o controller
