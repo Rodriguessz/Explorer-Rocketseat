@@ -16,6 +16,9 @@ async function sqliteConnection() {
     //Driver props - Indica qual o driver para estabelecer a conexão com o bd será utilizado ( sqlite3)
     driver: sqlite3.Database,
   });
+
+  //Retorna a instância do BD que acabamos de conectar
+  return database;
 }
 
 module.exports = sqliteConnection;

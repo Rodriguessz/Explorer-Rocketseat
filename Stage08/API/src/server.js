@@ -2,9 +2,9 @@ require("express-async-errors");
 //Faz um require para o modulo express e armazena tudo na variável.
 const express = require("express");
 
-//Importando a função de configuração do banco de dados e inicializando-a
-const sqliteDB = require("./database/sqlite");
-sqliteDB();
+//Importando a função de migration do banco de dados e inicializando-a
+const migrationsRun = require("./database/sqlite/migrations");
+migrationsRun();
 
 //Const App - Inicializa o meu express;
 const app = express();
