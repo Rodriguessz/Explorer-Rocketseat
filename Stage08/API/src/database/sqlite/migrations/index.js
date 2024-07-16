@@ -8,8 +8,7 @@ async function migrationsRun() {
     //Cria uma conexão com o banco de dados e retorna uma instância do mesmo
     const database = await sqliteDb();
     //Executa as queries de schemas
-    database.exec(schemas);
-    console.log("Migration criada com sucesso!");
+    await database.exec(schemas);
   } catch (error) {
     console.log(`Não foi possivel criar a migration! ${error}`);
   }

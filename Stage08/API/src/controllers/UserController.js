@@ -1,18 +1,42 @@
 const AppError = require("../utils/appError");
 
+const sqliteDb = require("../database/sqlite");
+
 //Criando o controller de usuários
 class UserController {
-  //Método Create - POST
-  create(request, response) {
-    //Extraindo informações do corpo da request
-    const { login, password } = request.boiceta;
+  async create(request, response) {
+    const { name, email, password } = request.body;
 
-    if (!login) throw new AppError("Login obrigatório!");
+    if (!email) {
+      throw new AppError("O campo de email é obrigatorio!");
+    }
 
-    //Retornando uma resposta em Json e manipulando o status code
-    response.status(201).json({ login: login, password });
+    //Estabelece a conexão com o banco de dado
+    const database = await sqliteDb();
+
+    //Executa a query em questão e retorna a primeira linha de registro, caso encontrado.
+    const emailAlreadyExisits = await database.get(
+      "SELECT * FROM users WHERE email = (?)",
+      [email],
+    );
+
+    //Verifica se o email enviado na request está presente em nosso BD
+    if (emailAlreadyExisits) {
+      //Retorna um erro indicando que o email já foi cadastrado
+      throw new AppError("O Email já cadastrado no sistema!");
+    }
+
+    //Inserindo o usuário no banco de dados, caso o email não seja encontrado
+    await database.run(
+      `INSERT INTO users (name, email, password) VALUES (?, ? , ?) `,
+      [name, email, password],
+    );
+
+    response.status(201).json({});
+  }
+  catch(error) {
+    return error;
   }
 }
-//Exportando o controller
 
 module.exports = UserController;

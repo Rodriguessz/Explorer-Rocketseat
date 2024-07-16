@@ -11,7 +11,7 @@ const router = Router();
 const userRouter = require("./user.routes");
 
 //Declarando rotas mães para recursos especificos - Callback será o carregamento do router especifico
-router.use("/user", userRouter);
+router.use("/users", userRouter);
 
 //Exportando nosso router
 module.exports = router;

@@ -6,7 +6,7 @@ const UserController = require("../controllers/UserController");
 //Iniciando uma instância do meu controller
 const userController = new UserController();
 
-//Criando uma rota POST
+//Criando uma rota POST para criação de usuários
 userRouter.post("/create", userController.create);
 
 module.exports = userRouter;
