@@ -26,13 +26,11 @@ app.use(router);
 app.use((error, request, response, next) => {
   //Verifica se o erro capturado é uma instância de AppError
   if (error instanceof AppError)
-    response
-      .status(error.statusCode)
-      .json({
-        status: "Error",
-        statusCode: error.statusCode,
-        message: error.message,
-      });
+    response.status(error.statusCode).json({
+      status: "Error",
+      statusCode: error.statusCode,
+      message: error.message,
+    });
 
   //Caso não seja, indique como erro interno do servidor
   return response

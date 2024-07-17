@@ -1,5 +1,6 @@
 //Importando os modulos sqlite3 e sqlite
 const sqlite3 = require("sqlite3");
+
 const sqlite = require("sqlite");
 
 //Importa o modulo path do node para lidar com endereços em diferentes SO
