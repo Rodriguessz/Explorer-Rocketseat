@@ -35,7 +35,7 @@ app.use((error, request, response, next) => {
   //Caso não seja, indique como erro interno do servidor
   return response
     .status(500)
-    .json({ status: "Error", message: "Internal Server Error!" });
+    .json({ status: "Error", message: `Internal Server Error! ${error}` });
 });
 
 //Porta em que meu servidor irá rodar
