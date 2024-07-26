@@ -11,7 +11,7 @@ module.exports = {
         __dirname,
         "src",
         "database",
-        "kenx",
+        "knex",
         "migrations",
       ),
     },
