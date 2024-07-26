@@ -6,6 +6,15 @@ module.exports = {
     connection: {
       filename: path.resolve(__dirname, "src", "database", "database.db"),
     },
+    migrations: {
+      directory: path.resolve(
+        __dirname,
+        "src",
+        "database",
+        "kenx",
+        "migrations",
+      ),
+    },
     useNullAsDefault: true,
   },
 };
