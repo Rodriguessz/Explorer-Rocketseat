@@ -7,11 +7,12 @@ const { Router } = require("express");
 const router = Router();
 
 //Importando os roteador espeficios
-
 const userRouter = require("./user.routes");
+const notesRouter = require("./notes.routes");
 
 //Declarando rotas mães para recursos especificos - Callback será o carregamento do router especifico
 router.use("/users", userRouter);
+router.use("/notes", notesRouter);
 
 //Exportando nosso router
 module.exports = router;

@@ -39,7 +39,7 @@ class UserController {
       [name, email, hashPassword],
     );
 
-    response.status(201).json({});
+    response.status(201).json({ message: "Usuário criado com sucesso!" });
   }
 
   async update(request, response) {

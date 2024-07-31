@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const userRouter = Router();
+const userRoutes = Router();
 
 //Importando o controller do recurso de usuários
 const UserController = require("../controllers/UserController");
@@ -7,9 +7,9 @@ const UserController = require("../controllers/UserController");
 const userController = new UserController();
 
 //Criando uma rota POST para criação de usuários
-userRouter.post("/create", userController.create);
+userRoutes.post("/create", userController.create);
 
 //Criando uma rota PUT para atualização de usuários
-userRouter.put("/:id", userController.update);
+userRoutes.put("/:id", userController.update);
 
-module.exports = userRouter;
+module.exports = userRoutes;
