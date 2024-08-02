@@ -11,12 +11,14 @@ class NotesController {
     //Knex - Recebe como argumento a tabela em que serão inseridas as informações;
     //Insert - Espera receber um objeto ou array de objetos a serem inseridos
     //Retorno - Retorna um array com o id(s) gerado da inserção, além de inserir as informações no banco de dados;
+    //Sqlite - O retorno do método insert pode variar de acordo com o banco de dados utilizado. No sqlite, o retorno é um array com o ultimo id gerado.
+    //Returning ('coluna') - Utilizando o método returning, podemos recuperar todos os ids que foram gerados após a inserção.
     //Desetruturação de arrays - Utilizamos pois o retorno é um array com o id gerado e queremos pegar apenas o valor e não o array em si.
     const [note_id] = await knex("notes").insert({
       title,
       description,
       user_id,
-    });
+    }).returning('id');
 
     //Mapeia o array de links vinculados a nota criada, retornando um array de objetos com as propriedades: url e note_id;
     const linksData = links.map((link) => {
@@ -27,7 +29,7 @@ class NotesController {
     });
 
     //Cadastra os links no banco de dados e retorna um array com os ids gerados após a inserção;
-    const linksIds = await knex("links").insert(linksData);
+    const linksIds = await knex("links").insert(linksData).returning('id');
 
     //Mapeia o array de tags vinculadas a nota criada, retornando um array de objetos com as propriedades: name, user_id e note_id;
     const tagsData = tags.map((tag) => {
@@ -38,10 +40,8 @@ class NotesController {
       };
     });
 
-    console.log(tagsData);
-
     //Cadastra as tags no banco de dados e retorna um array com os ids gerados após a inserção.
-    const tagsIds = await knex("tags").insert(tagsData);
+    const tagsIds = await knex("tags").insert(tagsData).returning('id');
 
     response
       .status(200)

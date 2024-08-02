@@ -6,7 +6,7 @@ exports.up = (knex) => {
       .integer("note_id")
       .references("id")
       .inTable("notes")
-      //OnDelete(Cascade) - Se por acaso a nota em que esse link estiver vinculado for deleteda, automaticamente delete o link também
+      //OnDelete(Cascade) - Se por acaso a nota em que esse link estiver vinculado for deletada, automaticamente deleta o link do banco de dados.
       .onDelete("cascade");
     table.timestamp("created_at").default(knex.fn.now());
   });
