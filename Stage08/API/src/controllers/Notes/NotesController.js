@@ -47,6 +47,28 @@ class NotesController {
       .status(200)
       .json({ note_id: note_id, links: linksIds, tags: tagsIds });
   }
+
+  async show(request, response) {
+    //Recupera o id da nota que queremos consultar em nosso banco de dados
+    const { note_id } = request.params;
+
+    //Select - Indica de quais colunas queremos retornar informações, retornando um array de objetos,
+    //onde cada objeto representa um registro encontado em nosso banco de dados
+    //Where -  Adiciona uma cláusula de condição à consulta, filtrando os resultados para retornar somente os registros que atendem à condição especificada.
+    //First - Recupera apenas o primeiro registro da consulta resultante
+    const note = await knex("notes").where("id", note_id).select("*").first();
+
+    //Recupera todas as tags vinculadas à tag com o id em questão;
+    const tags = await knex("tags").where("note_id", note_id);
+
+    //Recupera todas as tags vinculadas à tag com o id em questão;
+    const links = await knex("links").where("note_id", note_id);
+
+    // Usa o spread operator para extrair as propriedades do objeto `note` e adiciona em um novo objeto,
+    //juntamente com  as novas propriedades `tags` e `links`.
+
+    return response.status(200).json({ ...note, tags, links });
+  }
 }
 
 module.exports = NotesController;
