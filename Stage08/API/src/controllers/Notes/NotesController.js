@@ -1,4 +1,5 @@
 const knex = require("../../database/knex");
+const AppError = require("../../utils/appError");
 
 class NotesController {
   async create(request, response) {
@@ -7,6 +8,11 @@ class NotesController {
 
     //Recuperando o id do usuário que está criando a note, via params por hora!
     const { user_id } = request.params;
+
+    const userExists = await knex("users").where({ id: user_id });
+    if (!userExists.length > 0) {
+      throw new AppError("Usuário não encontrado");
+    }
 
     //Knex - Recebe como argumento a tabela em que serão inseridas as informações;
     //Insert - Espera receber um objeto ou array de objetos a serem inseridos
@@ -18,7 +24,7 @@ class NotesController {
       title,
       description,
       user_id,
-    }).returning('id');
+    });
 
     //Mapeia o array de links vinculados a nota criada, retornando um array de objetos com as propriedades: url e note_id;
     const linksData = links.map((link) => {
@@ -29,7 +35,7 @@ class NotesController {
     });
 
     //Cadastra os links no banco de dados e retorna um array com os ids gerados após a inserção;
-    const linksIds = await knex("links").insert(linksData).returning('id');
+    const linksIds = await knex("links").insert(linksData);
 
     //Mapeia o array de tags vinculadas a nota criada, retornando um array de objetos com as propriedades: name, user_id e note_id;
     const tagsData = tags.map((tag) => {
@@ -41,7 +47,7 @@ class NotesController {
     });
 
     //Cadastra as tags no banco de dados e retorna um array com os ids gerados após a inserção.
-    const tagsIds = await knex("tags").insert(tagsData).returning('id');
+    const tagsIds = await knex("tags").insert(tagsData);
 
     response
       .status(200)
@@ -68,6 +74,19 @@ class NotesController {
     //juntamente com  as novas propriedades `tags` e `links`.
 
     return response.status(200).json({ ...note, tags, links });
+  }
+
+  async delete(request, response) {
+    //Recupera o id da nota que queremos consultar em nosso banco de dados
+    const { note_id } = request.params;
+
+    //Delete() - Deleta um ou mais registros do banco de dados
+    //Retorno - Retorna a quantidade de registros excluidos após a execução do comando
+    await knex("notes").where({ id: note_id }).delete();
+
+    return response
+      .status(200)
+      .json({ message: `Note excluida com sucesso!`, note_id: note_id });
   }
 }
 

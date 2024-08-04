@@ -9,4 +9,6 @@ notesRoutes.post("/create/:user_id", notesController.create);
 
 notesRoutes.get("/show/:note_id", notesController.show);
 
+notesRoutes.delete("/delete/:note_id", notesController.delete);
+
 module.exports = notesRoutes;
