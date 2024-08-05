@@ -2,6 +2,42 @@ const knex = require("../../database/knex");
 const AppError = require("../../utils/appError");
 
 class NotesController {
+  async index(request, response) {
+    //Recupera o id do usuário enviado via parametros de consulta;
+    const { user_id } = request.query;
+
+    console.log(user_id);
+
+    //Recupera todas as notas existentes no banco de dados
+    const notes = await knex("notes").where({ user_id });
+
+    //Recupera todas as notas existentes referentes ao usuário
+    const tags = await knex("tags").where({ user_id });
+
+    //Recupera todas as notas existentes no banco de dado
+    //Não podemos utilizar o user_id para recuperar os links especificos, pois os links se relacionam apenas com as notas
+    const links = await knex("links").select("*");
+
+    const userNotes = notes.map((note) => {
+      //Filter - O método filter  Retorna um array com os elementos do looping  que satisfazem a condição indicada, caso contrário são excluídos do array resultante.
+      // OBS: Não utilizamos o map nesse caso! O map sempre retornará um array com a mesma quantidade de elementos do array original. Em casos onde a condição não é satisfeita
+      // e não temos um retorno, o padrão é retornar undefined.
+      //Retorna os links relacionados a nota do usuário
+      const noteLinks = links.filter((link) => {
+        return link.note_id === note.id;
+      });
+
+      const noteTags = tags.filter((tag) => {
+        return tag.note_id === note.id;
+      });
+
+      // Spread operator (...) - Espalha as propriedades de um objeto ou elementos de um array
+      // Retorno - Um novo objeto, com as propriedades da nota atual, adicionado das tags e links filtrados.
+      return { ...note, noteLinks, noteTags };
+    });
+
+    return response.status(200).json(userNotes);
+  }
   async create(request, response) {
     //Recuperando informações enviadas no body da request
     const { title, description, links, tags } = request.body;

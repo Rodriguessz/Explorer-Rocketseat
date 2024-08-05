@@ -5,6 +5,8 @@ const notesRoutes = Router();
 const NotesController = require("../controllers/Notes/NotesController");
 const notesController = new NotesController();
 
+notesRoutes.get("/show/all", notesController.index);
+
 notesRoutes.post("/create/:user_id", notesController.create);
 
 notesRoutes.get("/show/:note_id", notesController.show);
