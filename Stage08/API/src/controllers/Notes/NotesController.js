@@ -4,43 +4,30 @@ const AppError = require("../../utils/appError");
 class NotesController {
   async index(request, response) {
     //Recupera o id do usuário e titulo da nota enviados via parametros de consulta;
-    const { user_id, title } = request.query;
+    const { user_id, title, tags } = request.query;
 
-    console.log(user_id);
+    let notes;
 
-    //Recupera todas as notas  do usuário
-    //WhereLike - Busca na coluna indicada uma ocorrência do valor passado como argumento
-    // % - Caractere curinga, quando adicionado no começo e no final, busca o valor de ocorrência em toda string.
-    const notes = await knex("notes")
-      .where({ user_id })
-      .whereLike("title", `%${title}%`);
+    //Verifica se o usuário enviou tags como parametro de consulta para serem filtradas
+    if (tags) {
 
-    //Recupera todas as notas existentes referentes ao usuário
-    const tags = await knex("tags").where({ user_id });
+      //Split - Divide a string recuperada em um array de strings, utilizando a virgula como separador
+      //Map - Retorna um novo array com tags sem espaços em branco
+      //Trim - Remove os espaços em branco de uma string.
+      const filteredTags = tags.split(",").map((tag) => tag.trim());
 
-    //Recupera todas as notas existentes no banco de dado
-    //Não podemos utilizar o user_id para recuperar os links especificos, pois os links se relacionam apenas com as notas
-    const links = await knex("links").select("*");
+      //Recupera as tags vinculadas ao usuário e que correspondam com as tags enviadas para o filtro.
+      //WhereIn - Busca registros onde o valor da coluna especifica corresponde a um dos valores contidos no array passado.
+      notes = await knex("tags").where({ user_id }).whereIn("name", filteredTags);
 
-    const userNotes = notes.map((note) => {
-      //Filter - O método filter  Retorna um array com os elementos do looping  que satisfazem a condição indicada, caso contrário são excluídos do array resultante.
-      // OBS: Não utilizamos o map nesse caso! O map sempre retornará um array com a mesma quantidade de elementos do array original. Em casos onde a condição não é satisfeita
-      // e não temos um retorno, o padrão é retornar undefined.
-      //Retorna os links relacionados a nota do usuário
-      const noteLinks = links.filter((link) => {
-        return link.note_id === note.id;
-      });
+    } else {
+      //Recupera as notas do usuário
+      //WhereLike - Busca na coluna indicada uma ocorrência do valor passado como argumento
+      // % - Caractere curinga, quando adicionado no começo e no final, busca o valor de ocorrência em toda string.
+      notes = await knex("notes").where({ user_id }).whereLike("title", `%${title}%`);
+    }
 
-      const noteTags = tags.filter((tag) => {
-        return tag.note_id === note.id;
-      });
-
-      // Spread operator (...) - Espalha as propriedades de um objeto ou elementos de um array
-      // Retorno - Um novo objeto, com as propriedades da nota atual, adicionado das tags e links filtrados.
-      return { ...note, noteLinks, noteTags };
-    });
-
-    return response.status(200).json(userNotes);
+    return response.status(200).json(notes);
   }
   async create(request, response) {
     //Recuperando informações enviadas no body da request
@@ -50,6 +37,7 @@ class NotesController {
     const { user_id } = request.params;
 
     const userExists = await knex("users").where({ id: user_id });
+
     if (!userExists.length > 0) {
       throw new AppError("Usuário não encontrado");
     }
