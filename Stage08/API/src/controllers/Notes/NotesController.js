@@ -3,13 +3,17 @@ const AppError = require("../../utils/appError");
 
 class NotesController {
   async index(request, response) {
-    //Recupera o id do usuário enviado via parametros de consulta;
-    const { user_id } = request.query;
+    //Recupera o id do usuário e titulo da nota enviados via parametros de consulta;
+    const { user_id, title } = request.query;
 
     console.log(user_id);
 
-    //Recupera todas as notas existentes no banco de dados
-    const notes = await knex("notes").where({ user_id });
+    //Recupera todas as notas  do usuário
+    //WhereLike - Busca na coluna indicada uma ocorrência do valor passado como argumento
+    // % - Caractere curinga, quando adicionado no começo e no final, busca o valor de ocorrência em toda string.
+    const notes = await knex("notes")
+      .where({ user_id })
+      .whereLike("title", `%${title}%`);
 
     //Recupera todas as notas existentes referentes ao usuário
     const tags = await knex("tags").where({ user_id });
