@@ -10,7 +10,6 @@ class NotesController {
 
     //Verifica se o usuário enviou tags como parametro de consulta para serem filtradas
     if (tags) {
-
       //Split - Divide a string recuperada em um array de strings, utilizando a virgula como separador
       //Map - Retorna um novo array com tags sem espaços em branco
       //Trim - Remove os espaços em branco de uma string.
@@ -18,17 +17,31 @@ class NotesController {
 
       //Recupera as tags vinculadas ao usuário e que correspondam com as tags enviadas para o filtro.
       //WhereIn - Busca registros onde o valor da coluna especifica corresponde a um dos valores contidos no array passado.
-      notes = await knex("tags").where({ user_id }).whereIn("name", filteredTags);
-
+      //Inner join - Une duas ou mais tabelas, combinando registros onde a coluna especificada da tabela1, no caso notes (PK), é igual ao valor da coluna na tabela2 tags(FK)
+      //WhereLike - Busca na coluna indicada uma ocorrência do valor passado como argumento.
+      // % - Caractere curinga, quando adicionado no começo e no final, busca o valor de ocorrência em toda string corresponde a coluna.
+      notes = await knex("tags")
+        .where("tags.user_id", user_id)
+        .whereIn("name", filteredTags)
+        .whereLike("notes.title", `%${title}%`)
+        .innerJoin("notes", "notes.id", "tags.note_id")
+        .select([
+          "notes.user_id",
+          "notes.id",
+          "notes.title",
+          "notes.description",
+          "tags.name as tag_name",
+        ]);
     } else {
       //Recupera as notas do usuário
-      //WhereLike - Busca na coluna indicada uma ocorrência do valor passado como argumento
-      // % - Caractere curinga, quando adicionado no começo e no final, busca o valor de ocorrência em toda string.
-      notes = await knex("notes").where({ user_id }).whereLike("title", `%${title}%`);
+      notes = await knex("notes")
+        .where({ user_id })
+        .whereLike("title", `%${title}%`);
     }
 
     return response.status(200).json(notes);
   }
+
   async create(request, response) {
     //Recuperando informações enviadas no body da request
     const { title, description, links, tags } = request.body;
