@@ -21,17 +21,18 @@ class NotesController {
       //WhereLike - Busca na coluna indicada uma ocorrência do valor passado como argumento.
       // % - Caractere curinga, quando adicionado no começo e no final, busca o valor de ocorrência em toda string corresponde a coluna.
       notes = await knex("tags")
-        .where("tags.user_id", user_id)
-        .whereIn("name", filteredTags)
-        .whereLike("notes.title", `%${title}%`)
-        .innerJoin("notes", "notes.id", "tags.note_id")
         .select([
           "notes.user_id",
           "notes.id",
           "notes.title",
           "notes.description",
           "tags.name as tag_name",
-        ]);
+        ])
+        .where("tags.user_id", user_id)
+        .whereIn("name", filteredTags)
+        .whereLike("notes.title", `%${title}%`)
+        .innerJoin("notes", "notes.id", "tags.note_id")
+        .orderBy("notes.title");
     } else {
       //Recupera as notas do usuário
       notes = await knex("notes")
@@ -39,7 +40,24 @@ class NotesController {
         .whereLike("title", `%${title}%`);
     }
 
-    return response.status(200).json(notes);
+    //Seleciona todas as tags referentes ao usuário em questão!
+    const userTags = await knex("tags").where({ user_id });
+
+    //Map - Aplica o callback indicado para todos os itens presentes no array, afim de retornar um array com as notas formatadas.
+    //Filter - De todas as tags recuperadas, filtra apenas as tags relacionadas com a nota atual do looping map.
+    //Retorno - Array contendo todas as notas recuperadas e com suas respectivas tags.
+    const notesWithTags = notes.map((note) => {
+      //Filtra as tags que pertecem a nota atual.
+      const noteTags = userTags.filter((tag) => note.id === tag.note_id);
+
+      //Cria um novo objeto, espalhando as propriedades da nota e adicionando o array de tags relacionados a mesma.
+      return {
+        ...note,
+        noteTags,
+      };
+    });
+
+    return response.status(200).json(notesWithTags);
   }
 
   async create(request, response) {
