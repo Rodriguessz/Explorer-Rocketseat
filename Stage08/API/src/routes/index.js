@@ -9,10 +9,12 @@ const router = Router();
 //Importando os roteador espeficios
 const userRouter = require("./user.routes");
 const notesRouter = require("./notes.routes");
+const tagsRouter = require("./tags.routes");
 
 //Declarando rotas mães para recursos especificos - Callback será o carregamento do router especifico
 router.use("/users", userRouter);
 router.use("/notes", notesRouter);
+router.use("/tags", tagsRouter);
 
 //Exportando nosso router
 module.exports = router;
