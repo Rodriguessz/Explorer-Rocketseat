@@ -6,6 +6,7 @@ const express = require("express");
 const migrationsRun = require("./database/sqlite/migrations");
 migrationsRun();
 
+
 //Const App - Inicializa o meu express;
 const app = express();
 
@@ -15,7 +16,7 @@ const router = require("./routes");
 //Importando o utilitário de tratamento de erros
 const AppError = require("./utils/appError");
 
-//Indicando o tipo de informação que será retornada via body para nossa app
+//Indicando o tipo de informação que será retornada via body para o nosso app
 app.use(express.json());
 
 //Indicando para nossa aplicação quais rotas ela enxerga
@@ -44,3 +45,4 @@ const PORT = 3333;
 app.listen(PORT, () =>
   console.log(`Server is running on: http://localhost:${PORT}`),
 );
+

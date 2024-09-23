@@ -7,5 +7,7 @@ const tagsController = new TagsController();
 
 //Definindo as rotas para cada funcionalidade de tagss
 tagsRoutes.get("/show/all/:user_id", tagsController.index);
+tagsRoutes.post("LINDO")
 
 module.exports = tagsRoutes;
+
