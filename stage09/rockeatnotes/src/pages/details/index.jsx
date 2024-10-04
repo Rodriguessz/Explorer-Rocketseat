@@ -1,7 +1,7 @@
 //Styled-components
-import { Button } from "../components/Button"
-import { Header } from "../components/Header"
-import { Section } from "../components/Section"
+import { Button } from "../../components/Button"
+import { Header } from "../../components/Header"
+import { Section } from "../../components/Section"
 
 import { Container , Links } from "./styles"
 

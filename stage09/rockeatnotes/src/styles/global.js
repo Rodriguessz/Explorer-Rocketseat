@@ -12,8 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 
 :root{
     font-size: 62.5%;
-
-    font-family: 'Roboto Slab', serif;
+    font-family: "Roboto Slab", system-ui;
 }
 body{  
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
@@ -29,6 +28,7 @@ a{
 button, a {
     cursor: pointer;
     transition: filter 0.3s;
+    font-family: "Roboto Slab", system-ui;
 }
 
 button:hover, a:hover{
