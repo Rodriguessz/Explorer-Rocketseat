@@ -5,32 +5,49 @@ import { Header } from "../../components/Header"
 import { Section } from "../../components/Section"
 import { Tag } from "../../components/Tag"
 
-import { Container , Links } from "./styles"
+import { Container, Links, Content } from "./styles"
 
 
 //Named Export is more indicate to react components
-export function Details(){
+export function Details() {
   return (
-    <> 
+    <>
       <Container>
+
         <Header />
 
-        <ButtonText title="Excluir Nota"/>
+        <main>
+          <Content>
+            <ButtonText title="Excluir Nota" />
 
-        <Section title="Links úteis" >
-            <Links>
-              <li>https://www.rocketseat.com.br/</li>
-              <li>https://www.rocketseat.com.br/</li>
-            </Links>
-        </Section>
+            <h1>Introdução ao React</h1>
 
-        <Section title="Minhas notas" >
-          <Tag title="node"/>
-          <Tag title="express"/>
-        </Section>
+            <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
+            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+            </p>
+
+            <Section title="Links úteis" >
+              <Links>
+                <li>https://www.rocketseat.com.br/</li>
+                <li>https://www.rocketseat.com.br/</li>
+              </Links>
+            </Section>
+
+            <Section title="Minhas notas" >
+              <Tag title="node" />
+              <Tag title="express" />
+            </Section>
 
 
-        <Button title="Voltar"/>
+            <Button title="Voltar" />
+          </Content>
+
+        </main>
+
       </Container>
 
     </>

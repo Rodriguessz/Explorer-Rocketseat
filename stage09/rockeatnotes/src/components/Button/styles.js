@@ -10,7 +10,7 @@ export const Container = styled.button`
     height: 5.6rem;
 
     padding: 0 1.6rem;
-    margin-top: 1.6rem ;
+    margin-top: 3.6rem ;
 
     background-color: ${({theme}) => theme.COLORS.ORANGE};
 

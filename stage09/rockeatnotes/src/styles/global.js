@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     font-family: "Roboto Slab", system-ui;
 }
+
 body{  
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     
@@ -34,4 +35,6 @@ button, a {
 button:hover, a:hover{
     filter: brightness(0.9);
 }
+
+
 `
