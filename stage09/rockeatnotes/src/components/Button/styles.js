@@ -24,5 +24,5 @@ export const Container = styled.button`
         cursor: not-allowed;
     }
 
-    grid-area: content;
+
 `
