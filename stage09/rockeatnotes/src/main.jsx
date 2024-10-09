@@ -4,12 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './styles/global';
 import {theme} from "./styles/theme"
 
-import { Home } from './pages/Home';
-import { SignIn } from './pages/SignIn';
-import { SignUp } from './pages/SignUp';
-import { Profile } from './pages/Profile';
-import { New } from './pages/New';
-import { Details } from './pages/details';
+import { Routes } from './routes';
 
 
 
@@ -17,7 +12,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <New />
+      <Routes />
     </ThemeProvider>
   </StrictMode>,
 )
