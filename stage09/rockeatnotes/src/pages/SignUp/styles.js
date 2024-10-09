@@ -7,6 +7,7 @@ export const Container = styled.div`
     height: 100vh;
 
     display: flex;
+    flex-direction: row-reverse;
     //stretch to fill the container
     align-items: stretch;
 
