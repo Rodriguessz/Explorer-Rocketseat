@@ -7,7 +7,7 @@ export const Header = ( {} ) => {
     return(
         <>
             <Container>
-                <Profile>
+                <Profile to="/profile">
                     <img src="https://github.com/rodriguessz.png" alt="Imagem do usuário" />
 
                     <div>

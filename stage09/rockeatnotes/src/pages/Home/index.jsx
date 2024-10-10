@@ -40,7 +40,7 @@ export const Home = ({}) => {
                 </Section>
             </Content>
 
-            <NewNote>
+            <NewNote to="/new">
                 <FiPlus />
                 <span>Criar nota</span> 
             </NewNote>
