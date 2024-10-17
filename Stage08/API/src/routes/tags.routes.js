@@ -5,9 +5,11 @@ const tagsRoutes = Router();
 const TagsController = require("../controllers/Tags/TagsController");
 const tagsController = new TagsController();
 
-//Definindo as rotas para cada funcionalidade de tagss
-tagsRoutes.get("/show/all/:user_id", tagsController.index);
-tagsRoutes.post("LINDO")
+//Importando o middleware de autenticação
+const ensureAuthentication = require("../middleware/ensureAuthentication")
+
+//EnsureAuthentication - Middleware de autenticação de usuário;
+tagsRoutes.get("/show/all", ensureAuthentication,  tagsController.index);
 
 module.exports = tagsRoutes;
 

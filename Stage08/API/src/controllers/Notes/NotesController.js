@@ -3,8 +3,12 @@ const AppError = require("../../utils/appError");
 
 class NotesController {
   async index(request, response) {
-    //Recupera o id do usuário e titulo da nota enviados via parametros de consulta;
-    const { user_id, title, tags } = request.query;
+    //Recupera titulo e tags da nota enviados via parametros de consulta;
+    const { title, tags } = request.query;
+
+    //Recuperando o id do usuário do objeto de usuário criado pelo middlware
+    const user_id = request.user.id;
+    console.log("Aqui", user_id)
 
     let notes;
 
@@ -64,8 +68,8 @@ class NotesController {
     //Recuperando informações enviadas no body da request
     const { title, description, links, tags } = request.body;
 
-    //Recuperando o id do usuário que está criando a note, via params por hora!
-    const { user_id } = request.params;
+    //Recuperando o id do usuário através do objeto user criado pelo middleware de autenticação;
+    const user_id = request.user.id;
 
     const userExists = await knex("users").where({ id: user_id });
 
@@ -104,7 +108,6 @@ class NotesController {
         name: tag,
       };
     });
-
     //Cadastra as tags no banco de dados e retorna um array com os ids gerados após a inserção.
     const tagsIds = await knex("tags").insert(tagsData);
 

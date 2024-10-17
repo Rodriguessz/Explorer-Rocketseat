@@ -3,7 +3,7 @@ const AppError = require("../../utils/appError");
 
 class TagsController {
   async index(request, response) {
-    const { user_id } = request.params;
+    const user_id = request.user.id;
 
     //Recupera as tags referentes ao usuário recuperado via query params;
     const tags = await knex("tags").where({ user_id });

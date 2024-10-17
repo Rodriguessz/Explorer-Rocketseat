@@ -45,14 +45,14 @@ class UserController {
   async update(request, response) {
     //Recuperando informações do body
     const { name, email, password, oldPassword } = request.body;
-    //Recuperando id enviado como route param
-    const { id } = request.params;
+    //Recuperando id através do objeto user vindo do middleware de autenticação.
+    const user_id = request.user.id;
 
     //Abrindo a conexão com o banco
     const database = await sqliteDb();
 
     //Recuperando todos os campos da tabela users onde o userid for igual ao recuperado
-    const user = await database.get("SELECT * FROM users WHERE id = (?)", [id]);
+    const user = await database.get("SELECT * FROM users WHERE id = (?)", [user_id]);
     //Verifica se o usuário existe no banco de dados
     if (!user) throw new AppError("Usuário não encontrado");
 
@@ -108,7 +108,7 @@ class UserController {
         password = (?),
         updated_at = DATETIME('now')
         WHERE id = (?)`,
-      [user.name, user.email, user.password, id],
+      [user.name, user.email, user.password, user_id],
     );
 
     return response
