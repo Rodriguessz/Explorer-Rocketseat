@@ -7,7 +7,7 @@ class TagsController {
 
     //Recupera as tags referentes ao usuário recuperado via query params;
     const tags = await knex("tags").where({ user_id });
-
+    
     return response.status(200).json(tags);
   }
 }

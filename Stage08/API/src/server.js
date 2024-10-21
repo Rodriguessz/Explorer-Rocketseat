@@ -1,4 +1,7 @@
 require("express-async-errors");
+
+const uploadConfigs = require("../src/config/upload")
+
 //Faz um require para o modulo express e armazena tudo na variável.
 const express = require("express");
 
@@ -18,6 +21,10 @@ const AppError = require("./utils/appError");
 
 //Indicando o tipo de informação que será retornada via body para o nosso app
 app.use(express.json());
+
+
+//Rota para buscar arquivos estáticos da aplicação dentro da pasta de uploads;
+app.use("/files", express.static(uploadConfigs.UPLOADS_FOLDER))
 
 //Indicando para nossa aplicação quais rotas ela enxerga
 app.use(router);

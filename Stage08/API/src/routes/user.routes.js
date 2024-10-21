@@ -17,6 +17,10 @@ const UserController = require("../controllers/UserController");
 //Iniciando uma instância do meu controller
 const userController = new UserController();
 
+
+const UserAvatarController = require("../controllers/UserAvatarController")
+const userAvatarController = new UserAvatarController();
+
 //Criando uma rota POST para criação de usuários
 userRoutes.post("/create", userController.create);
 
@@ -25,11 +29,7 @@ userRoutes.put("/", ensureAuthentication , userController.update);
 
 // Criando uma rota PATCH para o upload da foto de perfil do usuário e atualização no banco de dados.
 // O middleware 'upload.single("avatar")' é responsável por processar o arquivo enviado no campo 'avatar' da requisição.
-userRoutes.patch("/avatar", ensureAuthentication, upload.single("avatar"), (request, response) => {
-    const { filename } = request.file
-
-    return response.status(200).json({filename})
-})
+userRoutes.patch("/avatar", ensureAuthentication, upload.single("avatar"), userAvatarController.update)
 
 
 module.exports = userRoutes;
