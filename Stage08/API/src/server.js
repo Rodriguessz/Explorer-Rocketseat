@@ -9,9 +9,17 @@ const express = require("express");
 const migrationsRun = require("./database/sqlite/migrations");
 migrationsRun();
 
+//Importa o pacote CORS que permite configurar o compartilhamento de recursos entre diferentes origens.
+//Basicamente será utilizado para permitir que nosso front-end converse com o back-end;
+const cors = require("cors");
 
 //Const App - Inicializa o meu express;
 const app = express();
+
+//Aplica o middleware CORS. Com isso, o servidor permitirá que requisições de origens diferentes sejam aceitas, sem restrições de CORS;
+//Dessa forma, o nosso client pode mandar requisições para recursos do nosso back-end;
+app.use(cors())
+
 
 //Importando o roteador principal
 const router = require("./routes");
