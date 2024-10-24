@@ -1,6 +1,6 @@
 //createContext - Cria um contexto;
 //useContext - Hook para comsumir informações de um contexto especifico
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 import { api } from '../services/api';
 
@@ -22,7 +22,9 @@ function AuthProvider({ children }) {
             //Desestrutura a response, recuperando o token gerado e o usuário enviado da API;
             const { token , user } = response.data; 
 
-            console.log(user, token)
+            //Armazena as informações do usuário no localStorage;
+            localStorage.setItem("@rocketnotes:user", JSON.stringify(user));
+            localStorage.setItem("@rocketnotes:token", token);
 
             // Define o token de autenticação no cabeçalho padrão de todas as requisições;
             // Dessa forma, todas as requisições feitas pela api (axios) irão incluir automaticamente o token gerado durante o processo de login, utilizando o formato "Bearer <token>" no cabeçalho de autorização.
@@ -41,6 +43,26 @@ function AuthProvider({ children }) {
 
 
     }
+
+    //Dispara uma ação após a renderização do componente
+    //Utilizamos para recuperar informações do usuário no localStorage e armazena-las no estado de usuário caso existam;
+    useEffect(() => {
+
+        //Recupera as informações do usuário armazenadas no localStorage caso o login tenha sido efetuado;
+        const user = localStorage.getItem("@rocketnotes:user")
+        const token = localStorage.getItem("@rocketnotes:token")
+
+        //Verifica se as informações recuperadas existem
+        if(user && token){
+    
+            // Define o token de autenticação no cabeçalho padrão de todas as requisições;
+            api.defaults.headers.authorization = `Bearer ${token}`
+
+            //Adiciona ao estado de usuário as informações recuperadas do localStorage
+            setData({ token , user: JSON.parse(user)});
+        }
+
+    } , [])
 
 
     return (
