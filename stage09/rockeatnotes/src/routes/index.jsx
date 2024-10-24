@@ -12,6 +12,11 @@ export const Routes = () => {
     return(
         <>
             <BrowserRouter>
+                {/*
+                 Verrifica se existe informações no objeto de usuário 
+                 Caso exista, renderiza as rotas de aplicação
+                 Caso contrário, renderiza as rotas de autenticação
+                */}
                 {!user ? (<AuthRoutes />) : <AppRoutes />}
             </BrowserRouter>
         </>
