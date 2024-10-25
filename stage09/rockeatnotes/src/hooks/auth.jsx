@@ -28,7 +28,7 @@ function AuthProvider({ children }) {
 
             // Define o token de autenticação no cabeçalho padrão de todas as requisições;
             // Dessa forma, todas as requisições feitas pela api (axios) irão incluir automaticamente o token gerado durante o processo de login, utilizando o formato "Bearer <token>" no cabeçalho de autorização.
-            api.defaults.headers.authorization = `Bearer ${token}`;
+            api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
             //Atribui ao estado as informações do usuário recuperadas da API;
             setData({ token , user });
@@ -67,7 +67,7 @@ function AuthProvider({ children }) {
         if(user && token){
     
             // Define o token de autenticação no cabeçalho padrão de todas as requisições;
-            api.defaults.headers.authorization = `Bearer ${token}`
+            api.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
             //Adiciona ao estado de usuário as informações recuperadas do localStorage
             setData({ token , user: JSON.parse(user)});
