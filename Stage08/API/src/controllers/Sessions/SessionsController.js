@@ -26,7 +26,6 @@ class SessionsController {
         //Gera o token de autenticação do usuário
         // Sign (PAYLOAD, SECRET , OPTIONS)
         const { secret, expiresIn } = auth.jwt; 
-        console.log(expiresIn, "<-----")
         const token =  sign({}, secret, {
             subject: String(user.id),
             expiresIn: expiresIn

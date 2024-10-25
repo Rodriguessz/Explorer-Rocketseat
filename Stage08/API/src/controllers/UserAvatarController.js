@@ -29,8 +29,6 @@ class UserAvatarController {
         //Insere no objeto de usuário a nova imagem;
         user.avatar = fileName;
 
-        console.log("user", user)
-
         //Atualiza o registro no banco de dados
         await knex("users").update(user).where({ id: user_id});
 

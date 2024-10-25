@@ -44,6 +44,17 @@ function AuthProvider({ children }) {
 
     }
 
+    //Encerra a sessão do usuário na aplicação
+    function signOut(){   
+        //Remove as informações do usuário do localStorage;
+        localStorage.removeItem("@rocketnotes:user");
+        localStorage.removeItem("@rocketnotes:token");
+
+        //Remove as informações armazenadas no estado de usuário;
+        setData({});
+
+    }
+
     //Dispara uma ação após a renderização do componente
     //Utilizamos para recuperar informações do usuário no localStorage e armazena-las no estado de usuário caso existam;
     useEffect(() => {
@@ -64,9 +75,8 @@ function AuthProvider({ children }) {
 
     } , [])
 
-
     return (
-        <AuthContext.Provider value={{ signIn, user: data.user }}>
+        <AuthContext.Provider value={{ signIn, signOut ,user: data.user }}>
             {children}
         </AuthContext.Provider>
     )
@@ -82,4 +92,4 @@ function useAuth() {
 }
 
 
-export { AuthProvider, useAuth, AuthContext }
+export { AuthProvider, useAuth }
