@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 export const Profile = () => {
     
     //Recupera as informações do usuário compartilhadas via AuthProvider;
-    const { user } = useAuth();
+    const { user, updateProfile } = useAuth();
     
     //Cria o estado referente aos campos dos inputs
     const [name, setName] = useState(user.name); //Atribui como valor inicial o nome do usuário recuperado através da sessão.
@@ -24,6 +24,35 @@ export const Profile = () => {
     const [currentPsw, setCurrentPsw] = useState("");
     const [newPsw, setNewPsw] = useState("")
 
+    const [avatarPreview, setAvatarPreview] = useState(user.avatar);
+
+    async function handleUpdateProfile(){
+
+        //Monta um objeto de usuário com os dados passados pelo usuário através dos inputs;
+        const user = {
+            name: name,
+            email: email,
+            oldPassword: currentPsw,
+            password: newPsw,
+        }
+
+        //Chama a função para atualizar o usuário disponibilizada pelo authProvider, passando como argumento principal o objeto de usuário.
+        await updateProfile({user});
+
+    }
+
+    //Altera a imagem de pré-visualização do input de avatar
+    function handleAvatarChange(event){
+
+        //Recupera o arquivo selecionado pelo usuário;
+        const file = event.target.files[0]
+
+        //Cria uma url temporária para exibição do arquivo sem precisar fazer upload da imagem em um servidor.
+        //createObjectURL(objeto<File> || objeto<Blob>) - Retorna uma url temporária capaz de exibir o conteúdo do arquivo sem ser necessário fazer o upload do mesmo no servidor;
+        const imagePreview = URL.createObjectURL(file);
+        
+
+    }
 
     return(
         <Container>
@@ -42,7 +71,7 @@ export const Profile = () => {
                         <FiCamera />
                     </label>
 
-                    <input type="file" id="avatar" />
+                    <input type="file" id="avatar" onChange={handleAvatarChange}/>
                 </Avatar>
                 
                     <Input placeholder="Nome" icon={FiUser} value={name} onChange={ event => setName(event.target.value)}/>
@@ -52,7 +81,7 @@ export const Profile = () => {
                     <Input placeholder="Nova Senha" type="password" icon={FiLock} onChange={ event => setNewPsw(event.target.value)} />
                
 
-                <Button title="Salvar" disabled/>
+                <Button title="Salvar" onClick={handleUpdateProfile}/>
             </Form>
             
         </Container>

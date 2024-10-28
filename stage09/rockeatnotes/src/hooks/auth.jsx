@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 import { api } from '../services/api';
+import axios from 'axios';
 
 //Cria o contexto de autenticação.
 const AuthContext = createContext({})
@@ -55,6 +56,29 @@ function AuthProvider({ children }) {
 
     }
 
+    //Atualiza os dados base do usuário
+    async function updateProfile({ user }){
+        try {
+            //Envia os dados do usuário para nossa API
+            await api.put("/users", user);
+
+            //Em caso de sucesso na atualização, insere o novo objeto de usuário no localStorage.
+            //Utiliza o stringfy pois localStorage aceita apenas string.
+            localStorage.setItem("@rocketnotes:user", JSON.stringify(user))
+
+            //Atualiza o estado de usuário com as novas informações para que as mudanças sejam exibidas em tela assim que o usuário atualizar;
+            setData({ user, token: data.token})
+
+            alert("Dados atualizados com sucesso!")
+        } catch (error) {
+            if(error.response){
+                alert(error.response.data.message)
+            }else{
+                alert("Não foi possível efetuar o login!")
+            }
+        }
+    }
+
     //Dispara uma ação após a renderização do componente
     //Utilizamos para recuperar informações do usuário no localStorage e armazena-las no estado de usuário caso existam;
     useEffect(() => {
@@ -76,7 +100,7 @@ function AuthProvider({ children }) {
     } , [])
 
     return (
-        <AuthContext.Provider value={{ signIn, signOut ,user: data.user }}>
+        <AuthContext.Provider value={{ signIn, signOut, updateProfile ,user: data.user }}>
             {children}
         </AuthContext.Provider>
     )
