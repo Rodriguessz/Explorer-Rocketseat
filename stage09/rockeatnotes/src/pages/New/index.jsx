@@ -13,11 +13,13 @@ import { Link } from "react-router-dom";
 
 export const New = () => {
 
-    //Links relacionados a nota que o usuário está criando
-    const [links, setLinks] = useState([]);
+    //Estados para manipulação dos links
+    const [links, setLinks] = useState([]); //Estado para armazenar os links adicionados pelo usuário; 
+    const [newLink, setNewLink] = useState(""); //Novo link;
 
-    //Novo link que o usuário irá adicionar a nota;
-    const [newLink, setNewLink] = useState("");
+    //Estados para manipulação das tags
+    const [tags, setTags] = useState([]); //Estado para armazenar os links adicionados pelo usuário; 
+    const [newTag, setNewTag] = useState(""); //Novo link;
 
     //Adiciona um link relacionado a nota no estado de links;
     function handleAddLink() {
@@ -29,9 +31,25 @@ export const New = () => {
     }
 
     //Remove o link especifico clicado pelo usuário
-    function handleRemoveLink(deletedIndex){
+    function handleRemoveLink(deletedIndex) {
         //Utiliza o filter para retornar todos os links que forem diferentes ao que o usuário quer remover
         setLinks(prevState => prevState.filter((link, index) => index != deletedIndex))
+    }
+
+    //Adicona uma tag a nota que está sendo cadastrada;
+    function handleAddTag() {
+
+        //Adiciona a nova tag adicionada pelo usuário no estado de tags já existentes;
+        setTags(prevState => [...prevState, newTag]);
+        //Limpa o valor da tag para refletir na limpeza do input posteriormente;
+        setNewTag("");
+    }
+
+
+    //Remove a tag especifica selecionada pelo usuário;
+    function handleRemoveTag(deletedIndex) {
+        //Utiliza o filter para retornar todos os links que forem diferentes ao que o usuário quer remover
+        setTags(prevState => prevState.filter((tag, index) => index != deletedIndex))
     }
 
     return (
@@ -60,7 +78,7 @@ export const New = () => {
                                     <NoteItem
                                         key={String(index)}
                                         value={link}
-                                        onclick={() => {handleRemoveLink(index)}}
+                                        onclick={() => { handleRemoveLink(index) }}
                                     />
                                 )
                             })
@@ -78,8 +96,26 @@ export const New = () => {
 
                     <Section title="Marcadores" >
                         <div className="tags">
-                            <NoteItem value="React" />
-                            <NoteItem placeholder="Nova tag" isNew />
+
+                        {/* Mapeia as tags adicionados pelo usuário, renderizando o componente noteItem para cada uma delas */}
+                            {
+                                tags.map((tag, index) => {
+                                    return (
+                                        <NoteItem
+                                            key={String(index)}
+                                            value={tag}
+                                            onclick={() => { handleRemoveTag(index)}}
+                                        />
+                                    )
+                                })
+                            }
+                            <NoteItem
+                                placeholder="Nova tag"
+                                isNew
+                                onChange={event => setNewTag(event.target.value)}
+                                value={newTag}
+                                onclick={handleAddTag}
+                            />
                         </div>
                     </Section>
 
