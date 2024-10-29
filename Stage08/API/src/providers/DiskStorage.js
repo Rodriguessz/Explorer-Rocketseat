@@ -31,8 +31,7 @@ class DiskStorage{
             //stat - Utilizado para obter informações sobre um arquivo ou diretorio especifico.
             //Caso não encontre o arquivo ou algo inesperado aconteça, dispara um erro. 
             const fileInformations = await fs.promises.stat(filePath)
-            console.log(fileInformations)
-            
+        
         }catch{
             return console.log("Erro ao deletar arquivo!")
         }

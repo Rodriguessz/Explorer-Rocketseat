@@ -1,24 +1,31 @@
+//Importando o hook useAuth
+import { useAuth } from '../../hooks/auth'
+import { api } from "../../services/api";
+
 import { Container, Profile, Logout } from "./styles";
 import { RiShutDownLine } from 'react-icons/ri'
 
-//Importando o hook useAuth
-import { useAuth } from '../../hooks/auth'
+import avatarPlaceHolder from '../../assets/avatar_placeholder.svg'
+
 
 
 export const Header = ( {} ) => {
     
     //Recuperando informações compartilhadas pelo authProvider;
-    const { signOut } = useAuth();
+    const { signOut, user } = useAuth();
+
+    const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceHolder;
+    
 
     return(
         <>
             <Container>
                 <Profile to="/profile">
-                    <img src="https://github.com/rodriguessz.png" alt="Imagem do usuário" />
+                    <img src={avatarUrl} alt="Imagem do usuário" />
 
                     <div>
                         <span>Bem vindo,</span>
-                        <strong>Enzo Rodrigues</strong>
+                        <strong>{user.name}</strong>
                     </div>
                 </Profile>
 

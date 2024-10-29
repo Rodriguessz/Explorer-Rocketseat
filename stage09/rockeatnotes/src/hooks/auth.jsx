@@ -57,8 +57,25 @@ function AuthProvider({ children }) {
     }
 
     //Atualiza os dados base do usuário
-    async function updateProfile({ user }){
+    async function updateProfile({ user, avatarFile }){
         try {
+            //Caso o avatarFile tenha sido carregado pelo usuário, crie um multi-form/data para o envio do arquivo ao servidor
+            if(avatarFile){
+                
+                //Cria um formulário multi-form-data para que seja possivel fazer o envio de arquivos para o back-end;
+                const avatarUploadForm = new FormData(); 
+                
+                //Adiciona o arquivo no campo avatar do formulário criado;
+                //append("campo", arquivo) - Adiciona um novo campo ao multi-form/data
+                avatarUploadForm.append("avatar", avatarFile);
+
+                //Envia o formulário com o arquivo carregado pelo usuário para nossa rota de atualização de avatar
+                const response = await api.patch("users/avatar", avatarUploadForm)
+
+                //Atualiza o avatar o do usuário
+                user.avatar = response.data.user.avatar
+            }
+
             //Envia os dados do usuário para nossa API
             await api.put("/users", user);
 
