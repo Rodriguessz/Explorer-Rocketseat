@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { api } from "../../services/api";
 
 import { Container, Form } from "./styles";
 
@@ -9,9 +10,17 @@ import { Section } from "../../components/Section";
 import { NoteItem } from "../../components/NoteItem";
 import { Button } from "../../components/Button";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const New = () => {
+
+    //Inicializa a função useNavigate para redirecionamento de usuários.
+    const navigate = useNavigate();
+
+    //Estados para inputs de titulo e descrição;
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+
 
     //Estados para manipulação dos links
     const [links, setLinks] = useState([]); //Estado para armazenar os links adicionados pelo usuário; 
@@ -45,11 +54,39 @@ export const New = () => {
         setNewTag("");
     }
 
-
     //Remove a tag especifica selecionada pelo usuário;
     function handleRemoveTag(deletedIndex) {
         //Utiliza o filter para retornar todos os links que forem diferentes ao que o usuário quer remover
         setTags(prevState => prevState.filter((tag, index) => index != deletedIndex))
+    }
+
+    //Envia os dados inseridos pelo usuário para o recurso de criar notas na API.
+    async function handleNewNote(){
+        console.log("aQUI")
+        try{  
+            
+            //Verifica se os campos de titulo e descrição foram preenchidos corretamente;
+            if(!title ||!description) return alert("Por favor, preencha os campos corretamente!")
+            
+            await api.post("/notes/create", {
+                title,
+                description,
+                links,
+                tags
+            })
+
+            alert("Nota cadastrada com sucesso!");
+
+            //Redireciona o usuário para página principal;
+            navigate("/")
+
+        }catch(error){  
+            if(error.response){
+                alert(error.response.data.message);
+            }else{
+                alert("Não foi possivel cadastrar a nota!");
+            }
+        }
     }
 
     return (
@@ -65,9 +102,9 @@ export const New = () => {
                         <Link to="/">Voltar</Link>
                     </header>
 
-                    <Input placeholder="Título" />
+                    <Input placeholder="Título" onChange={event => setTitle(event.target.value)} />
 
-                    <Textarea placeholder="Observações" />
+                    <Textarea placeholder="Observações" onChange={event => setDescription(event.target.value)} />
 
                     <Section title="Links úteis" >
 
@@ -119,7 +156,7 @@ export const New = () => {
                         </div>
                     </Section>
 
-                    <Button title="Salvar" />
+                    <Button title="Salvar" onClick={handleNewNote} />
                 </Form>
             </main>
 

@@ -59,9 +59,9 @@ function AuthProvider({ children }) {
     //Atualiza os dados base do usuário
     async function updateProfile({ user, avatarFile }){
         try {
+            
             //Caso o avatarFile tenha sido carregado pelo usuário, crie um multi-form/data para o envio do arquivo ao servidor
-            if(avatarFile){
-                
+            if(avatarFile){            
                 //Cria um formulário multi-form-data para que seja possivel fazer o envio de arquivos para o back-end;
                 const avatarUploadForm = new FormData(); 
                 
