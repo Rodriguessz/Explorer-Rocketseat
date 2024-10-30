@@ -15,7 +15,7 @@ notesRoutes.get("/", notesController.index);
 
 notesRoutes.post("/create", notesController.create);
 
-notesRoutes.get("/show/:note_id", notesController.show);
+notesRoutes.get("/:note_id", notesController.show);
 
 notesRoutes.delete("/delete/:note_id", notesController.delete);
 

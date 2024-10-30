@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { api } from "../../services/api";
 
@@ -29,7 +30,8 @@ export const Home = ({ }) => {
     //Estado para armazenar as notas do usuário
     const [notes, setNotes] = useState([]);
 
-
+    //Inicia a função navigate para o redirecionamento de rotas;
+    const navigate = useNavigate()
 
     function handleTagSelection(tagName) {
 
@@ -51,37 +53,45 @@ export const Home = ({ }) => {
         }
     }
 
+    //Redireciona o usuário para a página de detalhes
+    function handleNoteDetails(id){
+        //Passa o id da nota como route param;
+        navigate(`details/${id}`)
+    }
 
-    //Busca as tags do usuário na API e adiciona ao estado de tags;
-    useEffect(() => {
-        async function fetchTags() {
-            //Busca as tags do usuário;
-            const { data } = await api.get("/tags");
 
-            //Insere as tags recueperadas no estado criado previamente;
-            setTags(data)
-        }
+    //#region UseEffects
+        //Busca as tags do usuário na API e adiciona ao estado de tags;
+        useEffect(() => {
+            async function fetchTags() {
+                //Busca as tags do usuário;
+                const { data } = await api.get("/tags");
 
-        fetchTags();
+                //Insere as tags recueperadas no estado criado previamente;
+                setTags(data)
+            }
 
-    }, [])
+            fetchTags();
 
-    //Busca as notas do usuário de acordo com o filtro passado e adiciona ao estado de notas;
-    useEffect(() => {
+        }, [])
 
-        async function fetchNotes() {
+        //Busca as notas do usuário de acordo com o filtro passado e adiciona ao estado de notas;
+        useEffect(() => {
 
-            //Busca as notas do usuário na API, enviando os filtros setados pelo usuário através dos query parameters;
-            const { data } = await api.get(`/notes?title=${search}&tags=${selectedTags}`);
+            async function fetchNotes() {
 
-            console.log(data)
-            //Adiciona as notas recuperadas no estado de notas;
-            setNotes(data);
-        }
+                //Busca as notas do usuário na API, enviando os filtros setados pelo usuário através dos query parameters;
+                const { data } = await api.get(`/notes?title=${search}&tags=${selectedTags}`);
 
-        fetchNotes()
-    }, [selectedTags, search])
+                console.log(data)
+                //Adiciona as notas recuperadas no estado de notas;
+                setNotes(data);
+            }
 
+            fetchNotes()
+        }, [selectedTags, search])
+    //#endregion
+    
     return (
 
         <Container>
@@ -123,6 +133,7 @@ export const Home = ({ }) => {
                         <Note
                             key={String(note.id)}
                             data={note}
+                            onClick={() => {handleNoteDetails(note.id)}}
                         />
 
                     ))}

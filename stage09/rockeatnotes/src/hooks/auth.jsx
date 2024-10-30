@@ -3,7 +3,9 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 import { api } from '../services/api';
-import axios from 'axios';
+
+import { useNavigate } from 'react-router-dom';
+
 
 //Cria o contexto de autenticação.
 const AuthContext = createContext({})
@@ -53,7 +55,6 @@ function AuthProvider({ children }) {
 
         //Remove as informações armazenadas no estado de usuário;
         setData({});
-
     }
 
     //Atualiza os dados base do usuário
