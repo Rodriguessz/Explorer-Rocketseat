@@ -6,9 +6,9 @@ class NotesController {
     //Recupera titulo e tags da nota enviados via parametros de consulta;
     const { title, tags } = request.query;
 
+
     //Recuperando o id do usuário do objeto de usuário criado pelo middlware
     const user_id = request.user.id;
-    console.log("Aqui", user_id)
 
     let notes;
 
@@ -36,6 +36,7 @@ class NotesController {
         .whereIn("name", filteredTags)
         .whereLike("notes.title", `%${title}%`)
         .innerJoin("notes", "notes.id", "tags.note_id")
+        .groupBy("notes.id") //Agrupa pelo id da nota para evitar notas duplicadas caso o usuário insira diferentes tags que apareçam em uma mesma nota;
         .orderBy("notes.title");
     } else {
       //Recupera as notas do usuário

@@ -11,7 +11,7 @@ const ensureAuthentication = require("../middleware/ensureAuthentication");
 //Aplicando o middleware para todas as rotas do recurso de notas
 notesRoutes.use(ensureAuthentication)
 
-notesRoutes.get("/show/all", notesController.index);
+notesRoutes.get("/", notesController.index);
 
 notesRoutes.post("/create", notesController.create);
 

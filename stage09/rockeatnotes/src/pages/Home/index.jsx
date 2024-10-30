@@ -17,16 +17,23 @@ import { FiPlus, FiSearch } from "react-icons/fi"
 
 export const Home = ({ }) => {
 
+    //Estado para o conteúdo do input de pesquisa;
+    const [search, setSearch] = useState("");
+
     //Estado para armazenar as tags do usuário
     const [tags, setTags] = useState([])
 
     //Estado para armazenar as tags que já foram selecionadas pelo usuário.
     const [selectedTags, setSelectedTags] = useState([]);
 
+    //Estado para armazenar as notas do usuário
+    const [notes, setNotes] = useState([]);
+
+
 
     function handleTagSelection(tagName) {
 
-        if(tagName == "all") return setSelectedTags([]);
+        if (tagName == "all") return setSelectedTags([]);
 
         //Verifica se a tag está presente no array.
         //Includes(valorProcurado) - Verifica se existe uma ocorrencia do valor procurado no array.
@@ -58,6 +65,22 @@ export const Home = ({ }) => {
         fetchTags();
 
     }, [])
+
+    //Busca as notas do usuário de acordo com o filtro passado e adiciona ao estado de notas;
+    useEffect(() => {
+
+        async function fetchNotes() {
+
+            //Busca as notas do usuário na API, enviando os filtros setados pelo usuário através dos query parameters;
+            const { data } = await api.get(`/notes?title=${search}&tags=${selectedTags}`);
+
+            console.log(data)
+            //Adiciona as notas recuperadas no estado de notas;
+            setNotes(data);
+        }
+
+        fetchNotes()
+    }, [selectedTags, search])
 
     return (
 
@@ -91,13 +114,18 @@ export const Home = ({ }) => {
             </Menu>
 
             <Search>
-                <Input placeholder="Pesquisar pelo título" icon={FiSearch} />
+                <Input placeholder="Pesquisar pelo título" icon={FiSearch} onChange={event => setSearch(event.target.value)} />
             </Search>
 
             <Content>
                 <Section title="Minhas notas">
-                    <Note data={{ title: "React Modal", tags: [{ id: 1, name: "react" }] }} />
-                    <Note data={{ title: "Exemplo de Middleware", tags: [{ id: 1, name: "nodejs" }, { id: 2, name: "express" }] }} />
+                    {notes && notes.map(note => (
+                        <Note
+                            key={String(note.id)}
+                            data={note}
+                        />
+
+                    ))}
                 </Section>
             </Content>
 

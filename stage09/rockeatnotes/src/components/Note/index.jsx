@@ -9,7 +9,7 @@ export const Note = ({ data, ...rest }) => {
                 <h1>{data.title}</h1>
 
                 <footer>
-                    {data.tags && data.tags.map(tag => <Tag  key={tag.id} title={tag.name}/>)}
+                    {data.noteTags && data.noteTags.map(tag => <Tag  key={tag.id} title={tag.name}/>)}
                 </footer>
                 
             </Container> 
