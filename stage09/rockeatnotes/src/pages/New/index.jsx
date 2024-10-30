@@ -32,6 +32,10 @@ export const New = () => {
 
     //Adiciona um link relacionado a nota no estado de links;
     function handleAddLink() {
+
+        //Verifcia se o usuário digitou um link
+        if(!newLink) return alert("Preencha o campo!")
+
         //Adiciona o novo link adicionado pelo usuário no estado dos links já existentes;
         setLinks(prevState => [...prevState, newLink]);
 
@@ -48,6 +52,9 @@ export const New = () => {
     //Adicona uma tag a nota que está sendo cadastrada;
     function handleAddTag() {
 
+        //Verifcia se o usuário digitou uma tag
+        if(!newTag) return alert("Preencha o campo!")
+
         //Adiciona a nova tag adicionada pelo usuário no estado de tags já existentes;
         setTags(prevState => [...prevState, newTag]);
         //Limpa o valor da tag para refletir na limpeza do input posteriormente;
@@ -62,11 +69,12 @@ export const New = () => {
 
     //Envia os dados inseridos pelo usuário para o recurso de criar notas na API.
     async function handleNewNote(){
-        console.log("aQUI")
         try{  
             
             //Verifica se os campos de titulo e descrição foram preenchidos corretamente;
             if(!title ||!description) return alert("Por favor, preencha os campos corretamente!")
+
+            if(newLink || newTag) return alert("Uma tag ou link não foi adicionado corretamente, confirme para adicionar ou deixe em branco para continuar!")
             
             await api.post("/notes/create", {
                 title,

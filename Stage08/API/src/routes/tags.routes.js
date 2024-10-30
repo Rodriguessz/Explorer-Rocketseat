@@ -9,7 +9,7 @@ const tagsController = new TagsController();
 const ensureAuthentication = require("../middleware/ensureAuthentication")
 
 //EnsureAuthentication - Middleware de autenticação de usuário;
-tagsRoutes.get("/show/all", ensureAuthentication,  tagsController.index);
+tagsRoutes.get("/", ensureAuthentication,  tagsController.index);
 
 module.exports = tagsRoutes;
 
