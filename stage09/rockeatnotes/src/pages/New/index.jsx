@@ -85,8 +85,8 @@ export const New = () => {
 
             alert("Nota cadastrada com sucesso!");
 
-            //Redireciona o usuário para página principal;
-            navigate("/")
+            //Redireciona o usuário para página anterior (home);
+            navigate(-1)
 
         }catch(error){  
             if(error.response){
@@ -107,7 +107,7 @@ export const New = () => {
 
                     <header>
                         <h1>Criar nota</h1>
-                        <Link to="/">Voltar</Link>
+                        <Link to={-1}>Voltar</Link>
                     </header>
 
                     <Input placeholder="Título" onChange={event => setTitle(event.target.value)} />

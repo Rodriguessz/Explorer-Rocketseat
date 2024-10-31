@@ -83,7 +83,6 @@ export const Home = ({ }) => {
                 //Busca as notas do usuário na API, enviando os filtros setados pelo usuário através dos query parameters;
                 const { data } = await api.get(`/notes?title=${search}&tags=${selectedTags}`);
 
-                console.log(data)
                 //Adiciona as notas recuperadas no estado de notas;
                 setNotes(data);
             }

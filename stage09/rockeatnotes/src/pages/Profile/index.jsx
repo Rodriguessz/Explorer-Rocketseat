@@ -33,18 +33,22 @@ export const Profile = () => {
     //Cria o estado que irá armazenar o arquivo carregado pelo usuário e que posteriormente será enviado para nossa API.
     const [avatarFile, setAvatarFile] = useState(null);
 
+    //Atualiza o perfil do usuário com as informações enviadas;
     async function handleUpdateProfile(){
 
-        //Monta um objeto de usuário com os dados passados pelo usuário através dos inputs;
-        const user = {
-            name: name,
-            email: email,
+        //Monta um objeto com as informações atualizadas do usuário;
+        const updatedInfos = {
+            name,
+            email,
             oldPassword: currentPsw,
             password: newPsw,
         }
 
-        //Chama a função para atualizar o usuário disponibilizada pelo authProvider, passando como argumento principal o objeto de usuário.
-        await updateProfile({user, avatarFile});
+        //Object.assign() - Mescla dois objetos em um só. Propriedades iguais serão sobreescritas pelo útlimo objeto passado para a mesclagem;
+        const updatedUser = Object.assign(user, updatedInfos)
+        
+        //Chama a função para atualizar o usuário disponibilizada pelo authProvider, passando como argumento principal o objeto de usuário com as informações atualizadas.
+        await updateProfile({user: updatedUser, avatarFile});
 
     }
 
@@ -70,7 +74,7 @@ export const Profile = () => {
     return(
         <Container>
             <header>
-                <Link to="/">
+                <Link to={-1}>
                     <FiArrowLeft />
                 </Link>
             </header>
@@ -94,7 +98,7 @@ export const Profile = () => {
                     <Input placeholder="Nova Senha" type="password" icon={FiLock} onChange={ event => setNewPsw(event.target.value)} />
                
 
-                <Button title="Salvar" onClick={handleUpdateProfile}/>
+                <Button title="Salvar" onClick={handleUpdateProfile} disabled={!currentPsw && newPsw}/>
             </Form>
             
         </Container>

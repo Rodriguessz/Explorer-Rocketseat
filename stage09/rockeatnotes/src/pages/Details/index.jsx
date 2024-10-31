@@ -31,9 +31,37 @@ export const Details = () => {
   const params = useParams();
 
   //Redireciona o usuário para a página inicial
-  function handlePageBack(){
-    //Utiliza o navigate para redirecionar o usuário para a tela inicial;
-    navigate("/")
+  function handlePageBack() {
+    //Utiliza o navigate para redirecionar o usuário para a tela anterior;
+    // (-1) significa que irá voltar para o item anterior do seu historico de navegação. 
+    navigate(-1)
+  }
+
+  //Função para deletar a nota
+  async function handleRemoveNote() {
+
+    //confirm(message) - Exibe um alerta de confirmação com a mensagem passada no argumento do método e retorna a resposta do usuário ( true or false)
+    const confirmation = window.confirm("Deseja realmente excluir a nota?")
+
+    //Verifica se o usuário realmente quer excluir a nota
+    if (confirmation) {
+      try {
+        //Manda a requisição para o recurso de deletar nota passando o id como route param;
+        await api.delete(`/notes/delete/${params.id}`);
+        alert("Nota excluída com sucesso!")
+
+        //Após apagar a nota, redireciona o usuário para a tela anterior (home)
+        navigate(-1)
+      } catch (error) {
+        if (error.response) {
+          alert(error.response.data.message);
+        } else {
+          alert("Erro ao deletar nota!")
+        }
+      }
+    }
+
+
   }
 
   //Recupera os dados da nota
@@ -61,7 +89,7 @@ export const Details = () => {
           note &&
           <main>
             <Content>
-              <ButtonText title="Excluir Nota" />
+              <ButtonText title="Excluir Nota" onClick={handleRemoveNote} />
 
               <h1>{note.title}</h1>
 
