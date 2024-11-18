@@ -1,4 +1,5 @@
 require("express-async-errors");
+require("dotenv/config")
 
 const uploadConfigs = require("../src/config/upload")
 
@@ -58,6 +59,6 @@ app.use((error, request, response, next) => {
 const PORT = 3333;
 //Listen(Porta , callback ) - Inicializa minha API na porta 3333 e quando estiver pronto, executa o callback
 app.listen(PORT, () =>
-  console.log(`Server is running on: http://localhost:${PORT}`),
+  console.log(`Server is running on: http://localhost:${process.env.SERVER_PORT || 3333}`),
 );
 
