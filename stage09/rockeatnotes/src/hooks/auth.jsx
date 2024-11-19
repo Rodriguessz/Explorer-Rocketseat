@@ -1,6 +1,6 @@
 //createContext - Cria um contexto;
 //useContext - Hook para comsumir informações de um contexto especifico
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useRef, useState } from 'react';
 
 import { api } from '../services/api';
 
@@ -20,6 +20,9 @@ function AuthProvider({ children }) {
     async function signIn({ email, password }) {
         
         try {
+
+            console.log("Passei aqui")
+
             //Cria um sessão para o usuário 
             const response = await api.post("/sessions", { email, password })
             //Desestrutura a response, recuperando o token gerado e o usuário enviado da API;
