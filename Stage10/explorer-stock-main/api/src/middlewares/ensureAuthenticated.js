@@ -12,10 +12,13 @@ function ensureAuthenticated(request, response, next) {
   const [, token] = authHeader.split(' ');
 
   try {
-    const { sub: user_id } = verify(token, authConfig.jwt.secret);
 
+    //Recuperando o user_id e a role do mesmo.
+    const { sub: user_id, role } = verify(token, authConfig.jwt.secret);
+    
     request.user = {
       id: Number(user_id),
+      role,
     };
 
     return next();

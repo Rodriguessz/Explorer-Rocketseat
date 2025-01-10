@@ -21,11 +21,26 @@ class SessionsController {
     }
 
     const { secret, expiresIn } = authConfig.jwt;
-
-    const token = sign({}, secret, {
+    
+    //Adicionando a role do usuário no payload
+    const token = sign({ role: user.role}, secret, {
       subject: String(user.id),
       expiresIn
     });
+
+
+    //Adicionando cookie para envio do token
+    response.cookie("token_JWT", token, {
+      httpOnly: true,
+      sameSite: "none",
+      secure: true,
+      maxAge: 15 * 60 * 1000
+
+    })
+
+    //Deletando a propriedade de senha para preservar a segurança quando os dados forem para o front-end;
+    delete user.password
+
 
     response.status(201).json({ token, user });
   }
