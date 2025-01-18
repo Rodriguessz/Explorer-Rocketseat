@@ -1,16 +1,20 @@
 const { verify } = require('jsonwebtoken');
 const AppError = require('../utils/AppError');
 const authConfig = require('../configs/auth');
+const knex = require("../database/knex");
+const { json } = require('express');
 
-function ensureAuthenticated(request, response, next) {
-  const authHeader = request.headers.authorization;
+async function ensureAuthenticated(request, response, next) {
+  const authHeader = request.headers;
 
-  if (!authHeader) {
-    throw new AppError('JWT token não informado', 401);
+  //Agora que estamos mandando o token via cookie, precisamos verificar se existe algum cookie no cabeçalho
+  //A propriedade cookie é uma string, onde cada cookie é separado por;.
+  if (!authHeader.cookie) {
+    throw new AppError("JWT token não informado", 401);
   }
 
-  const [, token] = authHeader.split(' ');
-
+  const [, token] = authHeader.cookie.split("token=")
+  
   try {
 
     //Recuperando o user_id e a role do mesmo.

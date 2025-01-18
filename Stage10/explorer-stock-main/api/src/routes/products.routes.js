@@ -3,6 +3,7 @@ const ProductsController = require("../controllers/ProductsController");
 const ensureAuthenticated = require('../middlewares/ensureAuthenticated');
 const checkAuthorization = require('../middlewares/checkAuthorization');
 
+
 const productsRoutes = Router();
 
 const productsController = new ProductsController();

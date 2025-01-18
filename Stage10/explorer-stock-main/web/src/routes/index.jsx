@@ -6,8 +6,8 @@ import { AuthRoutes } from './auth.routes';
 import { AccessRoutes } from '../utils/AcessRoutes';
 
 export function Routes() {
-  const { user } = useAuth();
-
+  const { user, signOut } = useAuth();  
+  
   return (
     <BrowserRouter>
       {user ? <AccessRoutes user={user} /> : <AuthRoutes />}

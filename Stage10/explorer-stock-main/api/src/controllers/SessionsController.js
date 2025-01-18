@@ -30,10 +30,12 @@ class SessionsController {
 
 
     //Adicionando cookie para envio do token
-    response.cookie("token_JWT", token, {
+    //Automaticamente adicionado ao cebeçalho
+    response.cookie("token", token, {
+      path: "/",
       httpOnly: true,
-      sameSite: "none",
-      secure: true,
+      sameSite: "Strict",
+      secure: false,
       maxAge: 15 * 60 * 1000
 
     })
@@ -42,7 +44,20 @@ class SessionsController {
     delete user.password
 
 
-    response.status(201).json({ token, user });
+    response.status(201).json({ user });
+  }
+  
+  async logout(request, response){
+    response.clearCookie("token", {
+      path: "/",
+      httpOnly: true,
+      sameSite: "Strict",
+      secure: false,
+    });
+
+    console.log("Passou aqui")
+
+    return response.status(204).json({});
   }
 }
 
