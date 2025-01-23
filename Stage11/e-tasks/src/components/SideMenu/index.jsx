@@ -1,12 +1,19 @@
-import { CheckCircle, House, Folder, PlusSquare, Note, SignOut } from "@phosphor-icons/react";
+import { CheckCircle, House, Folder, PlusSquare, Note, SignOut, X} from "@phosphor-icons/react";
 
 import { Container, Footer, Nav, Title, Header, Button } from "./styles";
 
-export function SideMenu() {
+export function SideMenu({ menuSettings }) {
+
   return (
-    <Container>
+    <Container $active={menuSettings.value} >
       <Header>
         <Title><CheckCircle /> e-Tasks</Title>
+
+        {menuSettings.value && (<Button onClick={() => menuSettings.setter(prevState => !prevState)}>
+          <X />
+        </Button>)}
+        
+
       </Header>
 
       <Nav>

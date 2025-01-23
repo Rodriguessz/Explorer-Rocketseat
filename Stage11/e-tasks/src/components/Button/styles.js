@@ -5,8 +5,8 @@ export const Container = styled.button`
   color: ${({ theme }) => theme.COLORS.BLUE_600};
   
   border: 0;
-  height: 56px;
-  padding: 0 16px;
+  height: 3.6rem;
+  padding: 0 1rem;
   font-weight: 500;
   border-radius: 7px;
   
@@ -16,10 +16,10 @@ export const Container = styled.button`
   gap: 5px;
 
   > span {
-    font-size: 16px;
+    font-size: 1rem;
   }
 
   > svg {
-    font-size: 22px;
+    font-size: 1.4rem;
   }
 `;

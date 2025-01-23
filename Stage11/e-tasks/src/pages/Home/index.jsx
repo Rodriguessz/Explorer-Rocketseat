@@ -12,6 +12,13 @@ import { Container, FixedContent } from "./styles";
 export function Home() {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("all");
+  const [menu, setMenu] = useState(false);
+
+  const menuSettings = {
+    value: menu,
+    setter: setMenu
+  }
+
 
   useEffect(() => {
     switch (filter) {
@@ -24,12 +31,14 @@ export function Home() {
     }
   }, [filter]);
 
+
+
   return (
     <Container>
-      <SideMenu />
+      <SideMenu menuSettings={menuSettings}/>
 
       <FixedContent>
-        <Header />
+        <Header setmenu={setMenu} />
         <Priorities />
         <Search setFilter={setFilter} filter={filter} />
       </FixedContent>

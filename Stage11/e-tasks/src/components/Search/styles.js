@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.section`
-  padding: 0 32px;
+  padding: 0 2rem;
 `;
 
 export const Filters = styled.div`
   margin-top: 40px;
   display: flex;
-  gap: 16px;
+  gap: 1rem;
   margin-right: 10px;
 
   border-bottom-width: 1px;

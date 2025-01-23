@@ -17,6 +17,8 @@ export default {
     BLUE_500: "#065E7C",
     BLUE_600: "#0A3442",
 
-    RED_200: "#F75A68"
+    RED_200: "#F75A68",
+
+    WHITE: "#FFFFFF"
   }
 };

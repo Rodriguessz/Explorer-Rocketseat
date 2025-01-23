@@ -4,10 +4,7 @@ export const Container = styled.a`
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
   color: ${({ theme }) => theme.COLORS.GRAY_100};
 
-  height: 72px;
-  height: 72px;
-  
-  padding: 24px 16px;
+  padding: 1.4rem 1rem;
   border-radius: 7px;
 
   display: flex;
@@ -19,7 +16,7 @@ export const Container = styled.a`
   `};
 
   > svg {
-    font-size: 24px;
+    font-size: 1.6rem;
     color: ${({ theme }) => theme.COLORS.GRAY_400};
 
     ${({ $done }) => $done && css`
@@ -35,13 +32,13 @@ export const Details = styled.div`
   flex-direction: column;
 
   > span {
-    font-size: 14px;
+    font-size: 1rem;
     color: ${({ theme }) => theme.COLORS.GRAY_100};
 
   }
 
   > small {
-    font-size: 12px;
+    font-size: 0.8rem;
     color: ${({ theme }) => theme.COLORS.GRAY_400};
   }
 `;

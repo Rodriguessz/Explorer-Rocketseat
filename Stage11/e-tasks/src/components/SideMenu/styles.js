@@ -3,23 +3,29 @@ import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakPoints";
 
 export const Container = styled.aside`
   grid-area: menu;
-
-  @media(max-width: ${DEVICE_BREAKPOINTS.MD}){
-    display: none;
-  }
-
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
   width: 100%;
   height: 100vh;
-
   display: flex;
   flex-direction: column;
+
+  @media(max-width: ${DEVICE_BREAKPOINTS.MD}){
+    position: absolute;
+    z-index: 1;
+    width: 85%;
+    transform: ${({ $active }) => !$active ? "translateX(-120%)" : "translateX(0)" };
+    transition: transform 0.3s ease-in-out;
+  }
+
+  @media(max-width: ${DEVICE_BREAKPOINTS.XS}){
+    width: 100%;
+  }
 `;
 
 export const Header = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 32px 24px;
+  padding: 2rem 1.6rem;
 `;
 
 export const Title = styled.h1`
@@ -27,7 +33,7 @@ export const Title = styled.h1`
   align-items: center;
   gap: 7px;
   color: ${({ theme }) => theme.COLORS.BLUE_200};
-  font-size: 24px;
+  font-size: 1.6rem;
 `;
 
 export const Nav = styled.nav`
@@ -40,9 +46,9 @@ export const Nav = styled.nav`
     display: flex;
     align-items: center;
     gap: 7px;
-    padding-left: 24px;
-    height: 56px;
-    font-size: 16px;
+    padding-left: 1.6rem;
+    height: 3.4rem;
+    font-size: 1rem;
 
     &[data-menu-active="true"] {
       background-color: ${({ theme }) => theme.COLORS.BLUE_200};
@@ -56,10 +62,9 @@ export const Footer = styled.footer`
   display: flex;
   align-items: center;
   gap: 7px;
-
   > img {
-    width: 40px;
-    height: 40px;
+    width: 2.6rem;
+    height: 2.6rem;
     border-radius: 22px;
   }
 
@@ -70,11 +75,12 @@ export const Footer = styled.footer`
   }
 
   > div strong {
-    font-size: 14px;
+    font-size: 1rem;
   }
   > div small {
-    font-size: 12px;
+    font-size: 1rem;
   }
+
 `;
 
 export const Button = styled.button`
