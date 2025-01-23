@@ -17,10 +17,10 @@ export function SideMenu() {
       </Nav>
 
       <Footer>
-        <img src="https://github.com/rodrigorgtic.png" alt="Foto do usuário" />
+        <img src="https://github.com/rodriguessz.png" alt="Foto do usuário" />
         <div>
-          <strong>Rodrigo Gonçalves</strong>
-          <small>rodrigo@email.com</small>
+          <strong>Enzo Rodrigues</strong>
+          <small>enzo.orodrigues03@gmail.com</small>
         </div>
 
         <Button type="button">

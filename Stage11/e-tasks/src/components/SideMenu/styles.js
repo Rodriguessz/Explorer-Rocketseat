@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import { DEVICE_BREAKPOINTS } from "../../styles/deviceBreakPoints";
 
 export const Container = styled.aside`
   grid-area: menu;
+
+  @media(max-width: ${DEVICE_BREAKPOINTS.MD}){
+    display: none;
+  }
+
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
   width: 100%;
   height: 100vh;
